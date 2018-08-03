@@ -5,7 +5,7 @@ This is still in developpement and should absolutly not be re-used in a professi
 
 Things to do :
 
-- Create a json file from a character to start the reading process
+- ~~Create a json file from a character to start the reading process~~
 - Create Home page
 - Create State page
 - Create Stats page
