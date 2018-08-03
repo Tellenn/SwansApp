@@ -8,9 +8,18 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Home d'un personnage</h3>
-  <p>Ici il y aura un récap du perso ici</p>
-  <progress-bar [progress]="lifep"></progress-bar>
-  <p>{{ age }}</p>
+  <div *ngIf="character"><h1>{{character.Nom}} ({{character.Joueur}})</h1>
+    <h2>Niveau {{character.Niveau}}</h2>
+    {{character.Age}} ans, {{character.sexe}}. Taille : {{character.Taille}}, Cheveux {{character.Cheveux}}, Yeux : {{character.Yeux}}. 
+    Dextrie : {{character.Dextrie}}.
+    <br/>
+    <h3>Vie :</h3>
+    <lifebar [progress]="character.Etat.Vie" [max]="maxLife" [percent]="percentLife" [newcolor]=red ></lifebar><br/>
+    <h3>Santé Mental :</h3>
+    <mentalbar [progress]="character.Etat.Mental" [max]="maxMental" [percent]="percentMental" [newcolor]=purple ></mentalbar>
+  </div>
+  <div *ngIf="!character">
+    <ion-spinner></ion-spinner>
+  </div>
 </ion-content>
 

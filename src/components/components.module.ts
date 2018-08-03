@@ -1,12 +1,15 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MenuComponent } from './menu/menu';
-import { ProgressbarComponent } from './progressbar/progressbar';
+import { LifebarComponent } from './lifebar/lifebar';
+import { MentalbarComponent } from './mentalbar/mentalbar';
 @NgModule({
 	declarations: [MenuComponent,
-    ProgressbarComponent],
+    LifebarComponent,
+    MentalbarComponent],
 	imports: [],
 	exports: [MenuComponent,
-	ProgressbarComponent],
+    LifebarComponent,
+    MentalbarComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {}

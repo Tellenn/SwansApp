@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ProgressbarComponent } from '../components/progressbar/progressbar';
 import { InventairePage } from '../pages/inventaire/inventaire';
 import { EtatPage } from '../pages/etat/etat';
 import { AttaquePage } from '../pages/attaque/attaque';
@@ -18,6 +17,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CharacterProvider } from '../providers/character/character';
 
+import { LifebarComponent } from '../components/lifebar/lifebar';
+import { MentalbarComponent } from '../components/mentalbar/mentalbar';
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -44,7 +45,9 @@ export const firebaseConfig = {
     AttaquePage,
     DefensePage,
     ParametresPage,
-    ProgressbarComponent
+    LifebarComponent,
+    MentalbarComponent,
+    StatsPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ export const firebaseConfig = {
     CompetencesPage,
     AttaquePage,
     DefensePage,
-    ParametresPage
+    ParametresPage,
+    StatsPage
   ],
   providers: [
     StatusBar,
