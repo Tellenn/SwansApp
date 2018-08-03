@@ -4,7 +4,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { InventairePage } from '../pages/inventaire/inventaire';
+import { EtatPage } from '../pages/etat/etat';
+import { AttaquePage } from '../pages/attaque/attaque';
+import { CompetencesPage } from '../pages/competences/competences';
+import { DefensePage } from '../pages/defense/defense';
+import { StatsPage } from '../pages/stats/stats';
+import { ParametresPage } from '../pages/parametres/parametres';
+import { SortsPage } from '../pages/sorts/sorts';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +29,13 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Etat', component: EtatPage },
+      { title: 'Inventaire', component: InventairePage },
+      { title: 'Sorts', component: SortsPage },
+      { title: 'Competences', component: CompetencesPage },
+      { title: 'Attaque', component: AttaquePage },
+      { title: 'Defense', component: DefensePage },
+      { title: 'Paramètres', component: ParametresPage }
     ];
 
   }

@@ -4,7 +4,14 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { InventairePage } from '../pages/inventaire/inventaire';
+import { EtatPage } from '../pages/etat/etat';
+import { AttaquePage } from '../pages/attaque/attaque';
+import { CompetencesPage } from '../pages/competences/competences';
+import { DefensePage } from '../pages/defense/defense';
+import { StatsPage } from '../pages/stats/stats';
+import { ParametresPage } from '../pages/parametres/parametres';
+import { SortsPage } from '../pages/sorts/sorts';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -13,7 +20,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    InventairePage,
+    EtatPage,
+    SortsPage,
+    CompetencesPage,
+    AttaquePage,
+    DefensePage,
+    ParametresPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +36,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    InventairePage,
+    EtatPage,
+    SortsPage,
+    CompetencesPage,
+    AttaquePage,
+    DefensePage,
+    ParametresPage
   ],
   providers: [
     StatusBar,
