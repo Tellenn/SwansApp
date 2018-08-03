@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ProgressbarComponent } from '../components/progressbar/progressbar';
 import { InventairePage } from '../pages/inventaire/inventaire';
 import { EtatPage } from '../pages/etat/etat';
 import { AttaquePage } from '../pages/attaque/attaque';
@@ -42,7 +43,8 @@ export const firebaseConfig = {
     CompetencesPage,
     AttaquePage,
     DefensePage,
-    ParametresPage
+    ParametresPage,
+    ProgressbarComponent
   ],
   imports: [
     BrowserModule,
