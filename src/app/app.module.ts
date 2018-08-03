@@ -15,6 +15,7 @@ import { SortsPage } from '../pages/sorts/sorts';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CharacterProvider } from '../providers/character/character';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CharacterProvider
   ]
 })
 export class AppModule {}
