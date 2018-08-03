@@ -17,6 +17,21 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CharacterProvider } from '../providers/character/character';
 
+// Import the AF2 Module
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+
+// AF2 Settings
+export const firebaseConfig = {
+  apiKey: "AIzaSyBMVtckJoshye-NAN1Otb6irvLJX7bFB9I",
+  authDomain: "swansapp-bb5ec.firebaseapp.com",
+  databaseURL: "https://swansapp-bb5ec.firebaseio.com",
+  projectId: "swansapp-bb5ec",
+  storageBucket: "swansapp-bb5ec.appspot.com",
+  messagingSenderId: "1029373083147"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -32,6 +47,8 @@ import { CharacterProvider } from '../providers/character/character';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

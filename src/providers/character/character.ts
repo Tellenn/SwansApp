@@ -1,17 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-/*
-  Generated class for the CharacterProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+import { Firebase } from '@ionic-native/firebase';
 @Injectable()
-export class CharacterProvider {
+export class CharacterProvider
+{
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private firebase: Firebase) {
+    
     console.log('Hello CharacterProvider Provider');
   }
-
 }
