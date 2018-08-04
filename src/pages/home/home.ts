@@ -1,33 +1,44 @@
 import { Component } from '@angular/core';
-import { NavController  } from 'ionic-angular';
-import { AngularFireDatabase} from 'angularfire2/database';
+import { NavController } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+    selector: 'page-home',
+    templateUrl: 'home.html'
 })
 export class HomePage {
-  character: Character;
-  age: number;
-  char: Observable<any>;
-  maxLife:number;
-  percentLife:number;
-  maxMental:number;
-  percentMental:number;
-  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase) {
-    this.age = 5;
-    this.char = afDatabase.object('/Character/0').snapshotChanges();
-    this.char.subscribe(action => {
-      console.log(action.payload.val());
-      this.character = action.payload.val();
-      this.maxLife = (this.character.Niveau-1+this.character.Caracteristiques.Constitution.Score+this.character.Caracteristiques.Constitution.Natif+this.character.Caracteristiques.Constitution.Modif-10)/2+8;
-      this.percentLife = this.character.Etat.Vie/this.maxLife*100;
-      this.maxMental = (this.character.Niveau-1+this.character.Caracteristiques.Constitution.Score+this.character.Caracteristiques.Constitution.Natif+this.character.Caracteristiques.Constitution.Modif-10)+20;
-      this.percentMental = this.character.Etat.Mental/this.maxMental*100;
-    });
+    database : AngularFireDatabase;
+    character: Character;
+    age: number;
+    char: Observable<any>;
+    maxLife: number;
+    percentLife: number;
+    maxMental: number;
+    percentMental: number;
+    constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase) {
+        this.database = afDatabase;
+        this.age = 5;
+        this.char = afDatabase.object('/Character/0').snapshotChanges();
+        this.char.subscribe(action => {
+            console.log(action.payload.val());
+            this.character = action.payload.val();
+            this.maxLife = (this.character.Niveau - 1 + this.character.Caracteristiques.Constitution.Score + this.character.Caracteristiques.Constitution.Natif + this.character.Caracteristiques.Constitution.Modif - 10) / 2 + 8;
+            this.percentLife = this.character.Etat.Vie / this.maxLife * 100;
+            this.maxMental = (this.character.Niveau - 1 + this.character.Caracteristiques.Constitution.Score + this.character.Caracteristiques.Constitution.Natif + this.character.Caracteristiques.Constitution.Modif - 10) + 20;
+            this.percentMental = this.character.Etat.Mental / this.maxMental * 100;
+        });
 
-  }
+    }
+
+    addLife() {
+        let newlife = this.character.Etat.Vie+1;
+        this.database.object('/Character/0/Etat').update({Vie:newlife});
+    }
+    removeLife() {
+        let newlife = this.character.Etat.Vie-1;
+        this.database.object('/Character/0/Etat').update({Vie:newlife});
+    }
 }
 export interface Aptitude {
     Concentration: number;

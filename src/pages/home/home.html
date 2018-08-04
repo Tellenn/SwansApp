@@ -15,6 +15,7 @@
     <br/>
     <h3>Vie :</h3>
     <lifebar [progress]="character.Etat.Vie" [max]="maxLife" [percent]="percentLife" [newcolor]=red ></lifebar><br/>
+    <button ion-button round (click)="addLife()">+</button> <button ion-button round (click)="removeLife()">-</button>
     <h3>Santé Mental :</h3>
     <mentalbar [progress]="character.Etat.Mental" [max]="maxMental" [percent]="percentMental" [newcolor]=purple ></mentalbar>
   </div>
