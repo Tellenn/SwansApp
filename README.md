@@ -24,5 +24,6 @@ Things to do :
   - Inventory
   - Attack
   - Defense
+- Character creation page
 
 If you have any request or bug, do not hesitate to create a github issue !
