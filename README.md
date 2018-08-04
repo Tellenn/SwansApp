@@ -16,8 +16,8 @@ Things to do :
 - Create Defense page
 - Create an interface for easier leveling
 - Create a GM page
-- Set up a Firebase
-- Make it collaborative
+- ~~Set up a Firebase~~
+- ~~Make it collaborative~~
 - Take load of coffee
 
 If you have any request or bug, do not hesitate to create a github issue !
