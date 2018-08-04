@@ -6,7 +6,6 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 import { HomePage } from '../pages/home/home';
 import { InventairePage } from '../pages/inventaire/inventaire';
-import { EtatPage } from '../pages/etat/etat';
 import { AttaquePage } from '../pages/attaque/attaque';
 import { CompetencesPage } from '../pages/competences/competences';
 import { DefensePage } from '../pages/defense/defense';
@@ -30,7 +29,6 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Etat', component: EtatPage },
       { title: 'Inventaire', component: InventairePage },
       { title: 'Sorts', component: SortsPage },
       { title: 'Competences', component: CompetencesPage },

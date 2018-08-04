@@ -5,7 +5,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { InventairePage } from '../pages/inventaire/inventaire';
-import { EtatPage } from '../pages/etat/etat';
 import { AttaquePage } from '../pages/attaque/attaque';
 import { CompetencesPage } from '../pages/competences/competences';
 import { DefensePage } from '../pages/defense/defense';
@@ -41,7 +40,6 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     InventairePage,
-    EtatPage,
     SortsPage,
     CompetencesPage,
     AttaquePage,
@@ -64,7 +62,6 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     InventairePage,
-    EtatPage,
     SortsPage,
     CompetencesPage,
     AttaquePage,
