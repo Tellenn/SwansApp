@@ -7,7 +7,6 @@ Things to do :
 
 - ~~Create a json file from a character to start the reading process~~
 - ~~Create Home page~~
-- Create State page
 - Create Stats page
 - Create Inventory page
 - Create Spell page
@@ -18,7 +17,12 @@ Things to do :
 - Create a GM page
 - ~~Set up a Firebase~~
 - ~~Make it collaborative~~
-- Add rules
+- Add in-game rules
+  - Concentration
 - Take load of coffee
+- Allow filtering in :
+  - Inventory
+  - Attack
+  - Defense
 
 If you have any request or bug, do not hesitate to create a github issue !
