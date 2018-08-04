@@ -12,10 +12,19 @@ export class HomePage {
     character: Character;
     age: number;
     char: Observable<any>;
+
     maxLife: number;
     percentLife: number;
+
     maxMental: number;
     percentMental: number;
+
+    maxFatigue: number;
+    percentFatigue: number;
+
+    maxConcentration: number;
+    percentConcentration: number;
+
     constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase) {
         this.database = afDatabase;
         this.age = 5;
@@ -23,10 +32,18 @@ export class HomePage {
         this.char.subscribe(action => {
             console.log(action.payload.val());
             this.character = action.payload.val();
+
             this.maxLife = (this.character.Niveau - 1 + this.character.Caracteristiques.Constitution.Score + this.character.Caracteristiques.Constitution.Natif + this.character.Caracteristiques.Constitution.Modif - 10) / 2 + 8;
             this.percentLife = this.character.Etat.Vie / this.maxLife * 100;
+
             this.maxMental = (this.character.Niveau - 1 + this.character.Caracteristiques.Constitution.Score + this.character.Caracteristiques.Constitution.Natif + this.character.Caracteristiques.Constitution.Modif - 10) + 20;
             this.percentMental = this.character.Etat.Mental / this.maxMental * 100;
+
+            this.maxFatigue = 10;
+            this.percentFatigue = this.character.Etat.Fatigue / this.maxFatigue *100;
+
+            this.maxConcentration = 40;
+            this.percentConcentration = this.character.Etat.Concentration / this.maxConcentration *100;
         });
 
     }
@@ -38,6 +55,33 @@ export class HomePage {
     removeLife() {
         let newlife = this.character.Etat.Vie-1;
         this.database.object('/Character/0/Etat').update({Vie:newlife});
+    }
+
+    addMental() {
+        let newmental = this.character.Etat.Mental+1;
+        this.database.object('/Character/0/Etat').update({Mental:newmental});
+    }
+    removeMental() {
+        let newmental = this.character.Etat.Mental-1;
+        this.database.object('/Character/0/Etat').update({Mental:newmental});
+    }
+
+    addFatigue() {
+        let newfatigue = this.character.Etat.Fatigue+1;
+        this.database.object('/Character/0/Etat').update({Fatigue:newfatigue});
+    }
+    removeFatigue() {
+        let newfatigue = this.character.Etat.Fatigue-1;
+        this.database.object('/Character/0/Etat').update({Fatigue:newfatigue});
+    }
+
+    addConcentration() {
+        let newconcentration = this.character.Etat.Concentration+1;
+        this.database.object('/Character/0/Etat').update({Concentration:newconcentration});
+    }
+    removeConcentration() {
+        let newconcentration = this.character.Etat.Concentration-1;
+        this.database.object('/Character/0/Etat').update({Concentration:newconcentration});
     }
 }
 export interface Aptitude {
