@@ -6,7 +6,7 @@ This is still in developpement and should absolutly not be re-used in a professi
 Things to do :
 
 - ~~Create a json file from a character to start the reading process~~
-- Create Home page
+- ~~Create Home page~~
 - Create State page
 - Create Stats page
 - Create Inventory page
@@ -18,6 +18,7 @@ Things to do :
 - Create a GM page
 - ~~Set up a Firebase~~
 - ~~Make it collaborative~~
+- Add rules
 - Take load of coffee
 
 If you have any request or bug, do not hesitate to create a github issue !
