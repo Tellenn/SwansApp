@@ -1,0 +1,16 @@
+<!-- Generated template for the EdititemComponent component -->
+<div height="100%">
+  <ion-item>
+    <ion-label>
+      Nom de l'objet
+    </ion-label>
+    <ion-input [value]="name" [(ngModel)]="newname" name="newname"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Temporalité
+    </ion-label>
+    <ion-input [value]="origin" [(ngModel)]="neworigin" name="neworigin"></ion-input>
+  </ion-item>
+  <button ion-button (click)="validate()">Valider</button><button ion-button (click)="cancel()">Annuler</button>
+</div>

@@ -3,12 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\assets\\icon",
-    "\\src\\assets\\imgs",
+    "\\src\\components",
+    "\\src\\components\\item",
     "\\src\\pages",
+    "\\src\\pages\\inventaire",
     "\\src\\providers",
     "\\src\\providers\\character"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\src\\components\\item\\item.ts",
   "PreviewInSolutionExplorer": false
 }

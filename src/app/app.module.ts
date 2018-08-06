@@ -21,6 +21,7 @@ import { MentalbarComponent } from '../components/mentalbar/mentalbar';
 import { FatiguebarComponent } from '../components/fatiguebar/fatiguebar';
 import { ConcentrationbarComponent } from '../components/concentrationbar/concentrationbar'; 0
 import { ItemComponent } from '../components/item/item'
+import { EdititemComponent } from '../components/edititem/edititem'
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -52,6 +53,7 @@ export const firebaseConfig = {
     FatiguebarComponent,
     ConcentrationbarComponent,
     ItemComponent,
+    EdititemComponent,
     StatsPage
   ],
   imports: [
@@ -70,6 +72,7 @@ export const firebaseConfig = {
     AttaquePage,
     DefensePage,
     ParametresPage,
+    EdititemComponent,
     StatsPage
   ],
   providers: [

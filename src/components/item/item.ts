@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ModalController } from 'ionic-angular';
-import { HomePage } from '../../pages/home/home';
+import { EdititemComponent } from '../edititem/edititem';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
  * Generated class for the ItemComponent component.
@@ -12,12 +13,16 @@ import { HomePage } from '../../pages/home/home';
   selector: 'item',
   templateUrl: 'item.html'
 })
-export class ItemComponent {
 
-  text: string;
+
+export class ItemComponent {
+  @Input() item: any;
+  @Input() character: number;
+  @Input() iditem: number
   modal: ModalController;
 
-  constructor(public modalCtrl: ModalController) {
+  constructor(public modalCtrl: ModalController, public afDatabase: AngularFireDatabase) {
+    console.log(this.item);
     this.modal = modalCtrl;
   }
 
@@ -29,7 +34,11 @@ export class ItemComponent {
     // - Do the delete
     // - Do the flop
     console.log("Editing item");
-    this.modal.create(HomePage).present();
+    this.modal.create(EdititemComponent, { name: this.item.Nom, origin: this.item.Temporalite, path: "/Character/" + this.character + "/Inventaire/" + this.iditem }).present();
+  }
+
+  delete() {
+    this.afDatabase.object("/Character/" + this.character + "/Inventaire/" + this.iditem).remove();
   }
 
 }
