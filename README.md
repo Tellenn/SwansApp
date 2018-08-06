@@ -14,8 +14,8 @@ Things to do :
 - Create Attack page
 - Create Defense page
 - Create an interface for easier leveling
-- Create a login page
-- Create a GM page
+-  ~~Create a login page~~
+- ~~Create a GM page~~
 - ~~Set up a Firebase~~
 - ~~Make it collaborative~~
 - Add in-game rules
