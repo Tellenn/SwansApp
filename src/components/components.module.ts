@@ -1,5 +1,4 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { MenuComponent } from './menu/menu';
 import { LifebarComponent } from './lifebar/lifebar';
 import { MentalbarComponent } from './mentalbar/mentalbar';
 import { FatiguebarComponent } from './fatiguebar/fatiguebar';
@@ -7,7 +6,7 @@ import { ConcentrationbarComponent } from './concentrationbar/concentrationbar';
 import { ItemComponent } from './item/item';
 import { EdititemComponent } from './edititem/edititem';
 @NgModule({
-	declarations: [MenuComponent,
+	declarations: [
     LifebarComponent,
     MentalbarComponent,
     FatiguebarComponent,
@@ -15,7 +14,7 @@ import { EdititemComponent } from './edititem/edititem';
     ItemComponent,
     EdititemComponent],
 	imports: [],
-	exports: [MenuComponent,
+	exports: [
     LifebarComponent,
     MentalbarComponent,
     FatiguebarComponent,

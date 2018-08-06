@@ -1,13 +1,13 @@
-
 <ion-header>
-
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Inventaire</ion-title>
+    <button float-right class="return" (click)=changechar()>
+        <ion-icon name="return-left"></ion-icon>
+      </button>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -16,7 +16,7 @@
     <ion-row>
       <ion-col>Nom</ion-col><ion-col>Temporalité</ion-col><ion-col>Actions</ion-col>
     </ion-row>
-    <item *ngFor="let item of inventaire ; let i = index" [item]="item" [character]="character" [iditem]="i"></item>
+    <item *ngFor="let item of inventaire ; let i = index" [item]="item" [iditem]="i"></item>
   </ion-grid>
   <button ion-button round (click)="createitem()"><ion-icon name="add"></ion-icon></button>
 </ion-content>

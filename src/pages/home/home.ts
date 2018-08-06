@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { CalculatorProvider } from '../../providers/character/character';
+import { CharchoicePage } from '../charchoice/charchoice';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  
+  static charnb:number
+
   database: AngularFireDatabase;
   character: Character;
+
   age: number;
   char: Observable<any>;
 
@@ -27,10 +30,15 @@ export class HomePage {
   maxConcentration: number;
   percentConcentration: number;
 
-  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CalculatorProvider) {
+  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CalculatorProvider, navParam: NavParams) {
+    console.log(HomePage.charnb);
+    let temp = navParam.get("charnb");
+    if(temp != null){
+      HomePage.charnb = temp;
+    }
     this.database = afDatabase;
     this.age = 5;
-    this.char = afDatabase.object('/Character/0').snapshotChanges();
+    this.char = afDatabase.object('/Character/'+HomePage.charnb).snapshotChanges();
     this.char.subscribe(action => {
       console.log(action.payload.val());
       this.character = action.payload.val();
@@ -52,43 +60,47 @@ export class HomePage {
 
   addLife() {
     let newlife = this.character.Etat.Vie + 1;
-    this.database.object('/Character/0/Etat').update({ Vie: newlife });
+    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Vie: newlife });
   }
   removeLife() {
     let newlife = this.character.Etat.Vie - 1;
-    this.database.object('/Character/0/Etat').update({ Vie: newlife });
+    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Vie: newlife });
   }
 
   addMental() {
     let newmental = this.character.Etat.Mental + 1;
-    this.database.object('/Character/0/Etat').update({ Mental: newmental });
+    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Mental: newmental });
   }
   removeMental() {
     let newmental = this.character.Etat.Mental - 1;
-    this.database.object('/Character/0/Etat').update({ Mental: newmental });
+    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Mental: newmental });
   }
 
   addFatigue() {
     let newfatigue = this.character.Etat.Fatigue + 1;
-    this.database.object('/Character/0/Etat').update({ Fatigue: newfatigue });
+    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Fatigue: newfatigue });
   }
   removeFatigue() {
     let newfatigue = this.character.Etat.Fatigue - 1;
-    this.database.object('/Character/0/Etat').update({ Fatigue: newfatigue });
+    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Fatigue: newfatigue });
     if (newfatigue / this.maxFatigue < this.character.Etat.Concentration / this.maxConcentration) {
       let newconcentration = newfatigue / this.maxFatigue * this.maxConcentration;
-      this.database.object('/Character/0/Etat').update({ Concentration: newconcentration });
+      this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Concentration: newconcentration });
     }
 
   }
 
   addConcentration() {
     let newconcentration = this.character.Etat.Concentration + 1;
-    this.database.object('/Character/0/Etat').update({ Concentration: newconcentration });
+    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Concentration: newconcentration });
   }
   removeConcentration() {
     let newconcentration = this.character.Etat.Concentration - 1;
-    this.database.object('/Character/0/Etat').update({ Concentration: newconcentration });
+    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Concentration: newconcentration });
+  }
+
+  changechar(){
+    this.navCtrl.setRoot(CharchoicePage);
   }
 }
 export interface Aptitude {

@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { EdititemComponent } from '../../components/edititem/edititem';
+import { CharchoicePage } from '../charchoice/charchoice';
 
 
 @IonicPage()
@@ -12,12 +13,10 @@ import { EdititemComponent } from '../../components/edititem/edititem';
   templateUrl: 'inventaire.html',
 })
 export class InventairePage {
-  character: number;
   items: Observable<any[]>;
   inventaire: Inventaire[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public afDatabase: AngularFireDatabase) {
-    this.character = 0;
-    this.items = this.afDatabase.list('/Character/0/Inventaire').snapshotChanges();
+    this.items = this.afDatabase.list('/Character/'+HomePage.charnb+'/Inventaire').snapshotChanges();
     this.items.subscribe(action => {
       this.inventaire = new Array<Inventaire>();
       for (let i = 0; i < action.length; i++)
@@ -26,7 +25,11 @@ export class InventairePage {
   }
 
   createitem() {
-    this.modalCtrl.create(EdititemComponent, { name: "", origin: "", path: "/Character/" + this.character + "/Inventaire/" + this.inventaire.length }).present();
+    this.modalCtrl.create(EdititemComponent, { name: "", origin: "", path: "/Character/" + HomePage.charnb + "/Inventaire/" + this.inventaire.length }).present();
+  }
+  
+  changechar(){
+    this.navCtrl.setRoot(CharchoicePage);
   }
 
 }

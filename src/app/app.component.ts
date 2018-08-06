@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
+import { CharchoicePage } from '../pages/charchoice/charchoice';
 import { HomePage } from '../pages/home/home';
 import { InventairePage } from '../pages/inventaire/inventaire';
 import { AttaquePage } from '../pages/attaque/attaque';
@@ -19,7 +20,7 @@ import { SortsPage } from '../pages/sorts/sorts';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = CharchoicePage;
 
   pages: Array<{title: string, component: any}>;
 

@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
+import { CharchoicePage } from '../pages/charchoice/charchoice';
 import { HomePage } from '../pages/home/home';
 import { InventairePage } from '../pages/inventaire/inventaire';
 import { AttaquePage } from '../pages/attaque/attaque';
@@ -19,7 +20,7 @@ import { CalculatorProvider } from '../providers/character/character';
 import { LifebarComponent } from '../components/lifebar/lifebar';
 import { MentalbarComponent } from '../components/mentalbar/mentalbar';
 import { FatiguebarComponent } from '../components/fatiguebar/fatiguebar';
-import { ConcentrationbarComponent } from '../components/concentrationbar/concentrationbar'; 0
+import { ConcentrationbarComponent } from '../components/concentrationbar/concentrationbar';
 import { ItemComponent } from '../components/item/item'
 import { EdititemComponent } from '../components/edititem/edititem'
 
@@ -41,6 +42,7 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
+    CharchoicePage,
     HomePage,
     InventairePage,
     SortsPage,
@@ -66,6 +68,7 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
+    CharchoicePage,
     InventairePage,
     SortsPage,
     CompetencesPage,
