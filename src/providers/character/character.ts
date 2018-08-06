@@ -1,12 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Firebase } from '@ionic-native/firebase';
-@Injectable()
-export class CharacterProvider
-{
 
-  constructor(public http: HttpClient, private firebase: Firebase) {
-    
-    console.log('Hello CharacterProvider Provider');
+@Injectable()
+export class CalculatorProvider {
+
+  constructor() {
+
   }
+
+  calcmodif(carac: Caracteristique, bonus:number=0) {
+    let sum = carac.Modif + carac.Modif + carac.Score + bonus;
+    let mod;
+    if (sum > 10)
+      mod = Math.floor((sum - 10) / 2);
+    else
+      mod = Math.ceil((10 - sum) / 2);
+    return mod;
+  }
+
+
+}
+export interface Caracteristique {
+  Modif: number;
+  Natif: number;
+  Score: number;
 }

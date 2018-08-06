@@ -14,7 +14,7 @@ import { SortsPage } from '../pages/sorts/sorts';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { CharacterProvider } from '../providers/character/character';
+import { CalculatorProvider } from '../providers/character/character';
 
 import { LifebarComponent } from '../components/lifebar/lifebar';
 import { MentalbarComponent } from '../components/mentalbar/mentalbar';
@@ -79,7 +79,7 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CharacterProvider
+    CalculatorProvider
   ]
 })
 export class AppModule {}
