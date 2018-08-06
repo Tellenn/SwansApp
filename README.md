@@ -19,7 +19,7 @@ Things to do :
 - ~~Set up a Firebase~~
 - ~~Make it collaborative~~
 - Add in-game rules
-  - Concentration
+  - ~~Concentration~~
 - Take load of coffee
 - Allow filtering in :
   - Inventory
