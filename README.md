@@ -7,7 +7,7 @@ Things to do :
 
 - ~~Create a json file from a character to start the reading process~~
 - ~~Create Home page~~
-- Create Stats page
+- ~~Create Stats page~~
 - ~~Create Inventory page~~
 - Create Spell page
 - Create Skill page
