@@ -7,12 +7,18 @@ Things to do :
 
 - ~~Create a json file from a character to start the reading process~~
 - ~~Create Home page~~
-- ~~Create Stats page~~
-- ~~Create Inventory page~~
+- Create Stats page
+  - ~~Statistics~~
+  - Reputation
+- Create Inventory page
+  - ~~Equipement~~
+  - Money
 - Create Spell page
 - Create Skill page
 - Create Attack page
 - Create Defense page
+  - Equipement
+  - Resistances
 - Create an interface for easier leveling
 -  ~~Create a login page~~
 - ~~Create a GM page~~
