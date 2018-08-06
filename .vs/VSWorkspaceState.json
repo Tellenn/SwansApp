@@ -3,13 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\assets",
     "\\src\\assets\\icon",
     "\\src\\assets\\imgs",
-    "\\src\\components\\menu",
     "\\src\\pages",
-    "\\src\\pages\\parametres"
+    "\\src\\providers",
+    "\\src\\providers\\character"
   ],
-  "SelectedNode": "\\src\\pages\\parametres\\parametres.html",
+  "SelectedNode": "\\src",
   "PreviewInSolutionExplorer": false
 }

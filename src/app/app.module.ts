@@ -19,7 +19,9 @@ import { CharacterProvider } from '../providers/character/character';
 import { LifebarComponent } from '../components/lifebar/lifebar';
 import { MentalbarComponent } from '../components/mentalbar/mentalbar';
 import { FatiguebarComponent } from '../components/fatiguebar/fatiguebar';
-import { ConcentrationbarComponent } from '../components/concentrationbar/concentrationbar';
+import { ConcentrationbarComponent } from '../components/concentrationbar/concentrationbar'; 0
+import { ItemComponent } from '../components/item/item'
+
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -49,6 +51,7 @@ export const firebaseConfig = {
     MentalbarComponent,
     FatiguebarComponent,
     ConcentrationbarComponent,
+    ItemComponent,
     StatsPage
   ],
   imports: [
