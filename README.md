@@ -8,7 +8,7 @@ Things to do :
 - ~~Create a json file from a character to start the reading process~~
 - ~~Create Home page~~
 - Create Stats page
-- Create Inventory page
+- ~~Create Inventory page~~
 - Create Spell page
 - Create Skill page
 - Create Attack page
@@ -19,7 +19,7 @@ Things to do :
 - ~~Set up a Firebase~~
 - ~~Make it collaborative~~
 - Add in-game rules
-  - Concentration
+  - ~~Concentration~~
 - Take load of coffee
 - Allow filtering in :
   - Inventory
