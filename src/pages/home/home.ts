@@ -10,7 +10,8 @@ import { CharchoicePage } from '../charchoice/charchoice';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  static charnb:number
+  static charnb:number;
+  static level:number;
 
   database: AngularFireDatabase;
   character: Character;
@@ -43,10 +44,12 @@ export class HomePage {
       console.log(action.payload.val());
       this.character = action.payload.val();
 
-      this.maxLife = calculator.calcmodif(this.character.Caracteristiques.Constitution,this.character.Niveau)+8;
+      HomePage.level = this.character.Niveau;
+
+      this.maxLife = calculator.calcmodif(this.character.Caracteristiques.CON)+8;
       this.percentLife = this.character.Etat.Vie / this.maxLife * 100;
 
-      this.maxMental = (this.character.Niveau - 1 + this.character.Caracteristiques.Constitution.Score + this.character.Caracteristiques.Constitution.Natif + this.character.Caracteristiques.Constitution.Modif - 10) + 20;
+      this.maxMental = calculator.calcmodif(this.character.Caracteristiques.CON)*2 + 20;
       this.percentMental = this.character.Etat.Mental / this.maxMental * 100;
 
       this.maxFatigue = 10;
@@ -119,6 +122,7 @@ export interface Attaque {
 }
 
 export interface Caracteristique {
+  Nom:string;
   Modif: number;
   Natif: number;
   Score: number;
@@ -126,12 +130,12 @@ export interface Caracteristique {
 
 
 export interface Caracteristiques {
-  Charisme: Caracteristique;
-  Constitution: Caracteristique;
-  Dexterite: Caracteristique;
-  Force: Caracteristique;
-  Intelligence: Caracteristique;
-  Sagesse: Caracteristique;
+  CHA: Caracteristique;
+  CON: Caracteristique;
+  DEX: Caracteristique;
+  FOR: Caracteristique;
+  INT: Caracteristique;
+  SAG: Caracteristique;
 }
 
 export interface Acrobatie {
