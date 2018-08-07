@@ -41,5 +41,6 @@ Things to do :
   - Defense
 - Renew interface
 - Character creation page
+- Refactor barComponent for custom color
 
 If you have any request or bug, do not hesitate to create a github issue !
