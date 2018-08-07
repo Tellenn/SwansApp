@@ -22,8 +22,7 @@ Things to do :
   
 #### V1
 - Create an interface for easier leveling
--  ~~Create a login page~~
-- ~~Create a GM page~~
+-  ~~Create a char choosing page~~
 - ~~Set up a Firebase~~
 - ~~Make it collaborative~~
 - Add in-game rules
@@ -42,5 +41,6 @@ Things to do :
 - Renew interface
 - Character creation page
 - Refactor barComponent for custom color
+- Create a GM page
 
 If you have any request or bug, do not hesitate to create a github issue !
