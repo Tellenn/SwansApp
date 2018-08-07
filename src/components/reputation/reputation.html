@@ -1,0 +1,11 @@
+<div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>Nom</ion-col><ion-col>Réputation</ion-col><ion-col></ion-col>
+    </ion-row>
+    <ion-row  *ngFor="let rep of reputations ; let i = index">
+      <ion-col>{{rep.Nom}}</ion-col><ion-col>{{rep.Valeur}}</ion-col><ion-col><button (click)="addRep(i)"><ion-icon name="add"></ion-icon></button>&nbsp;&nbsp;<button (click)="removeRep(i)"><ion-icon name="remove"></ion-icon></button></ion-col>
+    </ion-row>
+  </ion-grid>
+  <button ion-button (click)="createRep()"><ion-icon name="add"></ion-icon></button>
+</div>

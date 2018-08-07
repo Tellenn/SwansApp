@@ -21,8 +21,12 @@ import { LifebarComponent } from '../components/lifebar/lifebar';
 import { MentalbarComponent } from '../components/mentalbar/mentalbar';
 import { FatiguebarComponent } from '../components/fatiguebar/fatiguebar';
 import { ConcentrationbarComponent } from '../components/concentrationbar/concentrationbar';
-import { ItemComponent } from '../components/item/item'
-import { EdititemComponent } from '../components/edititem/edititem'
+import { ItemComponent } from '../components/item/item';
+import { EdititemComponent } from '../components/edititem/edititem';
+import { ReputationComponent } from '../components/reputation/reputation';
+import { EditNumberModalComponent } from '../components/edit-number-modal/edit-number-modal';
+import { EditreputComponent } from '../components/editreput/editreput';
+import { MoneyComponent } from '../components/money/money';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -56,6 +60,10 @@ export const firebaseConfig = {
     ConcentrationbarComponent,
     ItemComponent,
     EdititemComponent,
+    EditreputComponent,
+    ReputationComponent,
+    EditNumberModalComponent,
+    MoneyComponent,
     StatsPage
   ],
   imports: [
@@ -76,6 +84,9 @@ export const firebaseConfig = {
     DefensePage,
     ParametresPage,
     EdititemComponent,
+    EditreputComponent,
+    EditNumberModalComponent,
+    MoneyComponent,
     StatsPage
   ],
   providers: [

@@ -4,21 +4,23 @@
 This is still in developpement and should absolutly not be re-used in a professionnal project.
 
 Things to do :
-
+#### V0
 - ~~Create a json file from a character to start the reading process~~
 - ~~Create Home page~~
-- Create Stats page
+- ~~Create Stats page~~
   - ~~Statistics~~
-  - Reputation
-- Create Inventory page
+  - ~~Reputation~~
+- ~~Create Inventory page~~
   - ~~Equipement~~
-  - Money
+  - ~~Money~~
 - Create Spell page
-- Create Skill page
+- ~~Create Skill page~~
 - Create Attack page
 - Create Defense page
   - Equipement
   - Resistances
+  
+#### V1
 - Create an interface for easier leveling
 -  ~~Create a login page~~
 - ~~Create a GM page~~
@@ -27,10 +29,16 @@ Things to do :
 - Add in-game rules
   - ~~Concentration~~
 - Take load of coffee
+- Import All Character as a JSON
+- Delete a reputation
+- Delete a money
+
+#### V2
 - Allow filtering in :
   - Inventory
   - Attack
   - Defense
+- Renew interface
 - Character creation page
 
 If you have any request or bug, do not hesitate to create a github issue !
