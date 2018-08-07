@@ -30,6 +30,7 @@ Things to do :
   - ~~Concentration~~
 - Take load of coffee
 - Import All Character as a JSON
+- Delete a reputation
 
 #### V2
 - Allow filtering in :
