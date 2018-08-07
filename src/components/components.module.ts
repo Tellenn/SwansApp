@@ -5,6 +5,8 @@ import { FatiguebarComponent } from './fatiguebar/fatiguebar';
 import { ConcentrationbarComponent } from './concentrationbar/concentrationbar';
 import { ItemComponent } from './item/item';
 import { EdititemComponent } from './edititem/edititem';
+import { ReputationComponent } from './reputation/reputation';
+import { EditreputComponent } from './editreput/editreput';
 @NgModule({
 	declarations: [
     LifebarComponent,
@@ -12,7 +14,9 @@ import { EdititemComponent } from './edititem/edititem';
     FatiguebarComponent,
     ConcentrationbarComponent,
     ItemComponent,
-    EdititemComponent],
+    EdititemComponent,
+    ReputationComponent,
+    EditreputComponent],
 	imports: [],
 	exports: [
     LifebarComponent,
@@ -20,7 +24,9 @@ import { EdititemComponent } from './edititem/edititem';
     FatiguebarComponent,
     ConcentrationbarComponent,
     ItemComponent,
-    EdititemComponent],
+    EdititemComponent,
+    ReputationComponent,
+    EditreputComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {}

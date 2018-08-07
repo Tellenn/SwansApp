@@ -13,12 +13,17 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
+  <ion-item>
+    <reputation></reputation>
+  </ion-item>
+  <ion-item>
+    <ion-grid>
       <ion-row>
         <ion-col>Nom</ion-col><ion-col>Score</ion-col><ion-col>Natif</ion-col><ion-col>Modif</ion-col><ion-col>Tot</ion-col><ion-col>Mod</ion-col><ion-col></ion-col>
       </ion-row>
       <ion-row *ngFor="let stat of stats">
-          <ion-col>{{stat.Nom}}</ion-col><ion-col>{{stat.Score}}</ion-col><ion-col>{{stat.Natif}}</ion-col><ion-col>{{stat.Modif}}</ion-col><ion-col>{{stat.Modif+stat.Natif+stat.Score}}</ion-col><ion-col>{{calc.calcmodif(stat)}}</ion-col><ion-col><button (click)=add(stat)><ion-icon name="add"></ion-icon></button>&nbsp;&nbsp;<button (click)=remove(stat)><ion-icon name="remove"></ion-icon></button></ion-col>
+        <ion-col>{{stat.Nom}}</ion-col><ion-col>{{stat.Score}}</ion-col><ion-col>{{stat.Natif}}</ion-col><ion-col>{{stat.Modif}}</ion-col><ion-col>{{stat.Modif+stat.Natif+stat.Score}}</ion-col><ion-col>{{calc.calcmodif(stat)}}</ion-col><ion-col><button (click)=add(stat)><ion-icon name="add"></ion-icon></button>&nbsp;&nbsp;<button (click)=remove(stat)><ion-icon name="remove"></ion-icon></button></ion-col>
       </ion-row>
-  </ion-grid>
+    </ion-grid>
+  </ion-item>
 </ion-content>
