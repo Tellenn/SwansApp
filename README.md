@@ -12,7 +12,7 @@ Things to do :
   - ~~Reputation~~
 - Create Inventory page
   - ~~Equipement~~
-  - Money
+  - ~~Money~~
 - Create Spell page
 - Create Skill page
 - Create Attack page
@@ -31,6 +31,7 @@ Things to do :
 - Take load of coffee
 - Import All Character as a JSON
 - Delete a reputation
+- Delete a money
 
 #### V2
 - Allow filtering in :
