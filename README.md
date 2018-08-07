@@ -7,9 +7,9 @@ Things to do :
 #### V0
 - ~~Create a json file from a character to start the reading process~~
 - ~~Create Home page~~
-- Create Stats page
+- ~~Create Stats page~~
   - ~~Statistics~~
-  - Reputation
+  - ~~Reputation~~
 - Create Inventory page
   - ~~Equipement~~
   - Money
