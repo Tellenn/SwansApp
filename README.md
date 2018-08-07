@@ -13,7 +13,7 @@ Things to do :
 - ~~Create Inventory page~~
   - ~~Equipement~~
   - ~~Money~~
-- Create Spell page
+- ~~Create Spell page~~
 - ~~Create Skill page~~
 - Create Attack page
 - Create Defense page
