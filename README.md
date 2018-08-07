@@ -28,10 +28,11 @@ Things to do :
 - ~~Make it collaborative~~
 - Add in-game rules
   - ~~Concentration~~
-- Take load of coffee
+- Take loads of coffee
 - Import All Character as a JSON
 - Delete a reputation
 - Delete a money
+- Allow to set a value for every bar in homepage
 
 #### V2
 - Allow filtering in :
