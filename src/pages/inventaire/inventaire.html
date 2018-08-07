@@ -20,7 +20,7 @@
       <ion-row>
         <ion-col>Nom</ion-col><ion-col>Temporalité</ion-col><ion-col>Actions</ion-col>
       </ion-row>
-      <item *ngFor="let item of inventaire ; let i = index" [item]="item" [iditem]="i"></item>
+      <item *ngFor="let item of inventaire ; let i = index" [item]="item" [iditem]="dico[i]"></item>
     </ion-grid>
     <button ion-button round (click)="createitem()"><ion-icon name="add"></ion-icon></button>
   </ion-item>

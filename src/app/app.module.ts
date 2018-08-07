@@ -27,6 +27,7 @@ import { ReputationComponent } from '../components/reputation/reputation';
 import { EditNumberModalComponent } from '../components/edit-number-modal/edit-number-modal';
 import { EditreputComponent } from '../components/editreput/editreput';
 import { MoneyComponent } from '../components/money/money';
+import { EditspellComponent } from '../components/editspell/editspell';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -64,6 +65,7 @@ export const firebaseConfig = {
     ReputationComponent,
     EditNumberModalComponent,
     MoneyComponent,
+    EditspellComponent,
     StatsPage
   ],
   imports: [
@@ -87,6 +89,7 @@ export const firebaseConfig = {
     EditreputComponent,
     EditNumberModalComponent,
     MoneyComponent,
+    EditspellComponent,
     StatsPage
   ],
   providers: [

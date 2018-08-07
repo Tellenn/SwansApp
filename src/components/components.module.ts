@@ -9,6 +9,7 @@ import { ReputationComponent } from './reputation/reputation';
 import { EditreputComponent } from './editreput/editreput';
 import { MoneyComponent } from './money/money';
 import { EditNumberModalComponent } from './edit-number-modal/edit-number-modal';
+import { EditspellComponent } from './editspell/editspell';
 @NgModule({
 	declarations: [
     LifebarComponent,
@@ -20,7 +21,8 @@ import { EditNumberModalComponent } from './edit-number-modal/edit-number-modal'
     ReputationComponent,
     EditreputComponent,
     MoneyComponent,
-    EditNumberModalComponent],
+    EditNumberModalComponent,
+    EditspellComponent],
 	imports: [],
 	exports: [
     LifebarComponent,
@@ -32,7 +34,8 @@ import { EditNumberModalComponent } from './edit-number-modal/edit-number-modal'
     ReputationComponent,
     EditreputComponent,
     MoneyComponent,
-    EditNumberModalComponent],
+    EditNumberModalComponent,
+    EditspellComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {}
