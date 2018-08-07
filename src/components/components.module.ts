@@ -10,6 +10,8 @@ import { EditreputComponent } from './editreput/editreput';
 import { MoneyComponent } from './money/money';
 import { EditNumberModalComponent } from './edit-number-modal/edit-number-modal';
 import { EditspellComponent } from './editspell/editspell';
+import { EditdefenseComponent } from './editdefense/editdefense';
+import { EditattackComponent } from './editattack/editattack';
 @NgModule({
 	declarations: [
     LifebarComponent,
@@ -22,7 +24,9 @@ import { EditspellComponent } from './editspell/editspell';
     EditreputComponent,
     MoneyComponent,
     EditNumberModalComponent,
-    EditspellComponent],
+    EditspellComponent,
+    EditdefenseComponent,
+    EditattackComponent],
 	imports: [],
 	exports: [
     LifebarComponent,
@@ -35,7 +39,9 @@ import { EditspellComponent } from './editspell/editspell';
     EditreputComponent,
     MoneyComponent,
     EditNumberModalComponent,
-    EditspellComponent],
+    EditspellComponent,
+    EditdefenseComponent,
+    EditattackComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {}

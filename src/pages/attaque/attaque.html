@@ -11,5 +11,13 @@
 
 
 <ion-content padding>
-  La liste des armes sera ici
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>Nom</ion-col><ion-col>T.</ion-col><ion-col>Att.</ion-col><ion-col>Dgts</ion-col><ion-col>Crit.</ion-col><ion-col></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let wpn of attacks ; let i = index">
+      <ion-col col-4>{{wpn.Nom}}</ion-col><ion-col>{{wpn.Temporalite}}</ion-col><ion-col>{{wpn.Attaque}}</ion-col><ion-col>{{wpn.Degats}}</ion-col><ion-col>{{wpn.Critique}}</ion-col><ion-col><button (click)="edit(i)"><ion-icon name="brush"></ion-icon></button><button (click)="remove(i)"><ion-icon name="remove"></ion-icon></button></ion-col>
+    </ion-row>
+  </ion-grid>
+  <button ion-button (click)="create()"><ion-icon name="add"></ion-icon></button>
 </ion-content>

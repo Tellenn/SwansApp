@@ -28,6 +28,8 @@ import { EditNumberModalComponent } from '../components/edit-number-modal/edit-n
 import { EditreputComponent } from '../components/editreput/editreput';
 import { MoneyComponent } from '../components/money/money';
 import { EditspellComponent } from '../components/editspell/editspell';
+import { EditattackComponent } from '../components/editattack/editattack';
+import { EditdefenseComponent } from '../components/editdefense/editdefense';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -66,6 +68,8 @@ export const firebaseConfig = {
     EditNumberModalComponent,
     MoneyComponent,
     EditspellComponent,
+    EditattackComponent,
+    EditdefenseComponent,
     StatsPage
   ],
   imports: [
@@ -90,6 +94,8 @@ export const firebaseConfig = {
     EditNumberModalComponent,
     MoneyComponent,
     EditspellComponent,
+    EditattackComponent,
+    EditdefenseComponent,
     StatsPage
   ],
   providers: [
