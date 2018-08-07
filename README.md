@@ -19,6 +19,7 @@ Things to do :
 - Create Defense page
   - Equipement
   - Resistances
+  
 #### V1
 - Create an interface for easier leveling
 -  ~~Create a login page~~
@@ -28,12 +29,15 @@ Things to do :
 - Add in-game rules
   - ~~Concentration~~
 - Take load of coffee
-- Character creation page
+- Import All Character as a JSON
+- Delete a reputation
+
 #### V2
 - Allow filtering in :
   - Inventory
   - Attack
   - Defense
 - Renew interface
+- Character creation page
 
 If you have any request or bug, do not hesitate to create a github issue !
