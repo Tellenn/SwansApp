@@ -4,7 +4,7 @@
 This is still in developpement and should absolutly not be re-used in a professionnal project.
 
 Things to do :
-
+#### V0
 - ~~Create a json file from a character to start the reading process~~
 - ~~Create Home page~~
 - Create Stats page
@@ -19,6 +19,7 @@ Things to do :
 - Create Defense page
   - Equipement
   - Resistances
+#### V1
 - Create an interface for easier leveling
 -  ~~Create a login page~~
 - ~~Create a GM page~~
@@ -27,10 +28,12 @@ Things to do :
 - Add in-game rules
   - ~~Concentration~~
 - Take load of coffee
+- Character creation page
+#### V2
 - Allow filtering in :
   - Inventory
   - Attack
   - Defense
-- Character creation page
+- Renew interface
 
 If you have any request or bug, do not hesitate to create a github issue !
