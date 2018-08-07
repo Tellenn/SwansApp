@@ -10,7 +10,7 @@ Things to do :
 - ~~Create Stats page~~
   - ~~Statistics~~
   - ~~Reputation~~
-- Create Inventory page
+- ~~Create Inventory page~~
   - ~~Equipement~~
   - ~~Money~~
 - Create Spell page
