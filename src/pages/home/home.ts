@@ -166,7 +166,8 @@ export interface Inventaire {
   Temporalite: string;
 }
 
-export interface Reputation {
+
+export interface Champ {
   Nom: string;
   Valeur: number;
 }
@@ -182,10 +183,11 @@ export interface Character {
   Dextrie: string;
   Etat: Etat;
   Inventaire: Inventaire[];
+  Monnaie: Champ[];
   Joueur: string;
   Niveau: number;
   Nom: string;
-  Reputation: Reputation[];
+  Reputation: Champ[];
   Sexe: string;
   Taille: string;
   Yeux: string;

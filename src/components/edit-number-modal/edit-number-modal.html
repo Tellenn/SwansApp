@@ -1,15 +1,15 @@
 <div>
   <ion-item>
     <ion-label>
-      Nom
+      Nom de la monnaie
     </ion-label>
-    <ion-input [value]="name" [(ngModel)]="newname" placeholder="Nom de la réputation"></ion-input>
+    <ion-input [(ngModel)]="name"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>
-      Réputation
+      Valeur
     </ion-label>
-    <ion-input type="number" [value]="origin" [(ngModel)]="neworigin" placeholder="Valeur"></ion-input>
+    <ion-input type="number"  [(ngModel)]="val"></ion-input>
   </ion-item>
   <button ion-button (click)="validate()">Valider</button><button ion-button (click)="cancel()">Annuler</button>
 </div>
