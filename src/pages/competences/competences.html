@@ -11,5 +11,12 @@
 
 
 <ion-content padding>
-  La liste des competences (dans l'ordre alphabetique) sera ici
+  <ion-grid>
+    <ion-row>
+      <ion-col col-5>Nom</ion-col><ion-col>Tot</ion-col><ion-col>Base</ion-col><ion-col>Nat.</ion-col><ion-col >Mod.</ion-col><ion-col></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let comp of competences ; let i = index">
+      <ion-col col-5>{{comp.Nom}}</ion-col><ion-col>{{calc.calcmodif(getlinkedcar(comp.Base))+comp.Natif+comp.Modif}}</ion-col><ion-col>{{calc.calcmodif(getlinkedcar(comp.Base))}}</ion-col><ion-col>{{comp.Natif}}</ion-col><ion-col>{{comp.Modif}}</ion-col><ion-col><button (click)="plus(i)"><ion-icon name="add"></ion-icon></button>&nbsp;<button (click)="minus(i)"><ion-icon name="remove"></ion-icon></button></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

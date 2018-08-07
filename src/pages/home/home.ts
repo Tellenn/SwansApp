@@ -138,13 +138,11 @@ export interface Caracteristiques {
   SAG: Caracteristique;
 }
 
-export interface Acrobatie {
+export interface Competence {
+  Nom: string;
+  Base: string;
   Modif: number;
   Natif: number;
-}
-
-export interface Competences {
-  Acrobatie: Acrobatie;
 }
 
 export interface Defense {
@@ -177,7 +175,7 @@ export interface Character {
   Attaque: Attaque[];
   Caracteristiques: Caracteristiques;
   Cheveux: string;
-  Competences: Competences;
+  Competences: Competence[];
   Defense: Defense[];
   Dextrie: string;
   Etat: Etat;
