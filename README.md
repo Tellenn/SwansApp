@@ -14,7 +14,7 @@ Things to do :
   - ~~Equipement~~
   - ~~Money~~
 - Create Spell page
-- Create Skill page
+- ~~Create Skill page~~
 - Create Attack page
 - Create Defense page
   - Equipement
