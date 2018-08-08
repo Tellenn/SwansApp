@@ -45,4 +45,7 @@ Things to do :
 - Refactor barComponent for custom color
 - Create a GM page
 
+### V3
+ - Prospect for a generic table component with custom number of row and name
+
 If you have any request or bug, do not hesitate to create a github issue !
