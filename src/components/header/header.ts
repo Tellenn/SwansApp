@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { CharchoicePage } from '../../pages/charchoice/charchoice';
+import { NavController } from 'ionic-angular';
 
 /**
  * Generated class for the HeaderComponent component.
@@ -13,7 +15,9 @@ import { Component, Input } from '@angular/core';
 export class HeaderComponent {
   @Input() title: string;
 
-  constructor() {
+  constructor(public navCtrl: NavController) {
   }
-
+  changechar() {
+    this.navCtrl.setRoot(CharchoicePage);
+  }
 }

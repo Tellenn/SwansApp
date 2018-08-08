@@ -4,12 +4,12 @@
     "\\src",
     "\\src\\app",
     "\\src\\components",
-    "\\src\\components\\resistance",
+    "\\src\\components\\header",
     "\\src\\pages",
     "\\src\\pages\\defense",
     "\\src\\pages\\home",
     "\\src\\pages\\stats"
   ],
-  "SelectedNode": "\\src\\pages\\home\\home.html",
+  "SelectedNode": "\\src\\components\\header\\header.ts",
   "PreviewInSolutionExplorer": false
 }

@@ -102,9 +102,7 @@ export class HomePage {
     this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Concentration: newconcentration });
   }
 
-  changechar(){
-    this.navCtrl.setRoot(CharchoicePage);
-  }
+  
 }
 export interface Aptitude {
   Concentration: number;
