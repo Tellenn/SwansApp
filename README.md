@@ -32,6 +32,7 @@ Things to do :
 - Delete a reputation
 - Delete a money
 - Allow to set a value for every bar in homepage
+- Add a short description on each page.
 
 #### V2
 - Allow filtering in :
@@ -40,6 +41,7 @@ Things to do :
   - Defense
 - Renew interface
 - Character creation page
+- Add a HELP icon on evry page to guide use through the app
 - Refactor barComponent for custom color
 - Create a GM page
 
