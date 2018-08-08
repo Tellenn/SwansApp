@@ -16,7 +16,7 @@ Things to do :
 - ~~Create Spell page~~
 - ~~Create Skill page~~
 - ~~Create Attack page~~
-- Create Defense page
+- ~~Create Defense page~~
   - ~~Equipement~~
   - ~~Resistances~~
   
@@ -24,9 +24,9 @@ Things to do :
 -  ~~Create a char choosing page~~
 - ~~Set up a Firebase~~
 - ~~Make it collaborative~~
-- Add in-game rules
+- ~~Add in-game rules~~
   - ~~Concentration~~
-- Import All Character as a JSON
+- Import All Character as a JSON (3/11[13])
 - Delete a reputation
 - Delete a money
 - Allow to set a value for every bar in homepage
