@@ -17,21 +17,20 @@ Things to do :
 - ~~Create Skill page~~
 - ~~Create Attack page~~
 - Create Defense page
-  - Equipement
-  - Resistances
+  - ~~Equipement~~
+  - ~~Resistances~~
   
 #### V1
-- Create an interface for easier leveling
 -  ~~Create a char choosing page~~
 - ~~Set up a Firebase~~
 - ~~Make it collaborative~~
 - Add in-game rules
   - ~~Concentration~~
-- Take loads of coffee
 - Import All Character as a JSON
 - Delete a reputation
 - Delete a money
 - Allow to set a value for every bar in homepage
+- Add a short description on each page.
 
 #### V2
 - Allow filtering in :
@@ -40,7 +39,12 @@ Things to do :
   - Defense
 - Renew interface
 - Character creation page
+- Create an interface for easier leveling
+- Add a HELP icon on evry page to guide use through the app
 - Refactor barComponent for custom color
 - Create a GM page
+
+### V3
+ - Prospect for a generic table component with custom number of row and name
 
 If you have any request or bug, do not hesitate to create a github issue !
