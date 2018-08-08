@@ -1,15 +1,21 @@
 <ion-header>
-
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Defense</ion-title>
-  </ion-navbar>
-
+  <header title="Défenses"></header>
 </ion-header>
 
 
 <ion-content padding>
-  La liste des armures sera ici
+  <ion-item>
+    <resistance></resistance>
+  </ion-item>
+  <ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-5>Nom</ion-col ><ion-col>Temporalité</ion-col><ion-col>CA</ion-col><ion-col>Mod def</ion-col><ion-col></ion-col>
+      </ion-row>
+      <ion-row *ngFor="let def of defenses ; let i = index">
+        <ion-col col-5>{{def.Nom}}</ion-col><ion-col>{{def.Temporalite}}</ion-col><ion-col>{{def.CA}}</ion-col><ion-col>{{def.ModDex}}</ion-col><ion-col><button (click)="edit(i)"><ion-icon name="brush"></ion-icon></button><button (click)="remove(i)"><ion-icon name="remove"></ion-icon></button></ion-col>
+      </ion-row>
+    </ion-grid>
+    <button ion-button round (click)="create()"><ion-icon name="add"></ion-icon></button>
+  </ion-item>
 </ion-content>

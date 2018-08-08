@@ -12,6 +12,8 @@ import { EditNumberModalComponent } from './edit-number-modal/edit-number-modal'
 import { EditspellComponent } from './editspell/editspell';
 import { EditdefenseComponent } from './editdefense/editdefense';
 import { EditattackComponent } from './editattack/editattack';
+import { HeaderComponent } from './header/header';
+import { ResistanceComponent } from './resistance/resistance';
 @NgModule({
 	declarations: [
     LifebarComponent,
@@ -26,7 +28,9 @@ import { EditattackComponent } from './editattack/editattack';
     EditNumberModalComponent,
     EditspellComponent,
     EditdefenseComponent,
-    EditattackComponent],
+    EditattackComponent,
+    HeaderComponent,
+    ResistanceComponent],
 	imports: [],
 	exports: [
     LifebarComponent,
@@ -41,7 +45,9 @@ import { EditattackComponent } from './editattack/editattack';
     EditNumberModalComponent,
     EditspellComponent,
     EditdefenseComponent,
-    EditattackComponent],
+    EditattackComponent,
+    HeaderComponent,
+    ResistanceComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {}

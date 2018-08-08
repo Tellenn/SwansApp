@@ -3,14 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\components\\edititem",
-    "\\src\\components\\item",
+    "\\src\\components",
+    "\\src\\components\\resistance",
     "\\src\\pages",
+    "\\src\\pages\\defense",
     "\\src\\pages\\home",
-    "\\src\\pages\\inventaire",
-    "\\src\\providers",
-    "\\src\\providers\\character"
+    "\\src\\pages\\stats"
   ],
-  "SelectedNode": "\\src\\pages\\home\\home.ts",
+  "SelectedNode": "\\src\\pages\\home\\home.html",
   "PreviewInSolutionExplorer": false
 }

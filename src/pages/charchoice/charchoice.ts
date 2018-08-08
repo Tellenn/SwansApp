@@ -9,28 +9,31 @@ import { HomePage } from '../home/home';
   templateUrl: 'charchoice.html',
 })
 export class CharchoicePage {
+
+  dico: number[];
   names: string[];
   perso: Character;
   charnb: number;
 
   constructor(public afDatabase: AngularFireDatabase, public navCtrl: NavController) {
     let res = afDatabase.list('/Character').snapshotChanges();
-    this.names = new Array<string>();
+    
     res.subscribe(action => {
-      console.log(action);
+      this.dico = new Array<number>();
+      this.names = new Array<string>();
       for (let i = 0; i < action.length; i++) {
-        let perso : Character = <Character> action[i].payload.val();
+        let perso: Character = <Character>action[i].payload.val();
         this.names.push(perso.Nom);
+        this.dico.push(+action[i].key);
       }
     });
 
   }
 
   validate() {
-    if(this.charnb>=0){
-      this.navCtrl.setRoot(HomePage,{charnb:this.charnb});
+    if (this.charnb >= 0) {
+      this.navCtrl.setRoot(HomePage, { charnb: this.dico[this.charnb] });
     }
-    console.log(this.charnb);
   }
 }
 

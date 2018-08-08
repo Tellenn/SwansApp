@@ -1,0 +1,14 @@
+<!-- Generated template for the ResistanceComponent component -->
+<div>
+  <ion-grid>
+    <ion-row *ngIf="DEX">
+      <ion-col >Réflèxes</ion-col><ion-col>{{calc.calcmodif(DEX)+10}}</ion-col>
+    </ion-row>
+    <ion-row *ngIf="CON">
+      <ion-col >Vigueur</ion-col><ion-col>{{calc.calcmodif(CON)+10}}</ion-col>
+    </ion-row>
+    <ion-row *ngIf="SAG">
+      <ion-col >Volonté</ion-col><ion-col>{{calc.calcmodif(SAG)+10}}</ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

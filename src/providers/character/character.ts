@@ -12,7 +12,7 @@ export class CalculatorProvider {
   calcmodif(carac: Caracteristique, bonus:number=0) {
     let sum = carac.Natif + carac.Modif + carac.Score + bonus;
     if(carac.Nom.match("CON")){
-      sum+=HomePage.level;
+      sum+=HomePage.level-1;
     }
     let mod;
     if (sum > 10)

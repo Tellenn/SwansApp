@@ -30,6 +30,8 @@ import { MoneyComponent } from '../components/money/money';
 import { EditspellComponent } from '../components/editspell/editspell';
 import { EditattackComponent } from '../components/editattack/editattack';
 import { EditdefenseComponent } from '../components/editdefense/editdefense';
+import { HeaderComponent } from '../components/header/header';
+import { ResistanceComponent } from '../components/resistance/resistance';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -70,6 +72,8 @@ export const firebaseConfig = {
     EditspellComponent,
     EditattackComponent,
     EditdefenseComponent,
+    HeaderComponent,
+    ResistanceComponent,
     StatsPage
   ],
   imports: [
@@ -96,6 +100,8 @@ export const firebaseConfig = {
     EditspellComponent,
     EditattackComponent,
     EditdefenseComponent,
+    HeaderComponent,
+    ResistanceComponent,
     StatsPage
   ],
   providers: [

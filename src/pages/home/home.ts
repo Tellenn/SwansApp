@@ -147,7 +147,7 @@ export interface Competence {
 
 export interface Defense {
   CA: number;
-  Moddex: number;
+  ModDex: number;
   Nom: string;
   Temporalite: string;
 }
