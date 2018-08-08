@@ -31,8 +31,9 @@ Things to do :
 - Delete a money
 - Allow to set a value for every bar in homepage
 - Add a short description on each page.
-- Fix bars that can go to the sky
-- Fix maxConcentration
+- ~~Fix bars that can go to the sky~~
+- ~~Fix maxConcentration~~
+- Fix bar that cannot be 0
 
 #### V2
 - Allow filtering in :
