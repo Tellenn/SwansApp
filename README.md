@@ -18,7 +18,7 @@ Things to do :
 - ~~Create Attack page~~
 - Create Defense page
   - ~~Equipement~~
-  - Resistances
+  - ~~Resistances~~
   
 #### V1
 -  ~~Create a char choosing page~~
