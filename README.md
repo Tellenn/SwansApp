@@ -17,17 +17,15 @@ Things to do :
 - ~~Create Skill page~~
 - ~~Create Attack page~~
 - Create Defense page
-  - Equipement
+  - ~~Equipement~~
   - Resistances
   
 #### V1
-- Create an interface for easier leveling
 -  ~~Create a char choosing page~~
 - ~~Set up a Firebase~~
 - ~~Make it collaborative~~
 - Add in-game rules
   - ~~Concentration~~
-- Take loads of coffee
 - Import All Character as a JSON
 - Delete a reputation
 - Delete a money
@@ -41,6 +39,7 @@ Things to do :
   - Defense
 - Renew interface
 - Character creation page
+- Create an interface for easier leveling
 - Add a HELP icon on evry page to guide use through the app
 - Refactor barComponent for custom color
 - Create a GM page
