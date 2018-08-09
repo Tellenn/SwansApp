@@ -2,15 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
     "\\src\\components",
-    "\\src\\components\\edit-number-modal",
-    "\\src\\components\\header",
-    "\\src\\components\\money",
-    "\\src\\pages",
-    "\\src\\pages\\defense",
-    "\\src\\pages\\home"
+    "\\src\\components\\item"
   ],
-  "SelectedNode": "\\src\\pages\\home\\home.html",
+  "SelectedNode": "\\config.xml",
   "PreviewInSolutionExplorer": false
 }
