@@ -10,8 +10,8 @@ import { CharchoicePage } from '../charchoice/charchoice';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  static charnb:number;
-  static level:number;
+  static charnb: number;
+  static level: number;
 
   database: AngularFireDatabase;
   character: Character;
@@ -34,28 +34,51 @@ export class HomePage {
   constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CalculatorProvider, navParam: NavParams) {
     console.log(HomePage.charnb);
     let temp = navParam.get("charnb");
-    if(temp != null){
+    if (temp != null) {
       HomePage.charnb = temp;
     }
     this.database = afDatabase;
     this.age = 5;
-    this.char = afDatabase.object('/Character/'+HomePage.charnb).snapshotChanges();
+    this.char = afDatabase.object('/Character/' + HomePage.charnb).snapshotChanges();
     this.char.subscribe(action => {
       console.log(action.payload.val());
       this.character = action.payload.val();
 
       HomePage.level = this.character.Niveau;
 
-      this.maxLife = calculator.calcmodif(this.character.Caracteristiques.CON)+8;
+      this.maxLife = calculator.calcmodif(this.character.Caracteristiques.CON) + 8;
       this.percentLife = this.character.Etat.Vie / this.maxLife * 100;
 
-      this.maxMental = calculator.calcmodif(this.character.Caracteristiques.CON)*2 + 20;
+      this.maxMental = calculator.calcmodif(this.character.Caracteristiques.CON) * 2 + 20;
       this.percentMental = this.character.Etat.Mental / this.maxMental * 100;
 
       this.maxFatigue = 10;
       this.percentFatigue = this.character.Etat.Fatigue / this.maxFatigue * 100;
 
-      this.maxConcentration = 40;
+      switch (this.character.MainStat) {
+        case "DEX":
+          this.maxConcentration = 2 * (this.character.Caracteristiques.DEX.Score + this.character.Caracteristiques.DEX.Modif + this.character.Caracteristiques.DEX.Natif);
+          break;
+        case "CON":
+          this.maxConcentration = 2 * (this.character.Caracteristiques.CON.Score + this.character.Caracteristiques.CON.Modif + this.character.Caracteristiques.CON.Natif);
+          break;
+        case "SAG":
+          this.maxConcentration = 2 * (this.character.Caracteristiques.SAG.Score + this.character.Caracteristiques.SAG.Modif + this.character.Caracteristiques.SAG.Natif);
+          break;
+        case "INT":
+          this.maxConcentration = 2 * (this.character.Caracteristiques.INT.Score + this.character.Caracteristiques.INT.Modif + this.character.Caracteristiques.INT.Natif);
+          break;
+        case "FOR":
+          this.maxConcentration = 2 * (this.character.Caracteristiques.FOR.Score + this.character.Caracteristiques.FOR.Modif + this.character.Caracteristiques.FOR.Natif);
+          break;
+        case "CHA":
+          this.maxConcentration = 2 * (this.character.Caracteristiques.CHA.Score + this.character.Caracteristiques.CHA.Modif + this.character.Caracteristiques.CHA.Natif);
+          break;
+        default:
+          this.maxConcentration = 0;
+          break;
+
+      }
       this.percentConcentration = this.character.Etat.Concentration / this.maxConcentration * 100;
     });
 
@@ -63,46 +86,61 @@ export class HomePage {
 
   addLife() {
     let newlife = this.character.Etat.Vie + 1;
-    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Vie: newlife });
+    if (newlife <= this.maxLife) {
+      this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Vie: newlife });
+    }
   }
   removeLife() {
     let newlife = this.character.Etat.Vie - 1;
-    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Vie: newlife });
+    if (newlife >= 0) {
+      this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Vie: newlife });
+    }
   }
 
   addMental() {
     let newmental = this.character.Etat.Mental + 1;
-    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Mental: newmental });
+    if (newmental <= this.maxMental) {
+      this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Mental: newmental });
+    }
   }
   removeMental() {
     let newmental = this.character.Etat.Mental - 1;
-    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Mental: newmental });
+    if (newmental >= 0) {
+      this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Mental: newmental });
+    }
   }
 
   addFatigue() {
     let newfatigue = this.character.Etat.Fatigue + 1;
-    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Fatigue: newfatigue });
+    if (newfatigue <= this.maxFatigue) {
+      this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Fatigue: newfatigue });
+    }
   }
   removeFatigue() {
     let newfatigue = this.character.Etat.Fatigue - 1;
-    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Fatigue: newfatigue });
-    if (newfatigue / this.maxFatigue < this.character.Etat.Concentration / this.maxConcentration) {
-      let newconcentration = newfatigue / this.maxFatigue * this.maxConcentration;
-      this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Concentration: newconcentration });
+    if (newfatigue >= 0) {
+      this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Fatigue: newfatigue });
+      if (newfatigue / this.maxFatigue < this.character.Etat.Concentration / this.maxConcentration) {
+        let newconcentration = newfatigue / this.maxFatigue * this.maxConcentration;
+        this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Concentration: newconcentration });
+      }
     }
-
   }
 
   addConcentration() {
     let newconcentration = this.character.Etat.Concentration + 1;
-    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Concentration: newconcentration });
+    if (newconcentration <= this.maxConcentration) {
+      this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Concentration: newconcentration });
+    }
   }
   removeConcentration() {
     let newconcentration = this.character.Etat.Concentration - 1;
-    this.database.object('/Character/'+HomePage.charnb+'/Etat').update({ Concentration: newconcentration });
+    if (newconcentration >= 0) {
+      this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Concentration: newconcentration });
+    }
   }
 
-  
+
 }
 export interface Aptitude {
   Concentration: number;
@@ -120,7 +158,7 @@ export interface Attaque {
 }
 
 export interface Caracteristique {
-  Nom:string;
+  Nom: string;
   Modif: number;
   Natif: number;
   Score: number;
@@ -187,5 +225,6 @@ export interface Character {
   Sexe: string;
   Taille: string;
   Yeux: string;
+  MainStat: string;
 }
 

@@ -3,23 +3,24 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="character"><h1>{{character.Nom}} ({{character.Joueur}})</h1>
+  <div *ngIf="character">
+    <h1>{{character.Nom}} ({{character.Joueur}})</h1>
     <h2>Niveau {{character.Niveau}}</h2>
-    {{character.Age}} ans, {{character.sexe}}. Taille : {{character.Taille}}, Cheveux {{character.Cheveux}}, Yeux : {{character.Yeux}}. 
+    {{character.Age}} ans, {{character.Sexe}}. Cheveux {{character.Cheveux}}, Yeux : {{character.Yeux}}, Taille : {{character.Taille}}.
     Dextrie : {{character.Dextrie}}.
-    <br/>
+    <br />
     <h3>Vie :</h3>
-    <lifebar [progress]="character.Etat.Vie" [max]="maxLife" [percent]="percentLife" [newcolor]=red ></lifebar><br/>
-    <button ion-button round (click)="removeLife()">-</button><button ion-button round (click)="addLife()">+</button> 
-    <h3>Santé Mental :</h3>
-    <mentalbar [progress]="character.Etat.Mental" [max]="maxMental" [percent]="percentMental" [newcolor]=purple ></mentalbar>
-    <button ion-button round (click)="removeMental()">-</button><button ion-button round (click)="addMental()">+</button> 
+    <lifebar [progress]="character.Etat.Vie" [max]="maxLife" [percent]="percentLife" [newcolor]=red></lifebar><br />
+    <button ion-button round (click)="removeLife()">-</button><button ion-button round (click)="addLife()">+</button>
+    <h3>Santé Mentale :</h3>
+    <mentalbar [progress]="character.Etat.Mental" [max]="maxMental" [percent]="percentMental" [newcolor]=purple></mentalbar>
+    <button ion-button round (click)="removeMental()">-</button><button ion-button round (click)="addMental()">+</button>
     <h3>Fatigue :</h3>
-    <fatiguebar [progress]="character.Etat.Fatigue" [max]="maxFatigue" [percent]="percentFatigue" [newcolor]=purple ></fatiguebar>
-    <button ion-button round (click)="removeFatigue()">-</button><button ion-button round (click)="addFatigue()">+</button> 
+    <fatiguebar [progress]="character.Etat.Fatigue" [max]="maxFatigue" [percent]="percentFatigue" [newcolor]=purple></fatiguebar>
+    <button ion-button round (click)="removeFatigue()">-</button><button ion-button round (click)="addFatigue()">+</button>
     <h3>Concentration :</h3>
-    <concentrationbar [progress]="character.Etat.Concentration" [max]="maxConcentration" [percent]="percentConcentration" [newcolor]=purple ></concentrationbar>
-    <button ion-button round (click)="removeConcentration()">-</button><button ion-button round (click)="addConcentration()">+</button> 
+    <concentrationbar [progress]="character.Etat.Concentration" [max]="maxConcentration" [percent]="percentConcentration" [newcolor]=purple></concentrationbar>
+    <button ion-button round (click)="removeConcentration()">-</button><button ion-button round (click)="addConcentration()">+</button>
   </div>
   <div *ngIf="!character">
     <ion-spinner></ion-spinner>
