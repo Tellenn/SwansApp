@@ -121,7 +121,7 @@ export class HomePage {
     if (newfatigue >= 0) {
       this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Fatigue: newfatigue });
       if (newfatigue / this.maxFatigue < this.character.Etat.Concentration / this.maxConcentration) {
-        let newconcentration = newfatigue / this.maxFatigue * this.maxConcentration;
+        let newconcentration = Math.floor(newfatigue / this.maxFatigue * this.maxConcentration);
         this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Concentration: newconcentration });
       }
     }
