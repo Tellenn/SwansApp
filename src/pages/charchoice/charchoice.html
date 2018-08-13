@@ -9,7 +9,7 @@
 
 
 <ion-content padding>
-  Choisissez la personne de votre choix :<br/>
+  Choisissez la personne de votre choix : <br/>
   <select [(ngModel)]="charnb">
     <option *ngFor="let nom of names ; let i = index" value="{{i}}">{{nom}}</option>
   </select><br/>
