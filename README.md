@@ -34,7 +34,7 @@ Things to do :
 - ~~Fix bars that can go to the sky~~
 - ~~Fix maxConcentration~~
 - Fix bar that cannot be empty
-- Add a login or at least restrict access
+- ~~Add a login or at least restrict access~~
 
 #### V2
 - Allow filtering in :
