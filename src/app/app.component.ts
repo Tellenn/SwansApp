@@ -13,6 +13,7 @@ import { DefensePage } from '../pages/defense/defense';
 import { StatsPage } from '../pages/stats/stats';
 import { ParametresPage } from '../pages/parametres/parametres';
 import { SortsPage } from '../pages/sorts/sorts';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +21,7 @@ import { SortsPage } from '../pages/sorts/sorts';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = CharchoicePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 

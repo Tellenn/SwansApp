@@ -21,9 +21,12 @@
     <h3>Concentration :</h3>
     <concentrationbar [progress]="character.Etat.Concentration" [max]="maxConcentration" [percent]="percentConcentration" [newcolor]=purple></concentrationbar>
     <button ion-button round (click)="removeConcentration()">-</button><button ion-button round (click)="addConcentration()">+</button><button ion-button round (click)="set('Concentration',character.Etat.Concentration,maxConcentration)"><ion-icon name="brush"></ion-icon></button>
+    <br/><br/><br/><br/><br/>
+    <button ion-button round (click)="levelup()">LEVEL UP!!!</button>
   </div>
   <div *ngIf="!character">
     <ion-spinner></ion-spinner>
   </div>
+
 </ion-content>
 

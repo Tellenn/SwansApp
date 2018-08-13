@@ -12,6 +12,7 @@ import { DefensePage } from '../pages/defense/defense';
 import { StatsPage } from '../pages/stats/stats';
 import { ParametresPage } from '../pages/parametres/parametres';
 import { SortsPage } from '../pages/sorts/sorts';
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,6 +38,7 @@ import { EditstateComponent } from '../components/editstate/editstate';
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { LevelupPage } from '../pages/levelup/levelup';
 
 
 // AF2 Settings
@@ -60,6 +62,8 @@ export const firebaseConfig = {
     AttaquePage,
     DefensePage,
     ParametresPage,
+    LoginPage,
+    LevelupPage,
     LifebarComponent,
     MentalbarComponent,
     FatiguebarComponent,
@@ -95,6 +99,8 @@ export const firebaseConfig = {
     AttaquePage,
     DefensePage,
     ParametresPage,
+    LoginPage,
+    LevelupPage,
     EdititemComponent,
     EditreputComponent,
     EditNumberModalComponent,

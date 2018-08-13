@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CalculatorProvider } from '../../providers/character/character';
 import { CharchoicePage } from '../charchoice/charchoice';
 import { EditstateComponent } from '../../components/editstate/editstate';
+import { LevelupPage } from '../levelup/levelup';
 
 @Component({
   selector: 'page-home',
@@ -144,7 +145,10 @@ export class HomePage {
 
   set(stuff: string,val:number,max:number) {
     this.modalCtrl.create(EditstateComponent, { name: stuff, curval: val,max:max, path: "/Character/" + HomePage.charnb + "/Etat/"}).present();
+  }
 
+  levelup(){
+    this.navCtrl.push(LevelupPage, {path: "/Character/" + HomePage.charnb});
   }
 }
 export interface Aptitude {

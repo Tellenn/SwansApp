@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Montée de niveau</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    Etape 1 : Choisir 2 points a mettre en stats principale
+    <br/>
+    <br/>
+    <ion-item>
+      <ion-select [(ngModel)]="stat1">
+        <ion-option *ngFor="let stat of stats" [value]="stat">{{stat.Nom}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-select [(ngModel)]="stat2">
+        <ion-option *ngFor="let stat of stats" [value]="stat">{{stat.Nom}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <br/>
+    <br/> Etape 2 : Choisir 5 points à mettre en stats secondaire
+    <br/>
+    <br/>
+    <ion-item>
+      <ion-select [(ngModel)]="comp1">
+        <ion-option *ngFor="let comp of comps; let i = index" [value]="i">{{comp.Nom}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-select [(ngModel)]="comp2">
+        <ion-option *ngFor="let comp of comps; let i = index" [value]="i">{{comp.Nom}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-select [(ngModel)]="comp3">
+        <ion-option *ngFor="let comp of comps; let i = index" [value]="i">{{comp.Nom}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-select [(ngModel)]="comp4">
+        <ion-option *ngFor="let comp of comps; let i = index" [value]="i">{{comp.Nom}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-select [(ngModel)]="comp5">
+        <ion-option *ngFor="let comp of comps; let i = index" [value]="i">{{comp.Nom}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <br/>
+    <br/> Etape 3 : Surveillez vos Sorts, vous avez de nouveau(x) points !
+    <br/>
+
+    <button ion-button (click)="validate()">Valider</button>
+    <button ion-button (click)="back()">Annuler</button>
+  </div>
+</ion-content>

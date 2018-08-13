@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-input [(ngModel)]="passwd" type="password"></ion-input>
+  <button ion-button (click)="login()">Validate</button>
+  {{error}}
+</ion-content>
