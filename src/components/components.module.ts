@@ -14,6 +14,7 @@ import { EditdefenseComponent } from './editdefense/editdefense';
 import { EditattackComponent } from './editattack/editattack';
 import { HeaderComponent } from './header/header';
 import { ResistanceComponent } from './resistance/resistance';
+import { EditstateComponent } from './editstate/editstate';
 @NgModule({
 	declarations: [
     LifebarComponent,
@@ -30,7 +31,8 @@ import { ResistanceComponent } from './resistance/resistance';
     EditdefenseComponent,
     EditattackComponent,
     HeaderComponent,
-    ResistanceComponent],
+    ResistanceComponent,
+    EditstateComponent],
 	imports: [],
 	exports: [
     LifebarComponent,
@@ -47,7 +49,8 @@ import { ResistanceComponent } from './resistance/resistance';
     EditdefenseComponent,
     EditattackComponent,
     HeaderComponent,
-    ResistanceComponent],
+    ResistanceComponent,
+    EditstateComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {}

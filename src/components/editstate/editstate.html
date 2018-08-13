@@ -1,0 +1,12 @@
+<div>
+  <ion-item>
+     Etat : {{name}}
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Valeur
+    </ion-label>
+    <ion-input type="number" [(ngModel)]="val"></ion-input>
+  </ion-item>
+  <button ion-button (click)="validate()">Valider</button><button ion-button (click)="cancel()">Annuler</button>
+</div>

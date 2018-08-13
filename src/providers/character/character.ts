@@ -10,7 +10,7 @@ export class CalculatorProvider {
   }
 
   calcmodif(carac: Caracteristique, bonus:number=0) {
-    let sum = carac.Natif + carac.Modif + carac.Score + bonus;
+    let sum = carac.Natif + carac.Modif + carac.Score;
     if(carac.Nom.match("CON")){
       sum+=HomePage.level-1;
     }
@@ -19,7 +19,7 @@ export class CalculatorProvider {
       mod = Math.floor((sum - 10) / 2);
     else
       mod = -Math.ceil((10 - sum) / 2);
-    return mod;
+    return mod + bonus;
   }
 
 

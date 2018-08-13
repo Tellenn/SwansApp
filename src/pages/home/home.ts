@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { CalculatorProvider } from '../../providers/character/character';
 import { CharchoicePage } from '../charchoice/charchoice';
+import { EditstateComponent } from '../../components/editstate/editstate';
 
 @Component({
   selector: 'page-home',
@@ -31,7 +32,7 @@ export class HomePage {
   maxConcentration: number;
   percentConcentration: number;
 
-  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CalculatorProvider, navParam: NavParams) {
+  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CalculatorProvider, navParam: NavParams, public modalCtrl: ModalController) {
     console.log(HomePage.charnb);
     let temp = navParam.get("charnb");
     if (temp != null) {
@@ -85,20 +86,21 @@ export class HomePage {
   }
 
   addLife() {
-    let newlife = this.character.Etat.Vie + 1;
+    let newlife = +this.character.Etat.Vie + 1;
+    console.log("add life : " + newlife + " / " + this.maxLife);
     if (newlife <= this.maxLife) {
       this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Vie: newlife });
     }
   }
   removeLife() {
-    let newlife = this.character.Etat.Vie - 1;
+    let newlife = +this.character.Etat.Vie - 1;
     if (newlife >= 0) {
       this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Vie: newlife });
     }
   }
 
   addMental() {
-    let newmental = this.character.Etat.Mental + 1;
+    let newmental = +this.character.Etat.Mental + 1;
     if (newmental <= this.maxMental) {
       this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Mental: newmental });
     }
@@ -111,13 +113,13 @@ export class HomePage {
   }
 
   addFatigue() {
-    let newfatigue = this.character.Etat.Fatigue + 1;
+    let newfatigue = +this.character.Etat.Fatigue + 1;
     if (newfatigue <= this.maxFatigue) {
       this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Fatigue: newfatigue });
     }
   }
   removeFatigue() {
-    let newfatigue = this.character.Etat.Fatigue - 1;
+    let newfatigue = +this.character.Etat.Fatigue - 1;
     if (newfatigue >= 0) {
       this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Fatigue: newfatigue });
       if (newfatigue / this.maxFatigue < this.character.Etat.Concentration / this.maxConcentration) {
@@ -128,19 +130,22 @@ export class HomePage {
   }
 
   addConcentration() {
-    let newconcentration = this.character.Etat.Concentration + 1;
+    let newconcentration = +this.character.Etat.Concentration + 1;
     if (newconcentration <= this.maxConcentration) {
       this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Concentration: newconcentration });
     }
   }
   removeConcentration() {
-    let newconcentration = this.character.Etat.Concentration - 1;
+    let newconcentration = +this.character.Etat.Concentration - 1;
     if (newconcentration >= 0) {
       this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Concentration: newconcentration });
     }
   }
 
+  set(stuff: string,val:number,max:number) {
+    this.modalCtrl.create(EditstateComponent, { name: stuff, curval: val,max:max, path: "/Character/" + HomePage.charnb + "/Etat/"}).present();
 
+  }
 }
 export interface Aptitude {
   Concentration: number;

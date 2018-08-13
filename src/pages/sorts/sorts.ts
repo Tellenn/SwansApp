@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, Modal } from 'ion
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
 import { HomePage } from '../home/home';
 import { EditspellComponent } from '../../components/editspell/editspell';
+import { CalculatorProvider } from '../../providers/character/character';
 
 
 @IonicPage()
@@ -15,16 +16,48 @@ export class SortsPage {
   dico:number[];
   modal:ModalController;
   skills:Aptitude[];
-  maxindex:number;
+  maxindex: number;
+  pttalent: number;
 
-  constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController) {
+  constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController, calculator: CalculatorProvider) {
     this.modal = modalCtrl;
     this.maxindex = -1;
+    afDatabase.object('/Character/' + HomePage.charnb + '/').snapshotChanges().subscribe(action => {
+      let char = <Character>action.payload.val();
+      let mainstat;
+      switch (char.MainStat) {
+        case "DEX":
+          mainstat = char.Caracteristiques.DEX;
+          break;
+        case "CON":
+          mainstat = char.Caracteristiques.CON;
+          break;
+        case "FOR":
+          mainstat = char.Caracteristiques.FOR;
+          break;
+        case "INT":
+          mainstat = char.Caracteristiques.INT;
+          break;
+        case "SAG":
+          mainstat = char.Caracteristiques.SAG;
+          break;
+        case "CHA":
+          mainstat = char.Caracteristiques.CHA;
+          break;
+        default:
+          mainstat = null;
+      }
+      this.pttalent = calculator.calcmodif(mainstat, char.Niveau - 1);
+    });
+    console.log(this.pttalent);
     afDatabase.list('/Character/'+HomePage.charnb+'/Aptitudes').snapshotChanges().subscribe( action => {
       this.dico = new Array<number>();
       this.skills = new Array<Aptitude>();
-      for( let i = 0 ; i < action.length ; i++ ){
-        this.skills.push(<Aptitude>action[i].payload.val());
+      for (let i = 0; i < action.length; i++){
+        let skill = <Aptitude>action[i].payload.val()
+        this.skills.push(skill);
+        this.pttalent = this.pttalent - Math.max(0, skill.Palier * 2 - 1);
+        console.log(this.pttalent);
         if(+action[i].key> this.maxindex){
           this.maxindex = +action[i].key;
         }
@@ -32,6 +65,7 @@ export class SortsPage {
       }
       this.maxindex++;
     });
+    
   }
   
   remove(i:number){
@@ -45,17 +79,91 @@ export class SortsPage {
   edit(i:number){
 
     this.modal.create(EditspellComponent, {create:false, name: this.skills[i].Nom, pal: this.skills[i].Palier, lifc:this.skills[i].LifeCondition,con: this.skills[i].Concentration,path: "/Character/" + HomePage.charnb + "/Aptitudes/" + this.dico[i]}).present();
-
-    /* this.path = params.get('path');
-    this.name = params.get('name');
-    this.pal = params.get('pal');
-    this.lifc = params.get('lifc');
-    this.con = params.get('con');*/
   }
 }
+
 export interface Aptitude {
   Concentration: number;
   LifeCondition: number;
   Nom: string;
   Palier: number;
+}
+
+export interface Attaque {
+  Attaque: number;
+  Critique: string;
+  Degats: number;
+  Nom: string;
+  Temporalite: string;
+}
+
+export interface Caracteristique {
+  Nom: string;
+  Modif: number;
+  Natif: number;
+  Score: number;
+}
+
+
+export interface Caracteristiques {
+  CHA: Caracteristique;
+  CON: Caracteristique;
+  DEX: Caracteristique;
+  FOR: Caracteristique;
+  INT: Caracteristique;
+  SAG: Caracteristique;
+}
+
+export interface Competence {
+  Nom: string;
+  Base: string;
+  Modif: number;
+  Natif: number;
+}
+
+export interface Defense {
+  CA: number;
+  ModDex: number;
+  Nom: string;
+  Temporalite: string;
+}
+
+export interface Etat {
+  Concentration: number;
+  Fatigue: number;
+  Mental: number;
+  Vie: number;
+}
+
+export interface Inventaire {
+  Nom: string;
+  Temporalite: string;
+}
+
+
+export interface Champ {
+  Nom: string;
+  Valeur: number;
+}
+
+export interface Character {
+  Age: number;
+  Aptitudes: Aptitude[];
+  Attaque: Attaque[];
+  Caracteristiques: Caracteristiques;
+  Cheveux: string;
+  Competences: Competence[];
+  Defense: Defense[];
+  Dextrie: string;
+  Etat: Etat;
+  Inventaire: Inventaire[];
+  Monnaie: Champ[];
+  Joueur: string;
+  Niveau: number;
+  Nom: string;
+  Reputation: Champ[];
+  Sexe: string;
+  Taille: string;
+  Yeux: string;
+  MainStat: string;
 }

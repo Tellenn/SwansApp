@@ -4,6 +4,7 @@ import { ResistanceComponent } from '../../components/resistance/resistance';
 import { HomePage } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EditdefenseComponent } from '../../components/editdefense/editdefense';
+import { CalculatorProvider } from '../../providers/character/character';
 
 /**
  * Generated class for the DefensePage page.
@@ -22,10 +23,14 @@ export class DefensePage {
   modal: ModalController;
   defenses: Defense[];
   maxindex: number;
+  basedef: number;
 
-  constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController) {
+  constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController, calculator: CalculatorProvider) {
     this.modal = modalCtrl;
     this.maxindex = -1;
+    afDatabase.object('/Character/' + HomePage.charnb + '/Caracteristiques/CON').snapshotChanges().subscribe(action => {
+      this.basedef = 10 + calculator.calcmodif(<Caracteristique>action.payload.val());
+    });
     afDatabase.list('/Character/' + HomePage.charnb + '/Defense').snapshotChanges().subscribe(action => {
       this.dico = new Array<number>();
       this.defenses = new Array<Defense>();
@@ -59,4 +64,10 @@ export interface Defense {
   ModDex: number;
   Nom: string;
   Temporalite: string;
+}
+export interface Caracteristique {
+  Nom: string;
+  Modif: number;
+  Natif: number;
+  Score: number;
 }

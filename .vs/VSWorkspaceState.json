@@ -2,9 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\components",
-    "\\src\\components\\item"
+    "\\src\\app",
+    "\\src\\pages",
+    "\\src\\pages\\competences",
+    "\\src\\pages\\stats"
   ],
-  "SelectedNode": "\\config.xml",
+  "SelectedNode": "\\src\\pages\\competences\\competences.html",
   "PreviewInSolutionExplorer": false
 }

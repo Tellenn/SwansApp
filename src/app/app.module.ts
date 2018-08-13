@@ -32,6 +32,7 @@ import { EditattackComponent } from '../components/editattack/editattack';
 import { EditdefenseComponent } from '../components/editdefense/editdefense';
 import { HeaderComponent } from '../components/header/header';
 import { ResistanceComponent } from '../components/resistance/resistance';
+import { EditstateComponent } from '../components/editstate/editstate';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -72,6 +73,7 @@ export const firebaseConfig = {
     EditspellComponent,
     EditattackComponent,
     EditdefenseComponent,
+    EditstateComponent,
     HeaderComponent,
     ResistanceComponent,
     StatsPage
@@ -100,6 +102,7 @@ export const firebaseConfig = {
     EditspellComponent,
     EditattackComponent,
     EditdefenseComponent,
+    EditstateComponent,
     HeaderComponent,
     ResistanceComponent,
     StatsPage

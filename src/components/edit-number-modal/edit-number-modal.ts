@@ -2,12 +2,6 @@ import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 
-/**
- * Generated class for the EditNumberModalComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'edit-number-modal',
   templateUrl: 'edit-number-modal.html'
