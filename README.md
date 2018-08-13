@@ -43,7 +43,7 @@ Things to do :
   - Defense
 - Renew interface
 - Character creation page
-- Create an interface for easier leveling
+- ~~Create an interface for easier leveling~~
 - Add a HELP icon on evry page to guide use through the app
 - Refactor barComponent for custom color
 - Create a GM page
