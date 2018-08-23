@@ -2,10 +2,16 @@
 <div>
   <ion-grid>
     <ion-row>
-      <ion-col>Nom</ion-col><ion-col>Quantité</ion-col><ion-col></ion-col>
+      <ion-col>Nom</ion-col>
+      <ion-col>Quantité</ion-col>
+      <ion-col></ion-col>
+      <ion-col></ion-col>
     </ion-row>
     <ion-row *ngFor="let money of moneys ; let i = index">
-      <ion-col>{{money.Nom}}</ion-col><ion-col>{{money.Valeur}}</ion-col><ion-col><button (click)="editMoney(i)"><ion-icon name="more"></ion-icon></button></ion-col>
+      <ion-col>{{money.Nom}}</ion-col>
+      <ion-col>{{money.Valeur}}</ion-col>
+      <ion-col><button (click)="editMoney(i)"><ion-icon name="more"></ion-icon></button></ion-col>
+      <ion-col (click)="deleteMonnaie(i)"><ion-icon name="close"></ion-icon></ion-col>
     </ion-row>
   </ion-grid>
   <button ion-button (click)="createMonnaie()"><ion-icon name="add"></ion-icon></button>
