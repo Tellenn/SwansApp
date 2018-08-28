@@ -30,10 +30,10 @@ Things to do :
 - Delete a reputation
 - Delete a money
 - ~~Allow to set a value for every bar in homepage~~
-- Add a short description on each page.
+- ~~Add a short description on each page.~~
 - ~~Fix bars that can go to the sky~~
 - ~~Fix maxConcentration~~
-- Fix bar that cannot be empty
+- ~~Fix bar that cannot be empty~~
 - ~~Add a login or at least restrict access~~
 
 #### V2
@@ -44,7 +44,7 @@ Things to do :
 - Renew interface
 - Character creation page
 - ~~Create an interface for easier leveling~~
-- Add a HELP icon on evry page to guide use through the app
+- Add a HELP icon on every page to guide use through the app
 - Refactor barComponent for custom color
 - Create a GM page
 
