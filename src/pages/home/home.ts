@@ -4,7 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { CalculatorProvider } from '../../providers/character/character';
 import { CharchoicePage } from '../charchoice/charchoice';
-import { EditstateComponent } from '../../components/editstate/editstate';
+import { EditComponent, line } from '../../components/edit/edit';
 import { LevelupPage } from '../levelup/levelup';
 
 @Component({
@@ -58,13 +58,23 @@ export class HomePage {
 
       HomePage.level = this.character.Niveau;
 
+
       this.maxLife = calculator.calcmodif(this.character.Caracteristiques.CON) + 8;
+      if (this.character.Etat.Vie > this.maxLife) {
+        this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Vie: this.maxLife });
+      }
       this.percentLife = this.character.Etat.Vie / this.maxLife * 100;
 
       this.maxMental = calculator.calcmodif(this.character.Caracteristiques.CON) * 2 + 20;
+      if (this.character.Etat.Mental > this.maxMental) {
+        this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Mental: this.maxMental });
+      }
       this.percentMental = this.character.Etat.Mental / this.maxMental * 100;
 
       this.maxFatigue = 10;
+      if (this.character.Etat.Fatigue > this.maxFatigue) {
+        this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Fatigue: this.maxFatigue });
+      }
       this.percentFatigue = this.character.Etat.Fatigue / this.maxFatigue * 100;
 
       switch (this.character.MainStat) {
@@ -89,7 +99,9 @@ export class HomePage {
         default:
           this.maxConcentration = 0;
           break;
-
+      }
+      if (this.character.Etat.Concentration > this.maxConcentration) {
+        this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Concentration: this.maxConcentration });
       }
       this.percentConcentration = this.character.Etat.Concentration / this.maxConcentration * 100;
     });
@@ -153,8 +165,10 @@ export class HomePage {
     }
   }
 
-  set(stuff: string,val:number,max:number) {
-    this.modalCtrl.create(EditstateComponent, { name: stuff, curval: val,max:max, path: "/Character/" + HomePage.charnb + "/Etat/"}).present();
+  set(stuff: string, val: number, max: number) {
+    let params:line[] = new Array<line>();
+    params.push(new line(stuff,val,stuff));
+    this.modalCtrl.create(EditComponent, { delete: false, params:params, path: "/Character/" + HomePage.charnb + "/Etat/"}).present();
   }
 
   levelup(){

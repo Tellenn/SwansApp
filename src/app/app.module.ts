@@ -20,17 +20,11 @@ import { CalculatorProvider } from '../providers/character/character';
 
 import { BarComponent } from '../components/bar/bar';
 import { ItemComponent } from '../components/item/item';
-import { EdititemComponent } from '../components/edititem/edititem';
+import { EditComponent } from '../components/edit/edit';
 import { ReputationComponent } from '../components/reputation/reputation';
-import { EditNumberModalComponent } from '../components/edit-number-modal/edit-number-modal';
-import { EditreputComponent } from '../components/editreput/editreput';
 import { MoneyComponent } from '../components/money/money';
-import { EditspellComponent } from '../components/editspell/editspell';
-import { EditattackComponent } from '../components/editattack/editattack';
-import { EditdefenseComponent } from '../components/editdefense/editdefense';
 import { HeaderComponent } from '../components/header/header';
 import { ResistanceComponent } from '../components/resistance/resistance';
-import { EditstateComponent } from '../components/editstate/editstate';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -65,15 +59,9 @@ export const firebaseConfig = {
     LevelupPage,
     BarComponent,
     ItemComponent,
-    EdititemComponent,
-    EditreputComponent,
+    EditComponent,
     ReputationComponent,
-    EditNumberModalComponent,
     MoneyComponent,
-    EditspellComponent,
-    EditattackComponent,
-    EditdefenseComponent,
-    EditstateComponent,
     HeaderComponent,
     ResistanceComponent,
     StatsPage,
@@ -98,14 +86,8 @@ export const firebaseConfig = {
     ParametresPage,
     LoginPage,
     LevelupPage,
-    EdititemComponent,
-    EditreputComponent,
-    EditNumberModalComponent,
+    EditComponent,
     MoneyComponent,
-    EditspellComponent,
-    EditattackComponent,
-    EditdefenseComponent,
-    EditstateComponent,
     HeaderComponent,
     ResistanceComponent,
     ModalcompComponent,

@@ -3,7 +3,7 @@ import { HomePage } from '../../pages/home/home';
 import { ModalController, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/internal/Observable';
-import { EditNumberModalComponent } from '../edit-number-modal/edit-number-modal';
+import { EditComponent,line } from '../edit/edit';
 
 @Component({
   selector: 'money',
@@ -16,7 +16,7 @@ export class MoneyComponent {
   dico: Array<number>;
   maxIndex: number;
 
-  constructor(public afDatabase: AngularFireDatabase, public modalCtrl: ModalController, public alertCtrl: AlertController) {
+  constructor(public afDatabase: AngularFireDatabase, public modalCtrl: ModalController) {
     this.ans = this.afDatabase.list('/Character/' + HomePage.charnb + '/Monnaie').snapshotChanges();
     this.ans.subscribe(action => {
       this.moneys = new Array<Champ>();
@@ -30,12 +30,18 @@ export class MoneyComponent {
   }
 
   editMoney(i: number) {
-    this.modalCtrl.create(EditNumberModalComponent, { val: this.moneys[i].Valeur, name: this.moneys[i].Nom, path: "/Character/" + HomePage.charnb + "/Monnaie/" + i }).present();
+    let params: line[] = new Array<line>();
+    params.push(new line("Nom", this.moneys[i].Nom, "Nom"));
+    params.push(new line("Quantitée", this.moneys[i].Valeur, "Valeur"));
+    this.modalCtrl.create(EditComponent, { delete: true, params: params, path: "/Character/" + HomePage.charnb + "/Monnaie/" + i }).present();
   }
 
   createMonnaie() {
-    this.modalCtrl.create(EditNumberModalComponent, { path: "/Character/" + HomePage.charnb + "/Monnaie/" + this.maxIndex }).present();
-    //this.setMaxIndex();
+    let params: line[] = new Array<line>();
+    params.push(new line("Nom", "", "Nom"));
+    params.push(new line("Quantitée", "", "Valeur"));
+    this.modalCtrl.create(EditComponent, { delete: false, params:params, path: "/Character/" + HomePage.charnb + "/Monnaie/" + this.maxIndex }).present();
+    
   }
 
   setMaxIndex(): void{
@@ -48,26 +54,7 @@ export class MoneyComponent {
     console.log("MaxIndex : "+this.maxIndex);
   }
 
-  deleteMonnaie(i: number) {
-    const confirm = this.alertCtrl.create({
-      title: "Supprimer la monnaie ?",
-      message: "Voulez-vous supprimer la monnaie '" + this.moneys[i].Nom + "' ?",
-      buttons: [
-        {
-          text: 'Annuler'
-        },
-        {
-          text: "Confirmer",
-          handler: () => {
-            console.log("Confirmer sélectionné");
-            this.afDatabase.object("/Character/" + HomePage.charnb + "/Monnaie/" + i).remove();
-          }
-        }
-      ]
-    });
-    confirm.present();
-    //this.setMaxIndex();
-  }
+  
 }
 export interface Champ {
   Nom: string;

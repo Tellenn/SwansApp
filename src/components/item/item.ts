@@ -1,15 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from 'ionic-angular';
-import { EdititemComponent } from '../edititem/edititem';
+import { EditComponent, line } from '../edit/edit';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { HomePage } from '../../pages/home/home';
 
-/**
- * Generated class for the ItemComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
+
 @Component({
   selector: 'item',
   templateUrl: 'item.html'
@@ -27,7 +22,9 @@ export class ItemComponent {
   }
 
   edit() {
-    console.log("Editing item");
-    this.modal.create(EdititemComponent, { name: this.item.Nom, origin: this.item.Temporalite, path: "/Character/" + HomePage.charnb + "/Inventaire/" + this.iditem }).present();
+    let params: line[] = new Array<line>();
+    params.push(new line("Nom",this.item.Nom,"Nom"));
+    params.push(new line("Temporalite", this.item.Temporalite, "Temporalite"));
+    this.modal.create(EditComponent, { params: params, delete: true, path: "/Character/" + HomePage.charnb + "/Inventaire/" + this.iditem }).present();
   }
 }

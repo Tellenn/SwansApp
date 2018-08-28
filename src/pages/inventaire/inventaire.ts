@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { HomePage } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
-import { EdititemComponent } from '../../components/edititem/edititem';
+import { EditComponent,line } from '../../components/edit/edit';
 import { CharchoicePage } from '../charchoice/charchoice';
 
 
@@ -38,11 +38,10 @@ export class InventairePage {
   }
 
   createitem() {
-    this.modalCtrl.create(EdititemComponent, { name: "", origin: "", path: "/Character/" + HomePage.charnb + "/Inventaire/" + this.maxindex }).present();
-  }
-  
-  changechar(){
-    this.navCtrl.setRoot(CharchoicePage);
+    let params: line[] = new Array<line>();
+    params.push(new line("Nom", "", "Nom"));
+    params.push(new line("Temporalite", "", "Temporalite"));
+    this.modalCtrl.create(EditComponent, { delete: false, name: "", origin: "", path: "/Character/" + HomePage.charnb + "/Inventaire/" + this.maxindex }).present();
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { EditattackComponent } from '../../components/editattack/editattack';
+import { EditComponent, line } from '../../components/edit/edit';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
 import { HomePage } from '../home/home';
 
@@ -44,12 +44,25 @@ export class AttaquePage {
     this.afDatabase.object('/Character/'+HomePage.charnb+'/Attaque/'+this.dico[i]).remove();
   }
 
-  create(){
-    this.modal.create(EditattackComponent, {create:true, path: "/Character/" + HomePage.charnb + "/Attaque/"+this.maxindex}).present();
+  create() {
+    let params: line[] = new Array<line>();
+    params.push( new line("Nom","","Nom"));
+    params.push( new line("Temporalite", "", "Temporalite"));
+    params.push( new line("Attaque", "", "Attaque"));
+    params.push( new line("Degats", "", "Degats"));
+    params.push( new line("Critique", "", "Critique"));
+    
+    this.modal.create(EditComponent, {delete :false, params:params, path: "/Character/" + HomePage.charnb + "/Attaque/"+this.maxindex}).present();
   }
 
-  edit(i:number){
-    this.modal.create(EditattackComponent, {create:false, temporalite: this.attacks[i].Temporalite, critique: this.attacks[i].Critique, name: this.attacks[i].Nom, attaque: this.attacks[i].Attaque, degat: this.attacks[i].Degats ,path: "/Character/" + HomePage.charnb + "/Attaque/" + this.dico[i]}).present();
+  edit(i: number) {
+    let params: line[] = new Array<line>();
+    params.push( new line("Nom", this.attacks[i].Nom, "Nom"));
+    params.push( new line("Temporalite", this.attacks[i].Temporalite, "Temporalite"));
+    params.push( new line("Attaque", this.attacks[i].Attaque, "Attaque"));
+    params.push( new line("Degats", this.attacks[i].Degats, "Degats"));
+    params.push( new line("Critique", this.attacks[i].Critique, "Critique"));
+    this.modal.create(EditComponent, { delete: true, params: params,path: "/Character/" + HomePage.charnb + "/Attaque/" + this.dico[i]}).present();
   }
 }
 export interface Attaque {

@@ -7,7 +7,7 @@
   L'argent possédé par le personnage
   <ion-item>
     <money></money>
-  </ion-item>
+  </ion-item><br/><br/>
   Les objets possédés par le personnage
   <ion-item>
     <ion-grid>
@@ -16,6 +16,7 @@
       </ion-row>
       <item *ngFor="let item of inventaire ; let i = index" [item]="item" [iditem]="dico[i]"></item>
     </ion-grid>
-    <button ion-button round (click)="createitem()"><ion-icon name="add"></ion-icon></button>
   </ion-item>
+    <button ion-button (click)="createitem()"><ion-icon name="add"></ion-icon></button>
+  
 </ion-content>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { HomePage } from '../../pages/home/home';
 import { Observable } from 'rxjs';
-import { EditreputComponent } from '../editreput/editreput';
+import { EditComponent,line } from '../edit/edit';
 import { ModalController } from 'ionic-angular';
 
 /**
@@ -39,18 +39,19 @@ export class ReputationComponent {
   }
 
   createRep() {
-    this.modalCtrl.create(EditreputComponent, { path: "/Character/" + HomePage.charnb + "/Reputation/" + this.maxindex }).present();
+    let params: line[] = new Array<line>();
+    params.push(new line("Nom", "", "Nom"));
+    params.push(new line("Réputation", "", "Valeur"));
+    this.modalCtrl.create(EditComponent, {delete: false,params: params, path: "/Character/" + HomePage.charnb + "/Reputation/" + this.maxindex }).present();
   }
 
-  addRep(i: number) {
-    let temp = this.afDatabase.list('/Character/' + HomePage.charnb + '/Reputation');
-    temp.set(this.dico[i]+"", { Nom: this.reputations[i].Nom, Valeur: this.reputations[i].Valeur + 1 });
+  edit(i: number) {
+    let params: line[] = new Array<line>();
+    params.push(new line("Nom", this.reputations[i].Nom, "Nom"));
+    params.push(new line("Réputation", this.reputations[i].Valeur, "Valeur"));
+    this.modalCtrl.create(EditComponent, { delete: true, params: params, path: "/Character/" + HomePage.charnb + "/Reputation/" + this.dico[i] }).present();
   }
 
-  removeRep(i: number) {
-    let temp = this.afDatabase.list('/Character/' + HomePage.charnb + '/Reputation');
-    temp.set(this.dico[i] + "", { Nom: this.reputations[i].Nom, Valeur: this.reputations[i].Valeur - 1 });
-  }
 
 }
 

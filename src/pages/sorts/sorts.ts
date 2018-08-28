@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, Modal } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
 import { HomePage } from '../home/home';
-import { EditspellComponent } from '../../components/editspell/editspell';
+import { EditComponent,line } from '../../components/edit/edit';
 import { CalculatorProvider } from '../../providers/character/character';
 
 
@@ -70,13 +70,22 @@ export class SortsPage {
   
   
 
-  create(){
-    this.modal.create(EditspellComponent, {create:true, path: "/Character/" + HomePage.charnb + "/Aptitudes/"+this.maxindex}).present();
+  create() {
+    let params: line[] = new Array<line>();
+    params.push(new line("Nom", "", "Nom"));
+    params.push(new line("Concentation", "", "Concentation"));
+    params.push(new line("Life Condition", "", "LifeCondition"));
+    params.push(new line("Palier", "", "Palier"));
+    this.modal.create(EditComponent, {delete:false, params:params, path: "/Character/" + HomePage.charnb + "/Aptitudes/"+this.maxindex}).present();
   }
 
   edit(i:number){
-
-    this.modal.create(EditspellComponent, {create:false, name: this.skills[i].Nom, pal: this.skills[i].Palier, lifc:this.skills[i].LifeCondition,con: this.skills[i].Concentration,path: "/Character/" + HomePage.charnb + "/Aptitudes/" + this.dico[i]}).present();
+    let params: line[] = new Array<line>();
+    params.push(new line("Nom", this.skills[i].Nom, "Nom"));
+    params.push(new line("Concentation", this.skills[i].Concentration, "Concentation"));
+    params.push(new line("Life Condition", this.skills[i].LifeCondition, "LifeCondition"));
+    params.push(new line("Palier", this.skills[i].Palier, "Palier"));
+    this.modal.create(EditComponent, { delete: true, params: params,path: "/Character/" + HomePage.charnb + "/Aptitudes/" + this.dico[i]}).present();
   }
 }
 

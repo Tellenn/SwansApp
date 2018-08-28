@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { ResistanceComponent } from '../../components/resistance/resistance';
 import { HomePage } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { EditdefenseComponent } from '../../components/editdefense/editdefense';
+import { EditComponent,line } from '../../components/edit/edit';
 import { CalculatorProvider } from '../../providers/character/character';
 
 /**
@@ -50,12 +50,22 @@ export class DefensePage {
   }
 
   create() {
-    this.modal.create(EditdefenseComponent, { create: true, path: "/Character/" + HomePage.charnb + "/Defense/" + this.maxindex }).present();
+    let params: line[] = new Array<line>();
+    params.push(new line("Nom", "", "Nom"));
+    params.push(new line("Temporalite", "", "Temporalite"));
+    params.push(new line("CA", "", "CA"));
+    params.push(new line("ModDex", "", "ModDex"));
+
+    this.modal.create(EditComponent, { delete: false, params:params, path: "/Character/" + HomePage.charnb + "/Defense/" + this.maxindex }).present();
   }
 
   edit(i: number) {
-
-    this.modal.create(EditdefenseComponent, { create: false, Nom: this.defenses[i].Nom, CA: this.defenses[i].CA, ModDex: this.defenses[i].ModDex, Temporalite: this.defenses[i].Temporalite, path: "/Character/" + HomePage.charnb + "/Defense/" + this.dico[i] }).present();
+    let params: line[] = new Array<line>();
+    params.push(new line("Nom", this.defenses[i].Nom, "Nom"));
+    params.push(new line("Temporalite", this.defenses[i].Temporalite, "Temporalite"));
+    params.push(new line("CA", this.defenses[i].CA, "CA"));
+    params.push(new line("ModDex", this.defenses[i].CA, "ModDex"));
+    this.modal.create(EditComponent, { delete: true, params: params, path: "/Character/" + HomePage.charnb + "/Defense/" + this.dico[i] }).present();
 
   }
 }
