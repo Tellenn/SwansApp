@@ -33,7 +33,17 @@ export class HomePage {
   maxConcentration: number;
   percentConcentration: number;
 
+  lifecolor: string;
+  mentalcolor: string;
+  fatiguecolor: string;
+  concentrationcolor: string;
+
   constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CalculatorProvider, navParam: NavParams, public modalCtrl: ModalController) {
+    this.lifecolor = "darkred";
+    this.mentalcolor = "darkgreen";
+    this.fatiguecolor = "darkorange";
+    this.concentrationcolor = "teal";
+
     console.log(HomePage.charnb);
     let temp = navParam.get("charnb");
     if (temp != null) {

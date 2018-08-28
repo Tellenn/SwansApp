@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/core": "~4.11.0",
     "@ionic-native/firebase": "^4.11.0",
+    "@ionic-native/native-audio": "^4.12.0",
     "@ionic-native/splash-screen": "~4.11.0",
     "@ionic-native/status-bar": "~4.11.0",
     "@ionic/pro": "2.0.3",
@@ -29,10 +30,12 @@
     "angular-progress-bar": "^1.0.5",
     "angularfire2": "^5.0.0-rc.11",
     "cordova-android": "7.0.0",
+    "cordova-browser": "5.0.4",
     "cordova-ios": "4.5.5",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.1.2",
     "cordova-plugin-ionic-webview": "^2.0.2",
+    "cordova-plugin-nativeaudio": "^3.0.9",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-whitelist": "^1.3.3",
     "firebase": "^5.3.0",
@@ -56,11 +59,13 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-nativeaudio": {}
     },
     "platforms": [
       "android",
-      "ios"
+      "ios",
+      "browser"
     ]
   }
 }

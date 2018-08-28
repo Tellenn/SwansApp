@@ -12,7 +12,7 @@
   <ion-item>
     <ion-grid>
       <ion-row>
-        <ion-col>Nom</ion-col><ion-col>Temporalité</ion-col><ion-col>Actions</ion-col>
+        <ion-col>Nom</ion-col><ion-col col-4>Temporalité</ion-col>
       </ion-row>
       <item *ngFor="let item of inventaire ; let i = index" [item]="item" [iditem]="dico[i]"></item>
     </ion-grid>

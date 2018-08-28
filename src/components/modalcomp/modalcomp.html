@@ -1,0 +1,22 @@
+<div class="modal">
+  <div class="selection">
+    <ion-grid>
+      <ion-row>
+        <ion-col>Nom :</ion-col><ion-col col-9> {{skill.Nom}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Total :</ion-col><ion-col col-9> {{value + skill.Natif + skill.Modif}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Base :</ion-col><ion-col col-9> {{skill.Base}} ({{value}})</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col> Natif :</ion-col><ion-col col-9> {{skill.Natif}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Modif :</ion-col><ion-col col-9> {{skill.Modif}}</ion-col>
+      </ion-row>
+    </ion-grid>
+    <button ion-button (click)="cancel()" class="cancel">Retour</button>
+  </div>
+</div>

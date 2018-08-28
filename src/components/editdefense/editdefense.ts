@@ -42,4 +42,8 @@ export class EditdefenseComponent {
   cancel() {
     this.viewCtrl.dismiss();
   }
+  delete() {
+    this.afDatabase.object(this.path).remove();
+    this.viewCtrl.dismiss();
+  }
 }

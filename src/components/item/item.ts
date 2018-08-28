@@ -30,9 +30,4 @@ export class ItemComponent {
     console.log("Editing item");
     this.modal.create(EdititemComponent, { name: this.item.Nom, origin: this.item.Temporalite, path: "/Character/" + HomePage.charnb + "/Inventaire/" + this.iditem }).present();
   }
-
-  delete() {
-    this.afDatabase.object("/Character/" + HomePage.charnb + "/Inventaire/" + this.iditem).remove();
-  }
-
 }

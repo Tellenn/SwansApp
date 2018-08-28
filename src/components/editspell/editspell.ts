@@ -36,4 +36,9 @@ export class EditspellComponent {
   cancel() {
     this.viewCtrl.dismiss();
   }
+  remove() {
+    this.afDatabase.object(this.path).remove();
+
+    this.viewCtrl.dismiss();
+  }
 }

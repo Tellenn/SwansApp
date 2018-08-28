@@ -1,8 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { LifebarComponent } from './lifebar/lifebar';
-import { MentalbarComponent } from './mentalbar/mentalbar';
-import { FatiguebarComponent } from './fatiguebar/fatiguebar';
-import { ConcentrationbarComponent } from './concentrationbar/concentrationbar';
+import { BarComponent } from './bar/bar';
 import { ItemComponent } from './item/item';
 import { EdititemComponent } from './edititem/edititem';
 import { ReputationComponent } from './reputation/reputation';
@@ -15,12 +12,10 @@ import { EditattackComponent } from './editattack/editattack';
 import { HeaderComponent } from './header/header';
 import { ResistanceComponent } from './resistance/resistance';
 import { EditstateComponent } from './editstate/editstate';
+import { ModalcompComponent } from './modalcomp/modalcomp';
 @NgModule({
 	declarations: [
-    LifebarComponent,
-    MentalbarComponent,
-    FatiguebarComponent,
-    ConcentrationbarComponent,
+    BarComponent,
     ItemComponent,
     EdititemComponent,
     ReputationComponent,
@@ -32,13 +27,11 @@ import { EditstateComponent } from './editstate/editstate';
     EditattackComponent,
     HeaderComponent,
     ResistanceComponent,
-    EditstateComponent],
+    EditstateComponent,
+    ModalcompComponent],
 	imports: [],
-	exports: [
-    LifebarComponent,
-    MentalbarComponent,
-    FatiguebarComponent,
-    ConcentrationbarComponent,
+  exports: [
+    BarComponent,
     ItemComponent,
     EdititemComponent,
     ReputationComponent,
@@ -50,7 +43,8 @@ import { EditstateComponent } from './editstate/editstate';
     EditattackComponent,
     HeaderComponent,
     ResistanceComponent,
-    EditstateComponent],
+    EditstateComponent,
+    ModalcompComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {}

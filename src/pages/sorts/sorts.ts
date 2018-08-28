@@ -68,9 +68,7 @@ export class SortsPage {
     
   }
   
-  remove(i:number){
-    this.afDatabase.object('/Character/'+HomePage.charnb+'/Aptitudes/'+this.dico[i]).remove();
-  }
+  
 
   create(){
     this.modal.create(EditspellComponent, {create:true, path: "/Character/" + HomePage.charnb + "/Aptitudes/"+this.maxindex}).present();

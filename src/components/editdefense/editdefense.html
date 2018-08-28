@@ -1,27 +1,29 @@
-<div>
-  <ion-item>
-    <ion-label>
-      Nom
-    </ion-label>
-    <ion-input [(ngModel)]="Nom"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>
-      Temporalité
-    </ion-label>
-    <ion-input [(ngModel)]="Temporalite"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>
-      CA
-    </ion-label>
-    <ion-input type="number" [(ngModel)]="CA"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>
-      Mod Dex
-    </ion-label>
-    <ion-input type="number" [(ngModel)]="ModDex"></ion-input>
-  </ion-item>
-  <button ion-button (click)="validate()">Valider</button><button ion-button (click)="cancel()">Annuler</button>
+<div class="modal">
+  <div class="selection">
+    <ion-item>
+      <ion-label>
+        Nom
+      </ion-label>
+      <ion-input [(ngModel)]="Nom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Temporalité
+      </ion-label>
+      <ion-input [(ngModel)]="Temporalite"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        CA
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="CA"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Mod Dex
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="ModDex"></ion-input>
+    </ion-item>
+    <button ion-button (click)="validate()" class="validate">Valider</button><button ion-button (click)="cancel()" class="cancel">Annuler</button><button ion-button (click)="delete()" class="delete">Supprimer</button>
+  </div>
 </div>

@@ -38,5 +38,9 @@ export class EdititemComponent {
   cancel() {
     this.view.dismiss();
   }
+  delete() {
+    this.afDatabase.object(this.path).remove();
+    this.view.dismiss();
+  }
 
 }

@@ -1,27 +1,29 @@
-<div>
-  <ion-item>
-    <ion-label>
-      Nom
-    </ion-label>
-    <ion-input [(ngModel)]="name"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>
-      Coût de concentration
-    </ion-label>
-    <ion-input type="number"  [(ngModel)]="con"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>
-      Life Condition
-    </ion-label>
-    <ion-input type="number"  [(ngModel)]="lifc"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>
-      Palier
-    </ion-label>
-    <ion-input type="number"  [(ngModel)]="pal"></ion-input>
-  </ion-item>
-  <button ion-button (click)="validate()">Valider</button><button ion-button (click)="cancel()">Annuler</button>
+<div class="modal">
+  <div class="selection">
+    <ion-item>
+      <ion-label>
+        Nom
+      </ion-label>
+      <ion-input [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Coût de concentration
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="con"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Life Condition
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="lifc"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Palier
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="pal"></ion-input>
+    </ion-item>
+    <button ion-button (click)="validate()" class="validate">Valider</button><button ion-button (click)="cancel()" class="cancel">Annuler</button><button ion-button (click)="remove()" class="delete">Supprimer</button>
+  </div>
 </div>

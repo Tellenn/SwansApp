@@ -7,10 +7,10 @@
   Liste des compétences
   <ion-grid>
     <ion-row>
-      <ion-col col-5>Nom</ion-col><ion-col>Tot</ion-col><ion-col>Base</ion-col><ion-col>Nat.</ion-col><ion-col >Mod.</ion-col>
+      <ion-col >Nom</ion-col><ion-col col-5>Tot</ion-col>
     </ion-row>
-    <ion-row *ngFor="let comp of competences ; let i = index">
-      <ion-col col-5>{{comp.Nom}}</ion-col><ion-col><b>{{calc.calcmodif(getlinkedcar(comp.Base))+comp.Natif+comp.Modif}}</b></ion-col><ion-col>{{calc.calcmodif(getlinkedcar(comp.Base))}}</ion-col><ion-col>{{comp.Natif}}</ion-col><ion-col>{{comp.Modif}}</ion-col>
+    <ion-row *ngFor="let comp of competences ; let i = index" class="ligne" (click)="show(i)">
+      <ion-col >{{comp.Nom}}</ion-col><ion-col col-5><b>{{calc.calcmodif(getlinkedcar(comp.Base))+comp.Natif+comp.Modif}}</b></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

@@ -4,15 +4,15 @@
 
 
 <ion-content padding>
-  Point de talent restant : {{pttalent}}<br/>
+  Points de talents restants : {{pttalent}}<br/>
   <br/>
   Liste des Skills / Sorts du personnage
   <ion-grid>
     <ion-row>
-      <ion-col col-5>Nom</ion-col><ion-col>Con.</ion-col><ion-col>Life Co.</ion-col><ion-col>Palier</ion-col><ion-col ></ion-col>
+      <ion-col col-5>Nom</ion-col><ion-col>Con.</ion-col><ion-col>Life Co.</ion-col><ion-col>Palier</ion-col>
     </ion-row>
-    <ion-row *ngFor="let skill of skills ; let i = index">
-      <ion-col col-5>{{skill.Nom}}</ion-col><ion-col>{{skill.Concentration}}</ion-col><ion-col>{{skill.LifeCondition}}</ion-col><ion-col>{{skill.Palier}}</ion-col><ion-col><button (click)="edit(i)"><ion-icon name="brush"></ion-icon></button><button (click)="remove(i)"><ion-icon name="remove"></ion-icon></button></ion-col>
+    <ion-row *ngFor="let skill of skills ; let i = index" (click)="edit(i)" class="ligne">
+      <ion-col col-5>{{skill.Nom}}</ion-col><ion-col>{{skill.Concentration}}</ion-col><ion-col>{{skill.LifeCondition}}</ion-col><ion-col>{{skill.Palier}}</ion-col>
     </ion-row>
   </ion-grid>
   <button ion-button (click)="create()"><ion-icon name="add"></ion-icon></button>

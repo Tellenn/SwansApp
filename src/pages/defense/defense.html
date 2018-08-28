@@ -11,13 +11,13 @@
   Les resistances de combat du personnage
     <ion-grid>
       <ion-row>
-        <ion-col col-4>Nom</ion-col><ion-col>Tempo.</ion-col><ion-col>CA</ion-col><ion-col>Mod def</ion-col><ion-col></ion-col>
+        <ion-col col-4>Nom</ion-col><ion-col>Tempo.</ion-col><ion-col>CA</ion-col><ion-col>Mod def</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-4>Base</ion-col><ion-col>Toute</ion-col><ion-col>{{basedef}}</ion-col><ion-col>0</ion-col><ion-col></ion-col>
+        <ion-col col-4>Base</ion-col><ion-col>Toute</ion-col><ion-col>{{basedef}}</ion-col><ion-col>0</ion-col>
       </ion-row>
-      <ion-row *ngFor="let def of defenses ; let i = index">
-        <ion-col col-4>{{def.Nom}}</ion-col><ion-col>{{def.Temporalite}}</ion-col><ion-col>{{def.CA}}</ion-col><ion-col>{{def.ModDex}}</ion-col><ion-col><button (click)="edit(i)"><ion-icon name="brush"></ion-icon></button><button (click)="remove(i)"><ion-icon name="remove"></ion-icon></button></ion-col>
+      <ion-row *ngFor="let def of defenses ; let i = index" class="ligne" (click)="edit(i)">
+        <ion-col col-4>{{def.Nom}}</ion-col><ion-col>{{def.Temporalite}}</ion-col><ion-col>{{def.CA}}</ion-col><ion-col>{{def.ModDex}}</ion-col>
       </ion-row>
     </ion-grid>
     <button ion-button round (click)="create()"><ion-icon name="add"></ion-icon></button>

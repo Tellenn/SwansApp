@@ -18,10 +18,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CalculatorProvider } from '../providers/character/character';
 
-import { LifebarComponent } from '../components/lifebar/lifebar';
-import { MentalbarComponent } from '../components/mentalbar/mentalbar';
-import { FatiguebarComponent } from '../components/fatiguebar/fatiguebar';
-import { ConcentrationbarComponent } from '../components/concentrationbar/concentrationbar';
+import { BarComponent } from '../components/bar/bar';
 import { ItemComponent } from '../components/item/item';
 import { EdititemComponent } from '../components/edititem/edititem';
 import { ReputationComponent } from '../components/reputation/reputation';
@@ -39,6 +36,8 @@ import { EditstateComponent } from '../components/editstate/editstate';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { LevelupPage } from '../pages/levelup/levelup';
+import { ModalcompComponent } from '../components/modalcomp/modalcomp';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 
 // AF2 Settings
@@ -64,10 +63,7 @@ export const firebaseConfig = {
     ParametresPage,
     LoginPage,
     LevelupPage,
-    LifebarComponent,
-    MentalbarComponent,
-    FatiguebarComponent,
-    ConcentrationbarComponent,
+    BarComponent,
     ItemComponent,
     EdititemComponent,
     EditreputComponent,
@@ -80,7 +76,8 @@ export const firebaseConfig = {
     EditstateComponent,
     HeaderComponent,
     ResistanceComponent,
-    StatsPage
+    StatsPage,
+    ModalcompComponent
   ],
   imports: [
     BrowserModule,
@@ -111,13 +108,15 @@ export const firebaseConfig = {
     EditstateComponent,
     HeaderComponent,
     ResistanceComponent,
+    ModalcompComponent,
     StatsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CalculatorProvider
+    CalculatorProvider,
+    NativeAudio
   ]
 })
 export class AppModule {}

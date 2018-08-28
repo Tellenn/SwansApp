@@ -25,3 +25,45 @@
 button{
     font-size:20px;
 }
+
+.ligne {
+  height: 20%;
+  border: 1px solid lightgrey;
+  margin-top: 10px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+}
+
+.modal {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+
+  .selection {
+    position: absolute;
+    top: 25%;
+    width: 100%;
+  }
+
+  .cancel {
+    position: absolute;
+    right: 5%;
+  }
+
+  .validate {
+    left: 5%;
+  }
+
+  .delete {
+    position: absolute;
+    right: 5%;
+    bottom: -100px;
+    background-color: darkred;
+  }
+
+  ion-input {
+    border: 1px solid lightgrey;
+  }
+}

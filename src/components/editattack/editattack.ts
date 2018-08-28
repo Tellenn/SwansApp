@@ -44,4 +44,8 @@ export class EditattackComponent {
   cancel() {
     this.viewCtrl.dismiss();
   }
+  delete() {
+    this.afDatabase.object(this.path).remove();
+    this.viewCtrl.dismiss();
+  }
 }

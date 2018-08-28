@@ -7,17 +7,18 @@ import { Component, Input} from '@angular/core';
  * Components.
  */
 @Component({
-  selector: 'mentalbar',
-  templateUrl: 'mentalbar.html'
+  selector: 'bar',
+  templateUrl: 'bar.html'
 })
-export class MentalbarComponent {
-  color:string;
+export class BarComponent {
   @Input('progress') progress;
   @Input('max') max;
   @Input('percent') percent;
   @Input('newcolor') newcolor;
 
+
   constructor() {
+    console.log(this.newcolor);
   }
 
 }
