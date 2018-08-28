@@ -35,6 +35,7 @@ Things to do :
 - ~~Fix maxConcentration~~
 - ~~Fix bar that cannot be empty~~
 - ~~Add a login or at least restrict access~~
+- Edit vanity infos
 
 #### V2
 - Allow filtering in :
