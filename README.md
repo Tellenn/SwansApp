@@ -33,7 +33,7 @@ Things to do :
 - ~~Add a short description on each page.~~
 - ~~Fix bars that can go to the sky~~
 - ~~Fix maxConcentration~~
-- Fix bar that cannot be empty
+- ~~Fix bar that cannot be empty~~
 - ~~Add a login or at least restrict access~~
 
 #### V2
