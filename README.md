@@ -28,7 +28,7 @@ Things to do :
   - ~~Concentration~~
 - ~~Import All Character as a JSON~~
 - Delete a reputation
-- Delete a money
+- ~~Delete a money~~
 - ~~Allow to set a value for every bar in homepage~~
 - ~~Add a short description on each page.~~
 - ~~Fix bars that can go to the sky~~
