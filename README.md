@@ -27,7 +27,7 @@ Things to do :
 - ~~Add in-game rules~~
   - ~~Concentration~~
 - ~~Import All Character as a JSON~~
-- Delete a reputation
+- ~~Delete a reputation~~
 - ~~Delete a money~~
 - ~~Allow to set a value for every bar in homepage~~
 - ~~Add a short description on each page.~~
