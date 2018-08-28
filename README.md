@@ -45,10 +45,12 @@ Things to do :
 - Character creation page
 - ~~Create an interface for easier leveling~~
 - Add a HELP icon on every page to guide use through the app
-- Refactor barComponent for custom color
+- ~~Refactor barComponent for custom color~~
 - Create a GM page
 
 ### V3
  - Prospect for a generic table component with custom number of row and name
+ - ~~Generic bar~~
+ - ~~Generic modal~~
 
 If you have any request or bug, do not hesitate to create a github issue !
