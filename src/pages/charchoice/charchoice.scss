@@ -6,6 +6,12 @@ page-charchoice {
 
   select {
     width: 70%;
+  }
 
+  .bottom {
+    position: absolute;
+    bottom: 5%;
+    left: 25%;
+    width: 50%;
   }
 }

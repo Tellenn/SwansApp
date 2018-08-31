@@ -13,7 +13,6 @@ import { StatsPage } from '../pages/stats/stats';
 import { ParametresPage } from '../pages/parametres/parametres';
 import { SortsPage } from '../pages/sorts/sorts';
 import { LoginPage } from '../pages/login/login';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CalculatorProvider } from '../providers/character/character';
@@ -32,6 +31,14 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { LevelupPage } from '../pages/levelup/levelup';
 import { ModalcompComponent } from '../components/modalcomp/modalcomp';
 import { NativeAudio } from '@ionic-native/native-audio';
+import { WelcomeCreationPage } from '../pages/welcome-creation/welcome-creation';
+import { NamingCreationPage } from '../pages/naming-creation/naming-creation';
+import { DiceCreationPage } from '../pages/dice-creation/dice-creation';
+import { NatifStatCreationPage } from '../pages/natif-stat-creation/natif-stat-creation';
+import { AttribStatCreationPage } from '../pages/attrib-stat-creation/attrib-stat-creation';
+import { NatifCompCreationPage } from '../pages/natif-comp-creation/natif-comp-creation';
+import { MainStatCreationPage } from '../pages/main-stat-creation/main-stat-creation';
+import { ValidationCreationPage } from '../pages/validation-creation/validation-creation';
 
 
 // AF2 Settings
@@ -56,7 +63,17 @@ export const firebaseConfig = {
     DefensePage,
     ParametresPage,
     LoginPage,
+    StatsPage,
     LevelupPage,
+    WelcomeCreationPage,
+    NamingCreationPage,
+    DiceCreationPage,
+    NatifStatCreationPage,
+    AttribStatCreationPage,
+    NatifCompCreationPage,
+    MainStatCreationPage,
+    ValidationCreationPage,
+
     BarComponent,
     ItemComponent,
     EditComponent,
@@ -64,7 +81,6 @@ export const firebaseConfig = {
     MoneyComponent,
     HeaderComponent,
     ResistanceComponent,
-    StatsPage,
     ModalcompComponent
   ],
   imports: [
@@ -86,12 +102,21 @@ export const firebaseConfig = {
     ParametresPage,
     LoginPage,
     LevelupPage,
+    StatsPage,
+    WelcomeCreationPage,
+    NamingCreationPage,
+    DiceCreationPage,
+    NatifStatCreationPage,
+    AttribStatCreationPage,
+    NatifCompCreationPage,
+    MainStatCreationPage,
+    ValidationCreationPage,
+
     EditComponent,
     MoneyComponent,
     HeaderComponent,
     ResistanceComponent,
-    ModalcompComponent,
-    StatsPage
+    ModalcompComponent
   ],
   providers: [
     StatusBar,

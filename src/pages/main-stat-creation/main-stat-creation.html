@@ -1,0 +1,21 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Création d'un personnage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  Dernière étape !
+  <br/>
+  Desormais, il te faut choisir une caractéristique principale pour ton personnage !
+  Choisis bien, cela va définir vers quel spécialitée il va s'orienter !
+
+  <ion-list radio-group [(ngModel)]="character.MainStat">
+    <ion-item *ngFor="let stat of stats; let i=index">
+      <ion-label>{{stat.Nom}}, score : {{val[i]}}</ion-label>
+      <ion-radio [value]="stat.Nom"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <button ion-button round class="next" (click)="next()"><ion-icon name="arrow-forward"></ion-icon></button>
+</ion-content>

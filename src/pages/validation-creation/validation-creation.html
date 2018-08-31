@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Création d'un personnage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  Ok ! Un petit récap de ton personnage, si tout est bon, tu peux valider. Si tu remarque un problème, n'hésite pas a contacter le dev de l'appli pour rectifier cela, ou d'éditer toi même les informations a partir de l'application !!
+
+  Attention, ton personnage commencera avec 1 dans chaque barre d'état (Vie, Fatigue etc ...), Vois avec le MJ si tu peux les monter au max après la création ;)
+
+  Personnage : {{character.Nom}}({{character.Joueur}}).<br />
+  Age : {{character.Age}}. Cheveux : {{character.Cheveux}}<br />
+  Sexe : {{character.Sexe}}. Yeux : {{character.Yeux}}<br />
+  Taille : {{character.Taille}}. Dextrie : {{character.Dextrie}}<br />
+  Statistique principale : {{character.Mainstat}}.<br />
+  <br />
+  Statistiques :<br />
+  CHA : {{character.Caracteristiques.CHA.Score+character.Caracteristiques.CHA.Natif}}<br />
+  CON : {{character.Caracteristiques.CON.Score+character.Caracteristiques.CON.Natif}}<br />
+  DEX : {{character.Caracteristiques.DEX.Score+character.Caracteristiques.DEX.Natif}}<br />
+  FOR : {{character.Caracteristiques.FOR.Score+character.Caracteristiques.FOR.Natif}}<br />
+  INT : {{character.Caracteristiques.INT.Score+character.Caracteristiques.INT.Natif}}<br />
+  SAG : {{character.Caracteristiques.SAG.Score+character.Caracteristiques.SAG.Natif}}<br />
+  <br />
+  Bonus natif des competences : <br />
+  <div *ngFor="let comp of character.Competences">{{comp.Nom}} : {{comp.Natif}}</div>
+  <br />
+  <button ion-button round class="next" (click)="next()"><ion-icon name="happy"></ion-icon></button>
+</ion-content>

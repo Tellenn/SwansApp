@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Création d'un personnage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  Pour en terminer avec les stats natives, veuillez selectionner les Compétences sur les quels vous avez des points natifs et y indiquer le montant.
+  <ion-item *ngFor="let comp of character.Competences; let i=index">{{comp.Nom}}<input [(ngModel)]="character.Competences[i].Natif" /></ion-item>
+  <br /><br /><br /><br />
+  <button ion-button round class="next" (click)="next()"><ion-icon name="arrow-forward"></ion-icon></button>
+</ion-content>

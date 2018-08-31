@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { EditComponent, line } from '../../components/edit/edit';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
-import { HomePage } from '../home/home';
+import { HomePage, Attaque } from '../home/home';
 
 /**
  * Generated class for the AttaquePage page.
@@ -17,7 +17,7 @@ import { HomePage } from '../home/home';
   templateUrl: 'attaque.html',
 })
 export class AttaquePage {
-
+  sub: any;
   dico:number[];
   modal:ModalController;
   attacks:Attaque[];
@@ -26,7 +26,7 @@ export class AttaquePage {
   constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController) {
     this.modal = modalCtrl;
     this.maxindex = -1;
-    afDatabase.list('/Character/'+HomePage.charnb+'/Attaque').snapshotChanges().subscribe( action => {
+    this.sub = afDatabase.list('/Character/'+HomePage.charnb+'/Attaque').snapshotChanges().subscribe( action => {
       this.dico = new Array<number>();
       this.attacks = new Array<Attaque>();
       for( let i = 0 ; i < action.length ; i++ ){
@@ -64,11 +64,8 @@ export class AttaquePage {
     params.push( new line("Critique", this.attacks[i].Critique, "Critique"));
     this.modal.create(EditComponent, { delete: true, params: params,path: "/Character/" + HomePage.charnb + "/Attaque/" + this.dico[i]}).present();
   }
-}
-export interface Attaque {
-  Attaque: number;
-  Critique: string;
-  Degats: number;
-  Nom: string;
-  Temporalite: string;
+
+  ionViewDidLeave() {
+    this.sub.unsubscribe();
+  }
 }

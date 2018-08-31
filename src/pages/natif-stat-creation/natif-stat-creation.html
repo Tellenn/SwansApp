@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Création d'un personnage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="character.Caracteristiques">
+    Sur cette page, inserez les different malus / bonus que le MJ vous a attribué :
+    <ion-item><ion-input type="number" [(ngModel)]="character.Caracteristiques.CHA.Natif"></ion-input><ion-label>Charisme</ion-label></ion-item>
+    <ion-item><ion-input type="number" [(ngModel)]="character.Caracteristiques.CON.Natif"></ion-input><ion-label>Constitution</ion-label></ion-item>
+    <ion-item><ion-input type="number" [(ngModel)]="character.Caracteristiques.DEX.Natif"></ion-input><ion-label>Dexterité</ion-label></ion-item>
+    <ion-item><ion-input type="number" [(ngModel)]="character.Caracteristiques.FOR.Natif"></ion-input><ion-label>Force</ion-label></ion-item>
+    <ion-item><ion-input type="number" [(ngModel)]="character.Caracteristiques.INT.Natif"></ion-input><ion-label>Intelligence</ion-label></ion-item>
+    <ion-item><ion-input type="number" [(ngModel)]="character.Caracteristiques.SAG.Natif"></ion-input><ion-label>Sagesse</ion-label></ion-item>
+    {{error}}
+    <button ion-button round class="next" (click)="next()"><ion-icon name="arrow-forward"></ion-icon></button>
+  </div>
+  <div *ngIf="!character.Caracteristiques"></div>
+</ion-content>

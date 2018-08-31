@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Création d'un personnage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  Commençons par le basique. Rentre les informations basique sur ton personnage (Et toi !)
+  <ion-item>
+    <ion-input ngDefaultControl  name="joueur" [(ngModel)]="Joueur" placeholder="Joueur"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input ngDefaultControl  name="nom" [(ngModel)]="Nom" placeholder="Nom"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input ngDefaultControl  name="age" [(ngModel)]="Age" placeholder="Age"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input ngDefaultControl  name="sexe" [(ngModel)]="Sexe" placeholder="Sexe"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input ngDefaultControl  name="yeux" [(ngModel)]="Yeux" placeholder="Yeux"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input ngDefaultControl  name="cheveux" [(ngModel)]="Cheveux" placeholder="Cheveux"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input ngDefaultControl  name="taille" [(ngModel)]="Taille" placeholder="Taille"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input ngDefaultControl  name="dextrie" [(ngModel)]="Dextrie" placeholder="Dextrie"></ion-input>
+  </ion-item>
+
+  <button ion-button round class="next" (click)="next()"><ion-icon name="arrow-forward" ></ion-icon></button>
+</ion-content>

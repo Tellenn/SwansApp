@@ -4,13 +4,7 @@ import { CharchoicePage } from '../charchoice/charchoice';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
 import { HomePage } from '../home/home';
 import { CalculatorProvider } from '../../providers/character/character';
-
-/**
- * Generated class for the StatsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Caracteristique } from '../../components/resistance/resistance';
 
 @IonicPage()
 @Component({
@@ -45,10 +39,4 @@ export class StatsPage {
     let temp = this.afDatabase.list('/Character/' + HomePage.charnb + '/Caracteristiques', ref => ref.orderByChild('Nom').equalTo(stat.Nom));
       temp.set(stat.Nom,{Nom:stat.Nom,Modif:stat.Modif-1,Natif:stat.Natif,Score:stat.Score});
   }
-}
-export interface Caracteristique {
-  Nom: string;
-  Modif: number;
-  Natif: number;
-  Score: number;
 }

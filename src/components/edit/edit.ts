@@ -35,7 +35,7 @@ export class EditComponent {
     this.viewCtrl.dismiss();
   }
   delete() {
-    const confirm = this.alertCtrl.create({
+    let confirm = this.alertCtrl.create({
       title: "Supprimer ?",
       message: "Êtes vous sûrs ?",
       buttons: [

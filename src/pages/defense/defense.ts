@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { ResistanceComponent } from '../../components/resistance/resistance';
-import { HomePage } from '../home/home';
+import { HomePage, Defense,Caracteristique } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EditComponent,line } from '../../components/edit/edit';
 import { CalculatorProvider } from '../../providers/character/character';
@@ -19,6 +19,7 @@ import { CalculatorProvider } from '../../providers/character/character';
   templateUrl: 'defense.html',
 })
 export class DefensePage {
+  sub: any;
   dico: number[];
   modal: ModalController;
   defenses: Defense[];
@@ -26,12 +27,13 @@ export class DefensePage {
   basedef: number;
 
   constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController, calculator: CalculatorProvider) {
+    this.sub = new Array<any>();
     this.modal = modalCtrl;
     this.maxindex = -1;
-    afDatabase.object('/Character/' + HomePage.charnb + '/Caracteristiques/CON').snapshotChanges().subscribe(action => {
+    this.sub.push(afDatabase.object('/Character/' + HomePage.charnb + '/Caracteristiques/CON').snapshotChanges().subscribe(action => {
       this.basedef = 10 + calculator.calcmodif(<Caracteristique>action.payload.val());
-    });
-    afDatabase.list('/Character/' + HomePage.charnb + '/Defense').snapshotChanges().subscribe(action => {
+    }));
+    this.sub.push(afDatabase.list('/Character/' + HomePage.charnb + '/Defense').snapshotChanges().subscribe(action => {
       this.dico = new Array<number>();
       this.defenses = new Array<Defense>();
       for (let i = 0; i < action.length; i++) {
@@ -42,7 +44,12 @@ export class DefensePage {
         this.dico[i] = +action[i].key;
       }
       this.maxindex++;
-    });
+    }));
+  }
+  ionViewDidLeave() {
+    for (let i = 0; i < this.sub.length; i++) {
+      this.sub[i].unsubscribe();
+    }
   }
 
   remove(i: number) {
@@ -68,16 +75,4 @@ export class DefensePage {
     this.modal.create(EditComponent, { delete: true, params: params, path: "/Character/" + HomePage.charnb + "/Defense/" + this.dico[i] }).present();
 
   }
-}
-export interface Defense {
-  CA: number;
-  ModDex: number;
-  Nom: string;
-  Temporalite: string;
-}
-export interface Caracteristique {
-  Nom: string;
-  Modif: number;
-  Natif: number;
-  Score: number;
 }

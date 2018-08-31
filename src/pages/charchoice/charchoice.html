@@ -11,6 +11,7 @@
     <select [(ngModel)]="charnb" (change)="validate()">
       <option *ngFor="let nom of names ; let i = index" value="{{i}}">{{nom}}</option>
     </select>
+    <button ion-button round (click)="newchar()" class="bottom">Nouveau personnage</button>
   </div>
   <div *ngIf="!names">
     <ion-spinner></ion-spinner>

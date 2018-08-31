@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
-import { HomePage } from '../home/home';
+import { HomePage, Caracteristique, Competence, Caracteristiques } from '../home/home';
 import { JsonpCallbackContext } from '../../../node_modules/@angular/common/http/src/jsonp';
 
-/**
- * Generated class for the LevelupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -28,18 +22,20 @@ export class LevelupPage {
   dicocomp: string[];
   stats: Caracteristique[];
   path: string;
+  sub: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase) {
     this.path = navParams.get("path");
-    afDatabase.list(this.path + "/Competences").snapshotChanges().subscribe(action => {
+    this.sub = new Array<any>();
+    this.sub.push(afDatabase.list(this.path + "/Competences").snapshotChanges().subscribe(action => {
       this.comps = new Array<Competence>();
       this.dicocomp = new Array<string>();
       for (let i = 0; i < action.length; i++) {
         this.comps.push(<Competence>action[i].payload.val());
         this.dicocomp.push(action[i].key);
       }
-    });
-    afDatabase.object(this.path + "/Caracteristiques").snapshotChanges().subscribe(action => {
+    }));
+    this.sub.push(afDatabase.object(this.path + "/Caracteristiques").snapshotChanges().subscribe(action => {
       this.stats = new Array<Caracteristique>();
       let allstats: Caracteristiques = <Caracteristiques>action.payload.val();
       this.stats.push(allstats.CHA);
@@ -48,7 +44,13 @@ export class LevelupPage {
       this.stats.push(allstats.DEX);
       this.stats.push(allstats.INT);
       this.stats.push(allstats.SAG);
-    });
+    }));
+  }
+
+  ionViewDidLeave() {
+    for (let i = 0; i < this.sub.length; i++) {
+      this.sub[i].unsubscribe();
+    }
   }
   validate() {
     this.afDatabase.object(this.path).update({ Niveau: HomePage.level + 1 });
@@ -86,89 +88,4 @@ export class LevelupPage {
   back() {
     this.navCtrl.pop();
   }
-}
-export interface Aptitude {
-  Concentration: number;
-  LifeCondition: number;
-  Nom: string;
-  Palier: number;
-}
-
-export interface Attaque {
-  Attaque: number;
-  Critique: string;
-  Degats: number;
-  Nom: string;
-  Temporalite: string;
-}
-
-export interface Caracteristique {
-  Nom: string;
-  Modif: number;
-  Natif: number;
-  Score: number;
-}
-
-
-export interface Caracteristiques {
-  CHA: Caracteristique;
-  CON: Caracteristique;
-  DEX: Caracteristique;
-  FOR: Caracteristique;
-  INT: Caracteristique;
-  SAG: Caracteristique;
-}
-
-export interface Competence {
-  Nom: string;
-  Base: string;
-  Modif: number;
-  Natif: number;
-}
-
-export interface Defense {
-  CA: number;
-  ModDex: number;
-  Nom: string;
-  Temporalite: string;
-}
-
-export interface Etat {
-  Concentration: number;
-  Fatigue: number;
-  Mental: number;
-  Vie: number;
-}
-
-export interface Inventaire {
-  Nom: string;
-  Temporalite: string;
-}
-
-
-export interface Champ {
-  Nom: string;
-  Valeur: number;
-}
-
-export interface Character {
-  Age: number;
-  Aptitudes: Aptitude[];
-  Attaque: Attaque[];
-  Caracteristiques: Caracteristiques;
-  Cheveux: string;
-  Competences: Competence[];
-  Defense: Defense[];
-  Dextrie: string;
-  Etat: Etat;
-  Inventaire: Inventaire[];
-  Monnaie: Champ[];
-  Joueur: string;
-  Niveau: number;
-  Nom: string;
-  Reputation: Champ[];
-  Sexe: string;
-  Taille: string;
-  Yeux: string;
-  MainStat: string;
 }

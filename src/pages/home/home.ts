@@ -14,12 +14,13 @@ import { LevelupPage } from '../levelup/levelup';
 export class HomePage {
   static charnb: number;
   static level: number;
+  sub: any;
 
   database: AngularFireDatabase;
   character: Character;
 
+
   age: number;
-  char: Observable<any>;
 
   maxLife: number;
   percentLife: number;
@@ -51,10 +52,9 @@ export class HomePage {
     }
     this.database = afDatabase;
     this.age = 5;
-    this.char = afDatabase.object('/Character/' + HomePage.charnb).snapshotChanges();
-    this.char.subscribe(action => {
+    this.sub = afDatabase.object('/Character/' + HomePage.charnb).snapshotChanges().subscribe(action => {
       console.log(action.payload.val());
-      this.character = action.payload.val();
+      this.character = <Character>action.payload.val();
 
       HomePage.level = this.character.Niveau;
 
@@ -106,6 +106,11 @@ export class HomePage {
       this.percentConcentration = this.character.Etat.Concentration / this.maxConcentration * 100;
     });
 
+  }
+
+
+  ionViewDidLeave() {
+    this.sub.unsubscribe();
   }
 
   addLife() {
@@ -175,71 +180,124 @@ export class HomePage {
     this.navCtrl.push(LevelupPage, {path: "/Character/" + HomePage.charnb});
   }
 }
-export interface Aptitude {
+export class Aptitude {
   Concentration: number;
   LifeCondition: number;
   Nom: string;
   Palier: number;
+  constructor(Nom: string ="", Concentration: number = 0, LifeCondition: number =0, Palier: number=0) {
+    this.Nom = Nom;
+    this.Concentration = Concentration;
+    this.LifeCondition = LifeCondition;
+    this.Palier = Palier;
+  }
 }
 
-export interface Attaque {
+export class Attaque {
   Attaque: number;
   Critique: string;
   Degats: number;
   Nom: string;
   Temporalite: string;
+  constructor(Nom: string = "", Temporalite: string = "", Attaque: number = 0, Degats: number = 0,Critique:string ="") {
+    this.Nom = Nom;
+    this.Temporalite = Temporalite;
+    this.Attaque = Attaque;
+    this.Degats = Degats;
+    this.Critique = Critique;
+  }
 }
 
-export interface Caracteristique {
+export class Caracteristique {
   Nom: string;
   Modif: number;
   Natif: number;
   Score: number;
+  constructor(Nom: string = "", Natif: number = 0, Modif: number = 0, Score: number = 0) {
+    this.Nom = Nom;
+    this.Natif = Natif;
+    this.Modif = Modif;
+    this.Score = Score;
+  }
 }
 
 
-export interface Caracteristiques {
+export class Caracteristiques {
   CHA: Caracteristique;
   CON: Caracteristique;
   DEX: Caracteristique;
   FOR: Caracteristique;
   INT: Caracteristique;
   SAG: Caracteristique;
+  constructor(CHA: Caracteristique, CON: Caracteristique, DEX: Caracteristique, FOR: Caracteristique, INT: Caracteristique, SAG: Caracteristique) {
+    this.CHA = CHA;
+    this.CON = CON;
+    this.DEX = DEX;
+    this.FOR = FOR;
+    this.INT = INT;
+    this.SAG = SAG;
+  }
 }
 
-export interface Competence {
+export class Competence {
   Nom: string;
   Base: string;
   Modif: number;
   Natif: number;
+  constructor(Nom: string = "", Base: string = "", Modif: number = 0, Score: number = 0) {
+    this.Nom = Nom;
+    this.Natif = Modif;
+    this.Modif = Modif;
+    this.Base = Base;
+  }
 }
 
-export interface Defense {
+export class Defense {
   CA: number;
   ModDex: number;
   Nom: string;
   Temporalite: string;
+  constructor(Nom: string = "", Temporalite: string = "", CA: number = 0, ModDex: number = 0) {
+    this.Nom = Nom;
+    this.Temporalite = Temporalite;
+    this.CA = CA;
+    this.ModDex = ModDex;
+  }
 }
 
-export interface Etat {
+export class Etat {
   Concentration: number;
   Fatigue: number;
   Mental: number;
   Vie: number;
+  constructor(Vie: number = 0, Mental: number = 0, Fatigue: number = 0, Concentration: number = 0) {
+    this.Vie = Vie;
+    this.Mental = Mental;
+    this.Fatigue = Fatigue;
+    this.Concentration = Concentration;
+  }
 }
 
-export interface Inventaire {
+export class Inventaire {
   Nom: string;
   Temporalite: string;
+  constructor(Nom: string = "", Temporalite: string = "") {
+    this.Nom = Nom;
+    this.Temporalite = Temporalite;
+  }
 }
 
 
-export interface Champ {
+export class Champ {
   Nom: string;
   Valeur: number;
+  constructor(Nom: string = "", Valeur: number = 0) {
+    this.Nom = Nom;
+    this.Valeur = Valeur;
+  }
 }
 
-export interface Character {
+export class Character {
   Age: number;
   Aptitudes: Aptitude[];
   Attaque: Attaque[];
