@@ -27,7 +27,7 @@ Things to do :
 - ~~Add in-game rules~~
   - ~~Concentration~~
 - ~~Import All Character as a JSON~~
-- Delete a reputation
+- ~~Delete a reputation~~
 - ~~Delete a money~~
 - ~~Allow to set a value for every bar in homepage~~
 - ~~Add a short description on each page.~~
@@ -36,6 +36,7 @@ Things to do :
 - ~~Fix bar that cannot be empty~~
 - ~~Add a login or at least restrict access~~
 - Edit vanity infos
+- Character creation page
 
 #### V2
 - Allow filtering in :
@@ -43,7 +44,6 @@ Things to do :
   - Attack
   - Defense
 - Renew interface
-- Character creation page
 - ~~Create an interface for easier leveling~~
 - Add a HELP icon on every page to guide use through the app
 - ~~Refactor barComponent for custom color~~
