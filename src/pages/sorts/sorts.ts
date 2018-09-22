@@ -18,11 +18,12 @@ export class SortsPage {
   skills:Aptitude[];
   maxindex: number;
   pttalent: number;
-  sub: any;
+  sub: any[];
 
   constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController, calculator: CalculatorProvider) {
     this.modal = modalCtrl;
     this.maxindex = -1;
+    this.sub = new Array<any>();
     this.sub.push(afDatabase.object('/Character/' + HomePage.charnb + '/').snapshotChanges().subscribe(action => {
       let char = <Character>action.payload.val();
       let mainstat;

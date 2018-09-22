@@ -18,7 +18,7 @@ export class ParametresPage {
   music: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeAudio: NativeAudio) {
-    nativeAudio.preloadSimple('rick', '../../../resources/nevergonna.mp3');
+    nativeAudio.preloadSimple('rick', 'assets/song/nevergonna.mp3');
   }
 
   playmusic() {

@@ -39,6 +39,7 @@ import { AttribStatCreationPage } from '../pages/attrib-stat-creation/attrib-sta
 import { NatifCompCreationPage } from '../pages/natif-comp-creation/natif-comp-creation';
 import { MainStatCreationPage } from '../pages/main-stat-creation/main-stat-creation';
 import { ValidationCreationPage } from '../pages/validation-creation/validation-creation';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 // AF2 Settings
@@ -65,6 +66,7 @@ export const firebaseConfig = {
     LoginPage,
     StatsPage,
     LevelupPage,
+
     WelcomeCreationPage,
     NamingCreationPage,
     DiceCreationPage,
@@ -87,7 +89,8 @@ export const firebaseConfig = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -103,6 +106,7 @@ export const firebaseConfig = {
     LoginPage,
     LevelupPage,
     StatsPage,
+
     WelcomeCreationPage,
     NamingCreationPage,
     DiceCreationPage,

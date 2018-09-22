@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
@@ -25,8 +26,13 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public afDatabase: AngularFireDatabase) {
+  constructor(public storage: Storage,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public afDatabase: AngularFireDatabase) {
     this.initializeApp();
+    storage.get('password').then(val => {
+      if (val == "iamgroot") {
+        this.rootPage = CharchoicePage;
+      }
+    });
 
     // used for an example of ngFor and navigation
     this.pages = [

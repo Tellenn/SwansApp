@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Character } from '../home/home';
-import { Caracteristique } from '../competences/competences';
+import { Character, Caracteristique } from '../home/home';
 import { ValidationCreationPage } from '../validation-creation/validation-creation';
 
 

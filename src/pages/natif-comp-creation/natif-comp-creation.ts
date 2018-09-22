@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Character, Caracteristiques } from '../home/home';
-import { Competence } from '../levelup/levelup';
+import { Character, Caracteristiques, Competence } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { MainStatCreationPage } from '../main-stat-creation/main-stat-creation';
 

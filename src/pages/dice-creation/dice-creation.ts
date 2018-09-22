@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Character } from '../sorts/sorts';
+import { Character } from '../home/home';
 import { NatifStatCreationPage } from '../natif-stat-creation/natif-stat-creation';
 
 /**
