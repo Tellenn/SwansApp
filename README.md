@@ -36,7 +36,7 @@ Things to do :
 - ~~Fix bar that cannot be empty~~
 - ~~Add a login or at least restrict access~~
 - Edit vanity infos
-- Character creation page
+- ~~Character creation page~~
 
 #### V2
 - Allow filtering in :
