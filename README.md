@@ -35,7 +35,7 @@ Things to do :
 - ~~Fix maxConcentration~~
 - ~~Fix bar that cannot be empty~~
 - ~~Add a login or at least restrict access~~
-- Edit vanity infos
+- ~~Edit vanity infos~~
 - ~~Character creation page~~
 
 #### V2
