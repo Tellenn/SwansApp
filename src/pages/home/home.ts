@@ -176,6 +176,17 @@ export class HomePage {
     this.modalCtrl.create(EditComponent, { delete: false, params:params, path: "/Character/" + HomePage.charnb + "/Etat/"}).present();
   }
 
+  editVanity() {
+    let params: line[] = new Array<line>();
+    params.push(new line("Nom", this.character.Nom, "Nom"));
+    params.push(new line("Sexe", this.character.Sexe, "Sexe"));
+    params.push(new line("Dextrie", this.character.Dextrie, "Dextrie"));
+    params.push(new line("Taille", this.character.Taille, "Taille"));
+    params.push(new line("Cheveux", this.character.Cheveux, "Cheveux"));
+    params.push(new line("Yeux", this.character.Yeux, "Yeux"));
+    this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb }).present();
+  }
+
   levelup(){
     this.navCtrl.push(LevelupPage, {path: "/Character/" + HomePage.charnb});
   }

@@ -39,6 +39,8 @@ import { AttribStatCreationPage } from '../pages/attrib-stat-creation/attrib-sta
 import { NatifCompCreationPage } from '../pages/natif-comp-creation/natif-comp-creation';
 import { MainStatCreationPage } from '../pages/main-stat-creation/main-stat-creation';
 import { ValidationCreationPage } from '../pages/validation-creation/validation-creation';
+import { GmMenuPage } from '../pages/gm-menu/gm-menu';
+
 import { IonicStorageModule } from '@ionic/storage';
 
 
@@ -66,6 +68,7 @@ export const firebaseConfig = {
     LoginPage,
     StatsPage,
     LevelupPage,
+    GmMenuPage,
 
     WelcomeCreationPage,
     NamingCreationPage,
@@ -106,6 +109,7 @@ export const firebaseConfig = {
     LoginPage,
     LevelupPage,
     StatsPage,
+    GmMenuPage,
 
     WelcomeCreationPage,
     NamingCreationPage,
