@@ -2,12 +2,6 @@ import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 import { CalculatorProvider } from '../../providers/character/character';
 
-/**
- * Generated class for the ModalcompComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'modalcomp',
   templateUrl: 'modalcomp.html'

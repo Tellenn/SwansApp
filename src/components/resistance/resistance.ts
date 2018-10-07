@@ -31,7 +31,6 @@ export class ResistanceComponent {
             this.SAG = char;
             break;
         }
-        console.log(char.Nom);
       }
     });
   }

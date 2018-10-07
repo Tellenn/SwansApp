@@ -1,0 +1,8 @@
+<div class="modal">
+    <ion-item *ngFor="let char of characters; let i = index">
+      <ion-label>{{names[i]}}</ion-label>
+      <ion-checkbox [(ngModel)]="newChoice[i]"></ion-checkbox>
+    </ion-item>
+    <button ion-button (click)="validate()" class="validate">Valider</button><button ion-button (click)="cancel()" class="cancel">Annuler</button><button ion-button *ngIf="candelete" (click)="delete()" class="delete">Supprimer</button>
+
+  </div>

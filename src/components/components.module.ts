@@ -7,6 +7,8 @@ import { MoneyComponent } from './money/money';
 import { HeaderComponent } from './header/header';
 import { ResistanceComponent } from './resistance/resistance';
 import { ModalcompComponent } from './modalcomp/modalcomp';
+import { RecapCharComponent } from './recap-char/recap-char';
+import { ModalFilterComponent } from './modal-filter/modal-filter';
 @NgModule({
 	declarations: [
     BarComponent,
@@ -16,7 +18,9 @@ import { ModalcompComponent } from './modalcomp/modalcomp';
     MoneyComponent,
     HeaderComponent,
     ResistanceComponent,
-    ModalcompComponent],
+    ModalcompComponent,
+    RecapCharComponent,
+    ModalFilterComponent],
 	imports: [],
   exports: [
     BarComponent,
@@ -26,7 +30,9 @@ import { ModalcompComponent } from './modalcomp/modalcomp';
     MoneyComponent,
     HeaderComponent,
     ResistanceComponent,
-    ModalcompComponent],
+    ModalcompComponent,
+    RecapCharComponent,
+    ModalFilterComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {}

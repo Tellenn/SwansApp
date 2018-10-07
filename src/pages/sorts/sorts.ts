@@ -17,43 +17,26 @@ export class SortsPage {
   modal:ModalController;
   skills:Aptitude[];
   maxindex: number;
+  maxtalent: number;
   pttalent: number;
   sub: any[];
+  niveau: number;
 
   constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController, calculator: CalculatorProvider) {
     this.modal = modalCtrl;
     this.maxindex = -1;
+    this.pttalent = 0;
     this.sub = new Array<any>();
-    this.sub.push(afDatabase.object('/Character/' + HomePage.charnb + '/').snapshotChanges().subscribe(action => {
-      let char = <Character>action.payload.val();
-      let mainstat;
-      switch (char.MainStat) {
-        case "DEX":
-          mainstat = char.Caracteristiques.DEX;
-          break;
-        case "CON":
-          mainstat = char.Caracteristiques.CON;
-          break;
-        case "FOR":
-          mainstat = char.Caracteristiques.FOR;
-          break;
-        case "INT":
-          mainstat = char.Caracteristiques.INT;
-          break;
-        case "SAG":
-          mainstat = char.Caracteristiques.SAG;
-          break;
-        case "CHA":
-          mainstat = char.Caracteristiques.CHA;
-          break;
-        default:
-          mainstat = null;
-      }
-      this.pttalent = calculator.calcmodif(mainstat, char.Niveau - 1);
-    }));
+
     this.sub.push(afDatabase.list('/Character/'+HomePage.charnb+'/Aptitudes').snapshotChanges().subscribe( action => {
       this.dico = new Array<number>();
       this.skills = new Array<Aptitude>();
+      if (HomePage.mainstat.Nom == "CON") {
+        this.pttalent = calculator.calcmodif(HomePage.mainstat, HomePage.level) + HomePage.level - 1;
+      } else {+ HomePage.level - 1
+
+        this.pttalent = calculator.calcmodif(HomePage.mainstat) + HomePage.level - 1;
+      }
       for (let i = 0; i < action.length; i++){
         let skill = <Aptitude>action[i].payload.val()
         this.skills.push(skill);
@@ -79,7 +62,7 @@ export class SortsPage {
   create() {
     let params: line[] = new Array<line>();
     params.push(new line("Nom", "", "Nom"));
-    params.push(new line("Concentation", "", "Concentation"));
+    params.push(new line("Concentration", "", "Concentration"));
     params.push(new line("Life Condition", "", "LifeCondition"));
     params.push(new line("Palier", "", "Palier"));
     this.modal.create(EditComponent, {delete:false, params:params, path: "/Character/" + HomePage.charnb + "/Aptitudes/"+this.maxindex}).present();
@@ -88,7 +71,7 @@ export class SortsPage {
   edit(i:number){
     let params: line[] = new Array<line>();
     params.push(new line("Nom", this.skills[i].Nom, "Nom"));
-    params.push(new line("Concentation", this.skills[i].Concentration, "Concentation"));
+    params.push(new line("Concentration", this.skills[i].Concentration, "Concentration"));
     params.push(new line("Life Condition", this.skills[i].LifeCondition, "LifeCondition"));
     params.push(new line("Palier", this.skills[i].Palier, "Palier"));
     this.modal.create(EditComponent, { delete: true, params: params,path: "/Character/" + HomePage.charnb + "/Aptitudes/" + this.dico[i]}).present();

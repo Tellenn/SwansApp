@@ -1,0 +1,24 @@
+<!-- Generated template for the RecapCharComponent component -->
+<div *ngIf="character">
+  {{character.Nom}} ({{character.Joueur}})<br />
+  <bar [progress]="character.Etat.Vie" [max]="maxLife" [percent]="percentLife" [newcolor]="lifecolor"></bar>
+  <bar [progress]="character.Etat.Mental" [max]="maxMental" [percent]="percentMental" [newcolor]="mentalcolor"></bar>
+  <bar [progress]="character.Etat.Fatigue" [max]="maxFatigue" [percent]="percentFatigue" [newcolor]="fatiguecolor"></bar>
+  <bar [progress]="character.Etat.Concentration" [max]="maxConcentration" [percent]="percentConcentration" [newcolor]="concentrationcolor"></bar>
+  <ion-grid>
+    <ion-row>
+      <ion-col>CHA</ion-col><ion-col>CON</ion-col><ion-col>DEX</ion-col><ion-col>FOR</ion-col><ion-col>INT</ion-col><ion-col>SAG</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>{{character.Caracteristiques.CHA.Score+character.Caracteristiques.CHA.Natif+character.Caracteristiques.CHA.Modif}}</ion-col>
+      <ion-col>{{character.Caracteristiques.CON.Score+character.Caracteristiques.CON.Natif+character.Caracteristiques.CON.Modif+character.Niveau-1}}</ion-col>
+      <ion-col>{{character.Caracteristiques.DEX.Score+character.Caracteristiques.DEX.Natif+character.Caracteristiques.DEX.Modif}}</ion-col>
+      <ion-col>{{character.Caracteristiques.FOR.Score+character.Caracteristiques.FOR.Natif+character.Caracteristiques.FOR.Modif}}</ion-col>
+      <ion-col>{{character.Caracteristiques.INT.Score+character.Caracteristiques.INT.Natif+character.Caracteristiques.INT.Modif}}</ion-col>
+      <ion-col>{{character.Caracteristiques.SAG.Score+character.Caracteristiques.SAG.Natif+character.Caracteristiques.SAG.Modif}}</ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+<div *ngIf="!character">
+  <ion-spinner></ion-spinner>
+</div>

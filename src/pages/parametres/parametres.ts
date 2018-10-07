@@ -15,10 +15,14 @@ import { NativeAudio } from '@ionic-native/native-audio';
   templateUrl: 'parametres.html',
 })
 export class ParametresPage {
+
   music: boolean;
+  music2: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeAudio: NativeAudio) {
     nativeAudio.preloadSimple('rick', 'assets/song/nevergonna.mp3');
+    nativeAudio.preloadSimple('guile', 'assets/song/shittyguile.mp3');
+
   }
 
   playmusic() {
@@ -28,6 +32,16 @@ export class ParametresPage {
     } else {
       //stop
       this.nativeAudio.stop("rick");
+
+    }
+  }
+  playmusic2() {
+    if (this.music2) {
+      //play
+      this.nativeAudio.loop("guile");
+    } else {
+      //stop
+      this.nativeAudio.stop("guile");
 
     }
   }

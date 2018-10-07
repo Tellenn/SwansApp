@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
 import { HomePage, Character } from '../home/home';
 import { WelcomeCreationPage } from '../welcome-creation/welcome-creation';
+import { GmMenuPage } from '../gm-menu/gm-menu';
+import { HeaderComponent } from '../../components/header/header';
 
 @IonicPage()
 @Component({
@@ -10,6 +12,7 @@ import { WelcomeCreationPage } from '../welcome-creation/welcome-creation';
   templateUrl: 'charchoice.html',
 })
 export class CharchoicePage {
+  
   sub: any;
   dico: number[];
   names: string[];
@@ -17,6 +20,7 @@ export class CharchoicePage {
   charnb: number;
 
   constructor(public afDatabase: AngularFireDatabase, public navCtrl: NavController) {
+    HeaderComponent.toGM = false;
     this.sub = afDatabase.list('/Character').snapshotChanges().subscribe(action => {
       this.dico = new Array<number>();
       this.names = new Array<string>();
@@ -38,6 +42,9 @@ export class CharchoicePage {
     }
   }
   newchar() {
-    this.navCtrl.push(WelcomeCreationPage, {});
+    this.navCtrl.setRoot(WelcomeCreationPage, {});
+  }
+  togm() {
+    this.navCtrl.setRoot(GmMenuPage, {});
   }
 }

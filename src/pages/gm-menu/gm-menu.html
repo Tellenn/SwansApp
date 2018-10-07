@@ -1,14 +1,14 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Menu du Maître de jeu</ion-title>
-  </ion-navbar>
+  <header title="Menu du GM"></header>
 </ion-header>
 
-
 <ion-content padding>
-Work in progress
-  TODO : Create component to show 1 user
-  TODO : On click show the player page
-  TODO : 1 player per page on mobile, 2 if on landscape mode/ 2 on tablet, 3 or 4 on landscape mode
-  BONUS : Drap and drop to allow the GM to show on the top the player he want ? Filter ?
+  <div *ngIf="getChosen()">
+    <div *ngFor="let char of characters; let i = index">
+      <recap-char *ngIf="getChosen()[i]" [character]="char" (click)="toChar(char)"></recap-char>
+    </div>
+  </div>
+  <ion-fab (click)="selectPlayer()">
+    <button ion-fab><ion-icon name="ios-funnel"></ion-icon></button>
+  </ion-fab>
 </ion-content>

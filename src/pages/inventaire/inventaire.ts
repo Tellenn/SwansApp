@@ -43,7 +43,7 @@ export class InventairePage {
     let params: line[] = new Array<line>();
     params.push(new line("Nom", "", "Nom"));
     params.push(new line("Temporalite", "", "Temporalite"));
-    this.modalCtrl.create(EditComponent, { delete: false, name: "", origin: "", path: "/Character/" + HomePage.charnb + "/Inventaire/" + this.maxindex }).present();
+    this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb + "/Inventaire/" + this.maxindex }).present();
   }
 
 }

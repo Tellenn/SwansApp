@@ -14,6 +14,7 @@ import { Caracteristique } from '../../components/resistance/resistance';
 export class StatsPage {
   calc: CalculatorProvider;
   stats: Caracteristique[];
+  niv: number;
   constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase,calculator: CalculatorProvider) {
     this.calc=calculator;
     this.stats = new Array<Caracteristique>();
@@ -23,6 +24,9 @@ export class StatsPage {
       }
       for (let i = 0; i < action.length; i++) {
         this.stats.push(<Caracteristique>action[i].payload.val());
+        if (this.stats[i].Nom == "CON") {
+          this.stats[i].Natif = + HomePage.level - 1;
+        }
       }
     });
   }

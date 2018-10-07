@@ -31,7 +31,7 @@ export class DefensePage {
     this.modal = modalCtrl;
     this.maxindex = -1;
     this.sub.push(afDatabase.object('/Character/' + HomePage.charnb + '/Caracteristiques/CON').snapshotChanges().subscribe(action => {
-      this.basedef = 10 + calculator.calcmodif(<Caracteristique>action.payload.val());
+      this.basedef = 10 + calculator.calcmodif(<Caracteristique>action.payload.val(), HomePage.level - 1);
     }));
     this.sub.push(afDatabase.list('/Character/' + HomePage.charnb + '/Defense').snapshotChanges().subscribe(action => {
       this.dico = new Array<number>();

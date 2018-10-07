@@ -1,11 +1,5 @@
 import { Component, Input} from '@angular/core';
 
-/**
- * Generated class for the MentalbarComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'bar',
   templateUrl: 'bar.html'
@@ -18,7 +12,6 @@ export class BarComponent {
 
 
   constructor() {
-    console.log(this.newcolor);
   }
 
 }

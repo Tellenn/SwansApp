@@ -25,6 +25,7 @@ import { MoneyComponent } from '../components/money/money';
 import { HeaderComponent } from '../components/header/header';
 import { ResistanceComponent } from '../components/resistance/resistance';
 
+
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -42,6 +43,8 @@ import { ValidationCreationPage } from '../pages/validation-creation/validation-
 import { GmMenuPage } from '../pages/gm-menu/gm-menu';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { RecapCharComponent } from '../components/recap-char/recap-char';
+import { ModalFilterComponent } from '../components/modal-filter/modal-filter';
 
 
 // AF2 Settings
@@ -86,7 +89,9 @@ export const firebaseConfig = {
     MoneyComponent,
     HeaderComponent,
     ResistanceComponent,
-    ModalcompComponent
+    ModalcompComponent,
+    RecapCharComponent,
+    ModalFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -124,7 +129,9 @@ export const firebaseConfig = {
     MoneyComponent,
     HeaderComponent,
     ResistanceComponent,
-    ModalcompComponent
+    ModalcompComponent,
+    RecapCharComponent,
+    ModalFilterComponent
   ],
   providers: [
     StatusBar,

@@ -5,12 +5,6 @@ import { CalculatorProvider } from '../../providers/character/character';
 import { HomePage, Competence, Caracteristique,Caracteristiques } from '../home/home';
 import { ModalcompComponent } from '../../components/modalcomp/modalcomp';
 
-/**
- * Generated class for the CompetencesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
