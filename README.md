@@ -43,11 +43,13 @@ Things to do :
   - Inventory
   - Attack
   - Defense
+  - ~~GM Page~~
 - Renew interface
 - ~~Create an interface for easier leveling~~
-- Add a HELP icon on every page to guide use through the app
+- ~~Add a HELP icon on every page to guide use through the app~~~~ [CANCELED]
 - ~~Refactor barComponent for custom color~~
-- Create a GM page
+- ~~Create a GM page~~
+- Add a "free note" page stored locally
 
 ### V3
  - Prospect for a generic table component with custom number of row and name
