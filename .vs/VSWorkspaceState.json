@@ -2,15 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\components",
-    "\\src\\components\\recap-char",
+    "\\src\\assets",
     "\\src\\pages",
-    "\\src\\pages\\charchoice",
-    "\\src\\pages\\gm-menu",
-    "\\src\\pages\\home",
-    "\\src\\pages\\stats"
+    "\\src\\pages\\parametres",
+    "\\src\\pages\\sorts"
   ],
-  "SelectedNode": "\\src\\pages\\home\\home.ts",
+  "SelectedNode": "\\config.xml",
   "PreviewInSolutionExplorer": false
 }

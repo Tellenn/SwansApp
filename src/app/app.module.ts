@@ -45,6 +45,7 @@ import { GmMenuPage } from '../pages/gm-menu/gm-menu';
 import { IonicStorageModule } from '@ionic/storage';
 import { RecapCharComponent } from '../components/recap-char/recap-char';
 import { ModalFilterComponent } from '../components/modal-filter/modal-filter';
+import { NotesPage } from '../pages/notes/notes';
 
 
 // AF2 Settings
@@ -72,6 +73,7 @@ export const firebaseConfig = {
     StatsPage,
     LevelupPage,
     GmMenuPage,
+    NotesPage,
 
     WelcomeCreationPage,
     NamingCreationPage,
@@ -115,6 +117,7 @@ export const firebaseConfig = {
     LevelupPage,
     StatsPage,
     GmMenuPage,
+    NotesPage,
 
     WelcomeCreationPage,
     NamingCreationPage,

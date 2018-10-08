@@ -15,6 +15,7 @@ import { StatsPage } from '../pages/stats/stats';
 import { ParametresPage } from '../pages/parametres/parametres';
 import { SortsPage } from '../pages/sorts/sorts';
 import { LoginPage } from '../pages/login/login';
+import { NotesPage } from '../pages/notes/notes';
 
 @Component({
   templateUrl: 'app.html'
@@ -43,6 +44,7 @@ export class MyApp {
       { title: 'Competences', component: CompetencesPage },
       { title: 'Attaque', component: AttaquePage },
       { title: 'Defense', component: DefensePage },
+      { title: 'Notes', component: NotesPage },
       { title: 'Paramètres', component: ParametresPage }
     ];
 

@@ -17,32 +17,31 @@ import { NativeAudio } from '@ionic-native/native-audio';
 export class ParametresPage {
 
   music: boolean;
-  music2: boolean;
+  musicguile: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeAudio: NativeAudio) {
-    nativeAudio.preloadSimple('rick', 'assets/song/nevergonna.mp3');
-    nativeAudio.preloadSimple('guile', 'assets/song/shittyguile.mp3');
-
+    this.nativeAudio.preloadSimple('guile', 'assets/song/shittyguile.mp3');
+    this.nativeAudio.preloadSimple('rick', 'assets/song/nevergonna.mp3');
   }
 
   playmusic() {
-    if (this.music) {
-      //play
+    if (this.music)
+    {
       this.nativeAudio.loop("rick");
-    } else {
-      //stop
+    }
+    else
+    {
       this.nativeAudio.stop("rick");
-
     }
   }
-  playmusic2() {
-    if (this.music2) {
-      //play
+  playmusicguile() {
+    if (this.musicguile)
+    {
       this.nativeAudio.loop("guile");
-    } else {
-      //stop
+    }
+    else
+    {
       this.nativeAudio.stop("guile");
-
     }
   }
 
