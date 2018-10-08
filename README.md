@@ -12,7 +12,7 @@ This app is in a continuous developpement meant for personnal use
   - Attack
   - Defense
 - Renew interface
-- Add a "free note" page stored locally
+
 
 #### V3
  - Prospect for a generic table component with custom number of row and name
@@ -61,7 +61,7 @@ This app is in a continuous developpement meant for personnal use
 - ~~Create a GM page~~
 - ~~Allow filtering in :~~
   - ~~GM Page~~
-  
+- ~~Add a "free note" page stored locally
  #### V3
  
  
