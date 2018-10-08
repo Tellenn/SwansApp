@@ -54,6 +54,6 @@ Things to do :
 ### V3
  - Prospect for a generic table component with custom number of row and name
  - ~~Generic bar~~
- - ~~Generic modal~~
+ - ~~Generic edit modal~~
 
 If you have any request or bug, do not hesitate to create a github issue !
