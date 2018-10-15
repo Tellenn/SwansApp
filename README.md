@@ -12,10 +12,14 @@ This app is in a continuous developpement meant for personnal use
   - Attack
   - Defense
 - Renew interface
+- Avatar
+- Custom bar color
+- Night mod
 
 
 #### V3
- - Prospect for a generic table component with custom number of row and name
+- Talent tree HMI
+- Prospect for a generic table component with custom number of row and name
  
  
  ### Things done
@@ -62,6 +66,7 @@ This app is in a continuous developpement meant for personnal use
 - ~~Allow filtering in :~~
   - ~~GM Page~~
 - ~~Add a "free note" page stored locally
+- ~~Added Overcharge bar
  #### V3
  
  
