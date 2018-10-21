@@ -1,10 +1,29 @@
 # Swan's App !
 ## The app that help you monitor yourself and your friends !
+https://play.google.com/store/apps/details?id=io.ionic.swanapp
 
-This is still in developpement and should absolutly not be re-used in a professionnal project.
+This app is in a continuous developpement meant for personnal use
 
-Things to do :
-#### V0
+### Things to do :
+
+#### V2
+- Allow filtering in :
+  - Inventory
+  - Attack
+  - Defense
+- Renew interface
+- Avatar
+- Custom bar color
+- Night mod
+
+
+#### V3
+- Talent tree HMI
+- Prospect for a generic table component with custom number of row and name
+ 
+ 
+ ### Things done
+ #### V0
 - ~~Create a json file from a character to start the reading process~~
 - ~~Create Home page~~
 - ~~Create Stats page~~
@@ -38,20 +57,21 @@ Things to do :
 - ~~Edit vanity infos~~
 - ~~Character creation page~~
 
-#### V2
-- Allow filtering in :
-  - Inventory
-  - Attack
-  - Defense
-- Renew interface
-- ~~Create an interface for easier leveling~~
-- Add a HELP icon on every page to guide use through the app
-- ~~Refactor barComponent for custom color~~
-- Create a GM page
+#### V2 
 
-### V3
- - Prospect for a generic table component with custom number of row and name
+- ~~Create an interface for easier leveling~~
+- ~~Add a HELP icon on every page to guide use through the app~~~~ [CANCELED]
+- ~~Refactor barComponent for custom color~~
+- ~~Create a GM page~~
+- ~~Allow filtering in :~~
+  - ~~GM Page~~
+- ~~Add a "free note" page stored locally
+- ~~Added Overcharge bar
+ #### V3
+ 
+ 
  - ~~Generic bar~~
- - ~~Generic modal~~
+ - ~~Generic edit modal~~
+
 
 If you have any request or bug, do not hesitate to create a github issue !
