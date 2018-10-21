@@ -9,6 +9,8 @@ export class BarComponent {
   @Input('max') max;
   @Input('percent') percent;
   @Input('newcolor') newcolor;
+  @Input('overcharge') overcharge;
+  @Input('overpercent') overpercent;
 
 
   constructor() {

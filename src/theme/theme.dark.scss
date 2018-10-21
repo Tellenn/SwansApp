@@ -1,0 +1,73 @@
+.dark-theme {
+
+  .item-cover {
+    background-color: transparent;
+  }
+
+  ion-item {
+    background-color: #191f1f;
+    color: lightgrey;
+  }
+
+  .menu-inner {
+    background-color: #191f1f;
+    color: lightgrey;
+
+    button {
+      background-color: #191f1f;
+      color: lightgrey;
+    }
+  }
+
+  .modal {
+    background-color: #191f1f;
+    color: lightgrey;
+  }
+
+  ion-content {
+    background-color: #191f1f;
+    color: lightgrey;
+  }
+
+  .menu-inner {
+    background-color: #191f1f;
+    color: lightgrey;
+  }
+
+  .toolbar-title {
+    color: lightgrey;
+  }
+
+  select {
+    background-color: #303030;
+  }
+
+  button {
+    background-color: #191f3f;
+    color: lightgrey;
+  }
+
+  .header .toolbar-background {
+    border-color: #ff0fff;
+    background-color: #191f1f;
+  }
+
+  .return {
+    background-color: #191f1f;
+    color: grey;
+  }
+
+  .bar-button {
+    background-color: #191f1f;
+    color: grey;
+  }
+
+  .progress-outer {
+    background-color: #191f1f;
+    color: lightgrey;
+  }
+  // Define model customization scss here
+  ion-modal ion-content {
+    background-color: #000;
+  }
+}

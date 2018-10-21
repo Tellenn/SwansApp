@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NativeAudio } from '@ionic-native/native-audio';
-
-/**
- * Generated class for the ParametresPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Storage } from '@ionic/storage';
+import { SettingsProvider } from '../../providers/settings/settings';
 
 @IonicPage()
 @Component({
@@ -16,12 +11,19 @@ import { NativeAudio } from '@ionic-native/native-audio';
 })
 export class ParametresPage {
 
+  selectedTheme: String;
   music: boolean;
   musicguile: boolean;
+  night: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private nativeAudio: NativeAudio) {
-    this.nativeAudio.preloadSimple('guile', 'assets/song/shittyguile.mp3');
+  constructor(public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private nativeAudio: NativeAudio, private settings: SettingsProvider) {
+    this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
+    this.nativeAudio.preloadSimple('guile', 'assets/song/shitty.mp3');
     this.nativeAudio.preloadSimple('rick', 'assets/song/nevergonna.mp3');
+    this.storage.get("theme").then(val => {
+      if(val == 'dark-theme')
+        this.night = true;
+    });
   }
 
   playmusic() {
@@ -44,7 +46,13 @@ export class ParametresPage {
       this.nativeAudio.stop("guile");
     }
   }
-
+  nightmode() {
+    if (!this.night) {
+      this.settings.setActiveTheme('light-theme');
+    } else {
+      this.settings.setActiveTheme('dark-theme');
+    }
+  }
   
 
 

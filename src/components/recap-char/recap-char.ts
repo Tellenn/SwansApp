@@ -45,8 +45,6 @@ export class RecapCharComponent {
       this.afDatabase.object('/Character/' + this.charno).snapshotChanges().subscribe(action => {
         this.character = <Character>action.payload.val();
 
-        console.log(this.character);
-
         this.character.Caracteristiques.CON.Natif += this.character.Niveau - 1;
 
         this.maxLife = calculator.calcmodif(this.character.Caracteristiques.CON) + 8;
@@ -85,6 +83,4 @@ export class RecapCharComponent {
       });
     },1500);
   }
-
-
 }

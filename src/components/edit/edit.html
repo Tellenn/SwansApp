@@ -1,11 +1,13 @@
-<div class="modal">
-  <div class="selection">
-    <ion-item *ngFor="let line of editvalues">
-      <ion-label *ngIf="candelete">
-        {{line.nom}}
-      </ion-label>
-      <ion-input [value]="line.val" [(ngModel)]="line.val" name="newname" [placeholder]="line.nom"></ion-input>
-    </ion-item>
-    <button ion-button (click)="validate()" class="validate">Valider</button><button ion-button (click)="cancel()" class="cancel">Annuler</button><button ion-button *ngIf="candelete" (click)="delete()" class="delete">Supprimer</button>
+<div [class]="selectedTheme">
+  <div class="modal">
+    <div class="selection">
+      <ion-item *ngFor="let line of editvalues">
+        <ion-label *ngIf="candelete">
+          {{line.nom}}
+        </ion-label>
+        <ion-input [value]="line.val" [(ngModel)]="line.val" name="newname" [placeholder]="line.nom"></ion-input>
+      </ion-item>
+      <button ion-button (click)="validate()" class="validate">Valider</button><button ion-button (click)="cancel()" class="cancel">Annuler</button><button ion-button *ngIf="candelete" (click)="delete()" class="delete">Supprimer</button>
+    </div>
   </div>
 </div>

@@ -10,21 +10,22 @@
     Dextrie : {{character.Dextrie}}.
     <br />
     <h3>Vie :</h3>
-    <bar [progress]="character.Etat.Vie" [max]="maxLife" [percent]="percentLife" [newcolor]="lifecolor"></bar><br />
-    <button ion-button round (click)="removeLife()">-</button><button ion-button round (click)="addLife()">+</button><button ion-button round (click)="set('Vie',character.Etat.Vie,maxLife)"><ion-icon name="brush"></ion-icon></button>
+    <bar [overpercent]="OverPercentVie" [overcharge]="character.Etat.OverVie" [progress]="character.Etat.Vie" [max]="maxLife" [percent]="percentLife" [newcolor]="lifecolor"></bar><br />
+    <button ion-button round (click)="removeLife()">-</button><button ion-button round (click)="addLife()">+</button><button ion-button round (click)="set('Vie',character.Etat.Vie,maxLife)"><ion-icon name="brush"></ion-icon></button><button ion-button round (click)="overcharge(character.Etat.OverVie,'OverVie')"><ion-icon name="ios-thunderstorm"></ion-icon></button>
     <h3>Santé Mentale :</h3>
-    <bar [progress]="character.Etat.Mental" [max]="maxMental" [percent]="percentMental" [newcolor]="mentalcolor"></bar>
-    <button ion-button round (click)="removeMental()">-</button><button ion-button round (click)="addMental()">+</button><button ion-button round (click)="set('Mental',character.Etat.Mental,maxMental)"><ion-icon name="brush"></ion-icon></button>
+    <bar [overpercent]="OverPercentMental" [overcharge]="character.Etat.OverMental" [progress]="character.Etat.Mental" [max]="maxMental" [percent]="percentMental" [newcolor]="mentalcolor"></bar>
+    <button ion-button round (click)="removeMental()">-</button><button ion-button round (click)="addMental()">+</button><button ion-button round (click)="set('Mental',character.Etat.Mental,maxMental)"><ion-icon name="brush"></ion-icon></button><button ion-button round (click)="overcharge(character.Etat.OverMental,'OverMental')"><ion-icon name="ios-thunderstorm"></ion-icon></button>
     <h3>Fatigue :</h3>
-    <bar [progress]="character.Etat.Fatigue" [max]="maxFatigue" [percent]="percentFatigue" [newcolor]="fatiguecolor"></bar>
-    <button ion-button round (click)="removeFatigue()">-</button><button ion-button round (click)="addFatigue()">+</button><button ion-button round (click)="set('Fatigue',character.Etat.Fatigue,maxFatigue)"><ion-icon name="brush"></ion-icon></button>
+    <bar [overpercent]="OverPercentFatigue" [overcharge]="character.Etat.OverFatigue" [progress]="character.Etat.Fatigue" [max]="maxFatigue" [percent]="percentFatigue" [newcolor]="fatiguecolor"></bar>
+    <button ion-button round (click)="removeFatigue()">-</button><button ion-button round (click)="addFatigue()">+</button><button ion-button round (click)="set('Fatigue',character.Etat.Fatigue,maxFatigue)"><ion-icon name="brush"></ion-icon></button><button ion-button round (click)="overcharge(character.Etat.OverFatigue,'OverFatigue')"><ion-icon name="ios-thunderstorm"></ion-icon></button>
     <h3>Concentration :</h3>
-    <bar [progress]="character.Etat.Concentration" [max]="maxConcentration" [percent]="percentConcentration" [newcolor]="concentrationcolor"></bar>
-    <button ion-button round (click)="removeConcentration()">-</button><button ion-button round (click)="addConcentration()">+</button><button ion-button round (click)="set('Concentration',character.Etat.Concentration,maxConcentration)"><ion-icon name="brush"></ion-icon></button>
-    <br/><br/><br/><br/><br/>
-    <button ion-button round (click)="levelup()">LEVEL UP!!!</button>
-    <button ion-button round (click)="editVanity()">Modifier profil</button>
-  </div>
+    <bar [overpercent]="OverPercentConcentration" [overcharge]="character.Etat.OverConcentration" [progress]="character.Etat.Concentration" [max]="maxConcentration" [percent]="percentConcentration" [newcolor]="concentrationcolor"></bar>
+    <button ion-button round (click)="removeConcentration()">-</button><button ion-button round (click)="addConcentration()">+</button><button ion-button round (click)="set('Concentration',character.Etat.Concentration,maxConcentration)"><ion-icon name="brush"></ion-icon></button><button ion-button round (click)="overcharge(character.Etat.OverConcentration,'OverConcentration')"><ion-icon name="ios-thunderstorm"></ion-icon></button>
+
+  <br /><br /><br /><br /><br />
+  <button ion-button round (click)="levelup()">LEVEL UP!!!</button>
+  <button ion-button round (click)="editVanity()">Modifier profil</button>
+</div>
   <div *ngIf="!character">
     <ion-spinner></ion-spinner>
   </div>

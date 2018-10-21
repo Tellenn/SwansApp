@@ -23,15 +23,19 @@ export class HomePage {
 
   maxLife: number;
   percentLife: number;
+  OverPercentVie: number;
 
   maxMental: number;
   percentMental: number;
+  OverPercentMental: number;
 
   maxFatigue: number;
   percentFatigue: number;
+  OverPercentFatigue: number;
 
   maxConcentration: number;
   percentConcentration: number;
+  OverPercentConcentration: number;
 
   returnToGM: boolean;
 
@@ -64,18 +68,21 @@ export class HomePage {
         this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Vie: this.maxLife });
       }
       this.percentLife = this.character.Etat.Vie / this.maxLife * 100;
+      this.OverPercentVie = this.character.Etat.OverVie / this.maxLife * 100;
 
       this.maxMental = (calculator.calcmodif(this.character.Caracteristiques.CON, this.character.Niveau - 1) * 2 + 20);
       if (this.character.Etat.Mental > this.maxMental) {
         this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Mental: this.maxMental });
       }
       this.percentMental = this.character.Etat.Mental / this.maxMental * 100;
+      this.OverPercentMental = this.character.Etat.OverMental / this.maxMental * 100;
 
       this.maxFatigue = 10;
       if (this.character.Etat.Fatigue > this.maxFatigue) {
         this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Fatigue: this.maxFatigue });
       }
       this.percentFatigue = this.character.Etat.Fatigue / this.maxFatigue * 100;
+      this.OverPercentFatigue = this.character.Etat.OverFatigue / this.maxFatigue * 100;
 
       switch (this.character.MainStat) {
         case "DEX":
@@ -110,6 +117,7 @@ export class HomePage {
         this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Concentration: this.maxConcentration });
       }
       this.percentConcentration = this.character.Etat.Concentration / this.maxConcentration * 100;
+      this.OverPercentConcentration = this.character.Etat.OverConcentration / this.maxConcentration * 100;
     });
 
   }
@@ -194,6 +202,12 @@ export class HomePage {
 
   levelup(){
     this.navCtrl.push(LevelupPage, {path: "/Character/" + HomePage.charnb});
+  }
+
+  overcharge(val : number,stat:string) {
+    let params: line[] = new Array<line>();
+    params.push(new line(stat, val, stat));
+    this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb +"/Etat/"}).present();
   }
 }
 export class Aptitude {
@@ -283,9 +297,13 @@ export class Defense {
 
 export class Etat {
   Concentration: number;
+  OverConcentration: number;
   Fatigue: number;
+  OverFatigue: number;
   Mental: number;
+  OverMental: number;
   Vie: number;
+  OverVie: number;
   constructor(Vie: number = 0, Mental: number = 0, Fatigue: number = 0, Concentration: number = 0) {
     this.Vie = Vie;
     this.Mental = Mental;

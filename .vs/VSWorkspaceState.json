@@ -2,11 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\assets",
+    "\\src\\app",
+    "\\src\\components",
     "\\src\\pages",
-    "\\src\\pages\\parametres",
-    "\\src\\pages\\sorts"
+    "\\src\\pages\\charchoice",
+    "\\src\\pages\\home",
+    "\\src\\pages\\naming-creation",
+    "\\src\\theme"
   ],
-  "SelectedNode": "\\config.xml",
+  "SelectedNode": "\\src\\theme\\theme.dark.scss",
   "PreviewInSolutionExplorer": false
 }

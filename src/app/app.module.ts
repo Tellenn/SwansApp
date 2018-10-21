@@ -46,6 +46,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { RecapCharComponent } from '../components/recap-char/recap-char';
 import { ModalFilterComponent } from '../components/modal-filter/modal-filter';
 import { NotesPage } from '../pages/notes/notes';
+import { SettingsProvider } from '../providers/settings/settings';
 
 
 // AF2 Settings
@@ -141,7 +142,8 @@ export const firebaseConfig = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CalculatorProvider,
-    NativeAudio
+    NativeAudio,
+    SettingsProvider
   ]
 })
 export class AppModule {}

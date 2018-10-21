@@ -5,6 +5,7 @@ import { HomePage, Character } from '../home/home';
 import { WelcomeCreationPage } from '../welcome-creation/welcome-creation';
 import { GmMenuPage } from '../gm-menu/gm-menu';
 import { HeaderComponent } from '../../components/header/header';
+import { SettingsProvider } from '../../providers/settings/settings';
 
 @IonicPage()
 @Component({
@@ -12,7 +13,8 @@ import { HeaderComponent } from '../../components/header/header';
   templateUrl: 'charchoice.html',
 })
 export class CharchoicePage {
-  
+
+  selectedTheme: String;
   sub: any;
   dico: number[];
   names: string[];

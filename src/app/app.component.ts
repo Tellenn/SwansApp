@@ -16,6 +16,7 @@ import { ParametresPage } from '../pages/parametres/parametres';
 import { SortsPage } from '../pages/sorts/sorts';
 import { LoginPage } from '../pages/login/login';
 import { NotesPage } from '../pages/notes/notes';
+import { SettingsProvider } from '../providers/settings/settings';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,10 +25,12 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = LoginPage;
+  selectedTheme: String;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public storage: Storage,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public afDatabase: AngularFireDatabase) {
+  constructor(private settings:SettingsProvider ,public storage: Storage,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public afDatabase: AngularFireDatabase) {
+    this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
     this.initializeApp();
     storage.get('password').then(val => {
       if (val == "iamgroot") {

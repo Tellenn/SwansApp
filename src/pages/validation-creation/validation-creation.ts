@@ -31,14 +31,17 @@ export class ValidationCreationPage {
     this.sub = this.afDatabase.list("/Character/").snapshotChanges().subscribe(action => {
       if (maxInd == 0) {
         for (let i = 0; i < action.length; i++) {
+          console.log(action[i].key);
           if (+action[i].key >= maxInd) {
             maxInd = +action[i].key + 1;
           }
         }
       }
+      console.log(maxInd);
       this.afDatabase.object("/Character/" + maxInd).update(this.character);
+      this.navCtrl.setRoot(HomePage, { charnb: maxInd });
     });
-    this.navCtrl.setRoot(HomePage, { charnb: maxInd });
+    
   }
 
   ionViewDidLeave() {

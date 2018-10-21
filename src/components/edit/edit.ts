@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams, ViewController, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { SettingsProvider } from '../../providers/settings/settings';
 
 @Component({
   selector: 'edit',
@@ -9,10 +10,12 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class EditComponent {
   path: string;
   candelete: boolean;
+  selectedTheme: String;
 
   editvalues: line[];
 
-  constructor(params: NavParams, public viewCtrl: ViewController, public afDatabase: AngularFireDatabase, public alertCtrl: AlertController) {
+  constructor(params: NavParams, public viewCtrl: ViewController, public afDatabase: AngularFireDatabase, public alertCtrl: AlertController, private settings: SettingsProvider) {
+    this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
     this.path = params.get('path');
     this.candelete = params.get('delete');
     this.editvalues = params.get('params');

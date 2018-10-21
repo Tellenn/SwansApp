@@ -12,8 +12,8 @@
       <option *ngFor="let nom of names ; let i = index" value="{{i}}">{{nom}}</option>
     </select>
 
-    <button ion-button round (click)="togm()">Page de maître de jeu</button>
-    <button ion-button round (click)="newchar()" class="bottom">Nouveau personnage</button>
+    <button ion-button round (click)="togm()" class="gm">Page de maître de jeu</button>
+      <button ion-button round (click)="newchar()" class="bottom">Nouveau personnage</button>
   </div>
   <div *ngIf="!names">
     <ion-spinner></ion-spinner>

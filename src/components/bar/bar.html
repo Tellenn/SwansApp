@@ -1,6 +1,10 @@
 <div class="progress-outer">
-    <div *ngIf="percent>0" class="progress-inner progress-bar-striped" [style.width]="percent+ '%'" [style.background]="newcolor"> <!--style="background-color: darkred"-->
-      {{progress}}/{{max}}
-    </div>
-    <div *ngIf="percent<1" class="progress-inner" [style.color]="'#000'">¯\\_(ツ)_/¯</div>
+  <div *ngIf="percent>0" class="progress-inner progress-bar-striped" [style.width]="percent+ '%'" [style.background]="newcolor">
+    <!--style="background-color: darkred"-->
+    {{progress}}/{{max}} <div *ngIf="overcharge>0" class="valovercharged">+{{overcharge}}</div>
   </div>
+  <div *ngIf="overpercent>0" class="progress-inner progress-bar-striped overcharged" [style.width]="overpercent+'%'" style.background="black">
+    <!--style="background-color: darkred"-->
+  </div>
+  <div *ngIf="percent<1" class="progress-inner" [style.color]="'#000'">¯\\_(ツ)_/¯</div>
+</div>

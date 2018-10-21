@@ -21,15 +21,16 @@ export class GmMenuPage {
 
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, menuctrl: MenuController, public afDatabase: AngularFireDatabase) {
     let oldFilter: boolean = true;
-    this.names = new Array<string>();
     if (!GmMenuPage.chosen) {
       GmMenuPage.chosen = new Array<boolean>();
       oldFilter = false;
     }
+    console.log(oldFilter);
     menuctrl.enable(false);
     HeaderComponent.toGM = false;
     this.characters = new Array<string>();
     this.sub = afDatabase.list('/Character/').snapshotChanges().subscribe(action => {
+      this.names = new Array<string>();
       for (let i = 0; i < action.length; i++) {
         if (!oldFilter)
           GmMenuPage.chosen.push(true);
@@ -37,14 +38,13 @@ export class GmMenuPage {
         let char = <Character>action[i].payload.val()
         this.names.push(char.Nom);
       }
-      console.log(this.characters);
+      this.unsub();
     });
-
-    setTimeout(() => {
-      if(this.sub)
-        this.sub.unsubscribe();
-      this.sub = null;
-    },5000);
+  }
+  unsub() {
+    if (this.sub)
+      this.sub.unsubscribe();
+    this.sub = null;
   }
 
   getChosen() {

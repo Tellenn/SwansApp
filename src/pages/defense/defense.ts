@@ -6,13 +6,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { EditComponent,line } from '../../components/edit/edit';
 import { CalculatorProvider } from '../../providers/character/character';
 
-/**
- * Generated class for the DefensePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-defense',
@@ -25,6 +18,7 @@ export class DefensePage {
   defenses: Defense[];
   maxindex: number;
   basedef: number;
+  basedefmag: number;
 
   constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController, calculator: CalculatorProvider) {
     this.sub = new Array<any>();
@@ -32,6 +26,9 @@ export class DefensePage {
     this.maxindex = -1;
     this.sub.push(afDatabase.object('/Character/' + HomePage.charnb + '/Caracteristiques/CON').snapshotChanges().subscribe(action => {
       this.basedef = 10 + calculator.calcmodif(<Caracteristique>action.payload.val(), HomePage.level - 1);
+    }));
+    this.sub.push(afDatabase.object('/Character/' + HomePage.charnb + '/Caracteristiques/SAG').snapshotChanges().subscribe(action => {
+      this.basedefmag = 5 + calculator.calcmodif(<Caracteristique>action.payload.val());
     }));
     this.sub.push(afDatabase.list('/Character/' + HomePage.charnb + '/Defense').snapshotChanges().subscribe(action => {
       this.dico = new Array<number>();

@@ -1,0 +1,42 @@
+.light-theme {
+  ion-content {
+    background-color: #fff;
+  }
+
+  .toolbar-background {
+    background-color: #fff;
+  }
+
+  .modal {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    .selection {
+      position: absolute;
+      top: 25%;
+      width: 100%;
+    }
+
+    .cancel {
+      position: absolute;
+      right: 5%;
+    }
+
+    .validate {
+      left: 5%;
+    }
+
+    .delete {
+      position: absolute;
+      right: 5%;
+      bottom: -100px;
+      background-color: darkred;
+    }
+
+    ion-input {
+      border: 1px solid lightgrey;
+    }
+  }
+}
