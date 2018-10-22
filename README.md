@@ -14,7 +14,6 @@ This app is in a continuous developpement meant for personnal use
 - Renew interface
 - Avatar
 - Custom bar color
-- Night mod
 
 
 #### V3
@@ -70,6 +69,7 @@ This app is in a continuous developpement meant for personnal use
  #### V3
  
  
+ - ~~Night mod
  - ~~Generic bar~~
  - ~~Generic edit modal~~
 
