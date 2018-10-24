@@ -7,10 +7,6 @@ This app is in a continuous developpement meant for personnal use
 ### Things to do :
 
 #### V2
-- Allow filtering in :
-  - Inventory
-  - Attack
-  - Defense
 - Renew interface
 - Avatar
 - Custom bar color
@@ -66,6 +62,10 @@ This app is in a continuous developpement meant for personnal use
   - ~~GM Page~~
 - ~~Add a "free note" page stored locally~~
 - ~~Added Overcharge bar~~
+- ~~Allow filtering in :~~
+  - ~~Inventory~~
+  - ~~Attack~~
+  - ~~Defense~~
  #### V3
  
  
