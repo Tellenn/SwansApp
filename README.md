@@ -14,7 +14,6 @@ This app is in a continuous developpement meant for personnal use
 - Renew interface
 - Avatar
 - Custom bar color
-- Night mod
 
 
 #### V3
@@ -60,16 +59,17 @@ This app is in a continuous developpement meant for personnal use
 #### V2 
 
 - ~~Create an interface for easier leveling~~
-- ~~Add a HELP icon on every page to guide use through the app~~~~ [CANCELED]
+- ~~Add a HELP icon on every page to guide use through the app~~ [CANCELED]
 - ~~Refactor barComponent for custom color~~
 - ~~Create a GM page~~
 - ~~Allow filtering in :~~
   - ~~GM Page~~
-- ~~Add a "free note" page stored locally
-- ~~Added Overcharge bar
+- ~~Add a "free note" page stored locally~~
+- ~~Added Overcharge bar~~
  #### V3
  
  
+ - ~~Night mod~~
  - ~~Generic bar~~
  - ~~Generic edit modal~~
 
