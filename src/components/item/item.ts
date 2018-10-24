@@ -17,11 +17,11 @@ export class ItemComponent {
   modal: ModalController;
 
   constructor(public modalCtrl: ModalController, public afDatabase: AngularFireDatabase) {
-    console.log(this.item);
     this.modal = modalCtrl;
   }
 
   edit() {
+    console.log(this.iditem);
     let params: line[] = new Array<line>();
     params.push(new line("Nom",this.item.Nom,"Nom"));
     params.push(new line("Temporalite", this.item.Temporalite, "Temporalite"));

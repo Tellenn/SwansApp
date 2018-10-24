@@ -7,16 +7,34 @@
   L'argent possédé par le personnage
   <ion-item>
     <money></money>
-  </ion-item><br/><br/>
-  Les objets possédés par le personnage
+  </ion-item>
+  <br />
+  <br /> Les objets possédés par le personnage
   <ion-item>
     <ion-grid>
       <ion-row>
-        <ion-col>Nom</ion-col><ion-col col-4>Temporalité</ion-col>
+        <ion-col>Nom</ion-col>
+        <ion-col col-4>Temporalité</ion-col>
       </ion-row>
-      <item *ngFor="let item of inventaire ; let i = index" [item]="item" [iditem]="dico[i]"></item>
+
+      <div *ngIf="getChosen()">
+        <div *ngFor="let name of names; let i = index">
+          <div *ngIf="getChosen()[i]">
+            <div *ngFor="let item of inventaire; let j = index">
+              <item *ngIf="names[i] == item.Temporalite" [item]="item" [iditem]="dico[j]"></item>
+            </div>
+          </div>
+        </div>
+      </div>
     </ion-grid>
   </ion-item>
-    <button ion-button (click)="createitem()"><ion-icon name="add"></ion-icon></button>
-  
+  <button ion-button (click)="createitem()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+
+  <ion-fab (click)="filter()">
+    <button ion-fab>
+      <ion-icon name="ios-funnel"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

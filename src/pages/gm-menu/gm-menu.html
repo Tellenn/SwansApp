@@ -3,9 +3,9 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="getChosen()">
+  <div *ngIf="chosen">
     <div *ngFor="let char of characters; let i = index">
-      <recap-char *ngIf="getChosen()[i]" [character]="char" (click)="toChar(char)"></recap-char>
+      <recap-char *ngIf="chosen[i]" [character]="char" (click)="toChar(char)"></recap-char>
     </div>
   </div>
   <ion-fab (click)="selectPlayer()">

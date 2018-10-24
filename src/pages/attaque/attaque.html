@@ -4,14 +4,37 @@
 
 
 <ion-content padding>
-  Une liste de toute les armes possédés.<br/>
+  Une liste de toute les armes possédés.<br />
   <ion-grid>
     <ion-row>
-      <ion-col col-4>Nom</ion-col><ion-col>T.</ion-col><ion-col>Att.</ion-col><ion-col>Dgts</ion-col><ion-col>Crit.</ion-col>
+      <ion-col col-4>Nom</ion-col>
+      <ion-col>T.</ion-col>
+      <ion-col>Att.</ion-col>
+      <ion-col>Dgts</ion-col>
+      <ion-col>Crit.</ion-col>
     </ion-row>
-    <ion-row *ngFor="let wpn of attacks ; let i = index" class="ligne" (click)="edit(i)">
-      <ion-col col-4>{{wpn.Nom}}</ion-col><ion-col>{{wpn.Temporalite}}</ion-col><ion-col>{{wpn.Attaque}}</ion-col><ion-col>{{wpn.Degats}}</ion-col><ion-col>{{wpn.Critique}}</ion-col>
-    </ion-row>
+    <div *ngIf="getChosen()">
+      <div *ngFor="let name of names; let i = index">
+        <div *ngIf="getChosen()[i]">
+          <div *ngFor="let wpn of attacks ; let j = index">
+            <ion-row *ngIf="wpn.Temporalite == name" class="ligne" (click)="edit(j)">
+              <ion-col col-4>{{wpn.Nom}}</ion-col>
+              <ion-col>{{wpn.Temporalite}}</ion-col>
+              <ion-col>{{wpn.Attaque}}</ion-col>
+              <ion-col>{{wpn.Degats}}</ion-col>
+              <ion-col>{{wpn.Critique}}</ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+    </div>
   </ion-grid>
-  <button ion-button (click)="create()"><ion-icon name="add"></ion-icon></button>
+  <button ion-button (click)="create()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <ion-fab (click)="filter()">
+    <button ion-fab>
+      <ion-icon name="ios-funnel"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

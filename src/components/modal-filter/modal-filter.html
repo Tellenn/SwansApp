@@ -1,10 +1,13 @@
-<div class="modal">
-  <ion-scroll scrollY="true">
-    <ion-item *ngFor="let char of characters; let i = index">
-      <ion-label>{{names[i]}}</ion-label>
-      <ion-checkbox [(ngModel)]="newChoice[i]"></ion-checkbox>
-    </ion-item>
-  </ion-scroll>
-  <button ion-button (click)="validate()" class="validate">Valider</button><button ion-button (click)="cancel()" class="cancel">Annuler</button><button ion-button *ngIf="candelete" (click)="delete()" class="delete">Supprimer</button>
-
+<div [class]="selectedTheme">
+  <div class="modal">
+    <ion-scroll scrollY="true">
+      <ion-item *ngFor="let nom of names; let i = index">
+        <ion-label>{{nom}}</ion-label>
+        <ion-checkbox [(ngModel)]="newChoice[i]"></ion-checkbox>
+      </ion-item>
+    </ion-scroll>
+    <button ion-button (click)="validate()" class="validate">Valider</button>
+    <button ion-button (click)="cancel()" class="cancel">Annuler</button>
+    <button ion-button *ngIf="candelete" (click)="delete()" class="delete">Supprimer</button>
+  </div>
 </div>

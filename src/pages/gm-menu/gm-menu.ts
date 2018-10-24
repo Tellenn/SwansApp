@@ -17,12 +17,12 @@ export class GmMenuPage {
   sub: any;
   characters: string[];
   names: string[];
-  static chosen: boolean[];
+  chosen: boolean[];
 
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, menuctrl: MenuController, public afDatabase: AngularFireDatabase) {
     let oldFilter: boolean = true;
-    if (!GmMenuPage.chosen) {
-      GmMenuPage.chosen = new Array<boolean>();
+    if (!this.chosen) {
+      this.chosen = new Array<boolean>();
       oldFilter = false;
     }
     console.log(oldFilter);
@@ -33,7 +33,7 @@ export class GmMenuPage {
       this.names = new Array<string>();
       for (let i = 0; i < action.length; i++) {
         if (!oldFilter)
-          GmMenuPage.chosen.push(true);
+          this.chosen.push(true);
         this.characters.push(<string>action[i].key);
         let char = <Character>action[i].payload.val()
         this.names.push(char.Nom);
@@ -47,12 +47,14 @@ export class GmMenuPage {
     this.sub = null;
   }
 
-  getChosen() {
-    return GmMenuPage.chosen;
-  }
-
   selectPlayer() {
-    this.modalCtrl.create(ModalFilterComponent, { characters: this.characters, names : this.names }).present();
+    let modal = this.modalCtrl.create(ModalFilterComponent, { chosen:this.chosen , names : this.names });
+    modal.onDidDismiss(val =>{
+      if(val.length > 0){
+        this.chosen = val;
+      }
+    });
+    modal.present();
   }
 
   toChar(char: string) {

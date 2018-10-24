@@ -10,19 +10,44 @@
   </ion-item>
   Les resistances de combat du personnage
   <ion-grid>
-    <ion-row  >
-      <ion-col class="bold">Resistance à la magie</ion-col><ion-col class="bold">{{basedefmag}}</ion-col>
+    <ion-row>
+      <ion-col class="bold">Resistance à la magie</ion-col>
+      <ion-col class="bold">{{basedefmag}}</ion-col>
     </ion-row>
     <ion-row>
-      <ion-col col-4>Nom</ion-col><ion-col>Tempo.</ion-col><ion-col>CA</ion-col><ion-col>Mod def</ion-col>
+      <ion-col col-4>Nom</ion-col>
+      <ion-col>Tempo.</ion-col>
+      <ion-col>CA</ion-col>
+      <ion-col>Mod def</ion-col>
     </ion-row>
     <ion-row>
-      <ion-col col-4>Base</ion-col><ion-col>Toute</ion-col><ion-col>{{basedef}}</ion-col><ion-col>0</ion-col>
+      <ion-col col-4>Base</ion-col>
+      <ion-col>Toute</ion-col>
+      <ion-col>{{basedef}}</ion-col>
+      <ion-col>0</ion-col>
     </ion-row>
-    <ion-row *ngFor="let def of defenses ; let i = index" class="ligne" (click)="edit(i)">
-      <ion-col col-4>{{def.Nom}}</ion-col><ion-col>{{def.Temporalite}}</ion-col><ion-col>{{def.CA}}</ion-col><ion-col>{{def.ModDex}}</ion-col>
-    </ion-row>
-  </ion-grid>
-    <button ion-button round (click)="create()"><ion-icon name="add"></ion-icon></button>
+    <div *ngIf="getChosen()">
+      <div *ngFor="let name of names; let i = index">
+        <div *ngIf="getChosen()[i]">
+          <div *ngFor="let def of defenses ; let j = index">
+            <ion-row *ngIf="def.Temporalite == name" class="ligne" (click)="edit(j)">
+              <ion-col col-4>{{def.Nom}}</ion-col>
+              <ion-col>{{def.Temporalite}}</ion-col>
+              <ion-col>{{def.CA}}</ion-col>
+              <ion-col>{{def.ModDex}}</ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+    </div>
 
+  </ion-grid>
+  <button ion-button round (click)="create()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <ion-fab (click)="filter()">
+    <button ion-fab>
+      <ion-icon name="ios-funnel"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

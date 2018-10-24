@@ -5,6 +5,7 @@ import { HomePage, Defense,Caracteristique } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EditComponent,line } from '../../components/edit/edit';
 import { CalculatorProvider } from '../../providers/character/character';
+import { ModalFilterComponent } from '../../components/modal-filter/modal-filter';
 
 @IonicPage()
 @Component({
@@ -14,15 +15,16 @@ import { CalculatorProvider } from '../../providers/character/character';
 export class DefensePage {
   sub: any;
   dico: number[];
-  modal: ModalController;
   defenses: Defense[];
   maxindex: number;
   basedef: number;
   basedefmag: number;
+  static chosen: boolean[] = new Array<boolean>();
+  names: string[];
 
-  constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController, calculator: CalculatorProvider) {
+  constructor(public afDatabase: AngularFireDatabase,public modalCtrl: ModalController, calculator: CalculatorProvider) {
     this.sub = new Array<any>();
-    this.modal = modalCtrl;
+    this.modalCtrl = modalCtrl;
     this.maxindex = -1;
     this.sub.push(afDatabase.object('/Character/' + HomePage.charnb + '/Caracteristiques/CON').snapshotChanges().subscribe(action => {
       this.basedef = 10 + calculator.calcmodif(<Caracteristique>action.payload.val(), HomePage.level - 1);
@@ -31,10 +33,21 @@ export class DefensePage {
       this.basedefmag = 5 + calculator.calcmodif(<Caracteristique>action.payload.val());
     }));
     this.sub.push(afDatabase.list('/Character/' + HomePage.charnb + '/Defense').snapshotChanges().subscribe(action => {
+      this.names = new Array<string>();
       this.dico = new Array<number>();
       this.defenses = new Array<Defense>();
       for (let i = 0; i < action.length; i++) {
         this.defenses.push(<Defense>action[i].payload.val());
+        let doublon = false;
+        for (let j = 0; j < this.names.length && !doublon; j++) {
+          if (this.defenses[i].Temporalite == this.names[j]) {
+            doublon = true;
+          }
+        }
+        if (!doublon) {
+          this.names.push(this.defenses[i].Temporalite)
+          DefensePage.chosen.push(true);
+        }
         if (+action[i].key > this.maxindex) {
           this.maxindex = +action[i].key;
         }
@@ -43,14 +56,29 @@ export class DefensePage {
       this.maxindex++;
     }));
   }
+
   ionViewDidLeave() {
     for (let i = 0; i < this.sub.length; i++) {
       this.sub[i].unsubscribe();
     }
   }
 
+  filter() {
+    let modal = this.modalCtrl.create(ModalFilterComponent, { chosen: DefensePage.chosen, names: this.names });
+    modal.onDidDismiss(val => {
+      if (val.length > 0) {
+        DefensePage.chosen = val;
+      }
+    });
+    modal.present();
+  }
+
   remove(i: number) {
     this.afDatabase.object('/Character/' + HomePage.charnb + '/Defense/' + this.dico[i]).remove();
+  }
+
+  getChosen(){
+    return DefensePage.chosen;
   }
 
   create() {
@@ -59,8 +87,7 @@ export class DefensePage {
     params.push(new line("Temporalite", "", "Temporalite"));
     params.push(new line("CA", "", "CA"));
     params.push(new line("ModDex", "", "ModDex"));
-
-    this.modal.create(EditComponent, { delete: false, params:params, path: "/Character/" + HomePage.charnb + "/Defense/" + this.maxindex }).present();
+    this.modalCtrl.create(EditComponent, { delete: false, params:params, path: "/Character/" + HomePage.charnb + "/Defense/" + this.maxindex }).present();
   }
 
   edit(i: number) {
@@ -69,7 +96,6 @@ export class DefensePage {
     params.push(new line("Temporalite", this.defenses[i].Temporalite, "Temporalite"));
     params.push(new line("CA", this.defenses[i].CA, "CA"));
     params.push(new line("ModDex", this.defenses[i].CA, "ModDex"));
-    this.modal.create(EditComponent, { delete: true, params: params, path: "/Character/" + HomePage.charnb + "/Defense/" + this.dico[i] }).present();
-
+    this.modalCtrl.create(EditComponent, { delete: true, params: params, path: "/Character/" + HomePage.charnb + "/Defense/" + this.dico[i] }).present();
   }
 }

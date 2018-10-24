@@ -45,13 +45,10 @@ export class MoneyComponent {
   }
 
   setMaxIndex(): void{
-    console.log("dico status");
-    console.log(this.dico);
     this.maxIndex = 0;
     for(let i = 0; i < this.dico.length && (this.maxIndex == this.dico[i]); i++){
       this.maxIndex++;
     }
-    console.log("MaxIndex : "+this.maxIndex);
   }
 
   
