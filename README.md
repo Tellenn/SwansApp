@@ -7,12 +7,12 @@ This app is in a continuous developpement meant for personnal use
 ### Things to do :
 
 #### V2
-- Renew interface
-- Avatar
 - Custom bar color
 
 
 #### V3
+
+- Avatar
 - Talent tree HMI
 - Prospect for a generic table component with custom number of row and name
  
