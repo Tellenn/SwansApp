@@ -6,10 +6,11 @@
     "\\src\\components",
     "\\src\\pages",
     "\\src\\pages\\charchoice",
-    "\\src\\pages\\home",
     "\\src\\pages\\naming-creation",
-    "\\src\\theme"
+    "\\src\\pages\\parametres",
+    "\\src\\providers",
+    "\\src\\providers\\settings"
   ],
-  "SelectedNode": "\\src\\theme\\theme.dark.scss",
+  "SelectedNode": "\\config.xml",
   "PreviewInSolutionExplorer": false
 }
