@@ -6,27 +6,15 @@
 
 
 <ion-content padding>
-  A partir de maintenant le(s) dé va vous servir :<br /><br />
-  Pour remplir un lancer de dé, vous devez le lancer 4 fois, et retenir la somme des 3 lancés les plus élevés.<br /><br />
-  Exemple : 4,3,2,5 donnent 12 car 4+3+5. Le 2 etant le plus faible, il n'est pas pris en compte.<br /><br /><br />
-  A vous de jouer !<br /><br />
+  A partir de maintenant le dé va vous servir :<br /><br />
+  Tu disposes de 70 points de statistiques. Cependant, tu peux en vouloir plus.
+  Si tu es joueur, lance le dé 10. Lancer ce dé 10 te coutera 5 points de stats.
+  Si tu tombes sur 4 ou moins, perdu ! Sinon, félicitation, tu as fais de la marge !
+
+  Si tu n'es pas joueur, ne lance pas de dé et rentre 5 comme valeur ci-dessous !
+  <br /><br />
   <ion-item>
-    <ion-input name="val1" [(ngModel)]="val1" type="number" placeholder="Lancer 1" ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input name="val2" [(ngModel)]="val2" type="number" placeholder="Lancer 2"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input name="val3" [(ngModel)]="val3" type="number" placeholder="Lancer 3"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input name="val4" [(ngModel)]="val4" type="number" placeholder="Lancer 4"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input name="val5" [(ngModel)]="val5" type="number" placeholder="Lancer 5"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input name="val6" [(ngModel)]="val6" type="number" placeholder="Lancer 6"></ion-input>
+    <ion-input name="val" [(ngModel)]="val" type="number" placeholder="Lancé" ></ion-input>
   </ion-item>
   {{error}}
   <button ion-button round class="next" (click)="next()"><ion-icon name="arrow-forward" ></ion-icon></button>

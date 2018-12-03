@@ -2,15 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
     "\\src\\components",
-    "\\src\\pages",
+    "\\src\\components\\resistance",
     "\\src\\pages\\charchoice",
-    "\\src\\pages\\naming-creation",
-    "\\src\\pages\\parametres",
-    "\\src\\providers",
-    "\\src\\providers\\settings"
+    "\\src\\providers\\character"
   ],
-  "SelectedNode": "\\config.xml",
+  "SelectedNode": "\\src\\components\\resistance\\resistance.ts",
   "PreviewInSolutionExplorer": false
 }

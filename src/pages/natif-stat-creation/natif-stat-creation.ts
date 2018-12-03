@@ -11,7 +11,7 @@ import { AttribStatCreationPage } from '../attrib-stat-creation/attrib-stat-crea
   templateUrl: 'natif-stat-creation.html',
 })
 export class NatifStatCreationPage {
-  dices: number[]
+  dice: number;
   character: Character;
   error: string;
 
@@ -20,7 +20,7 @@ export class NatifStatCreationPage {
 
     console.log(this.character);
     this.character.Caracteristiques = new Caracteristiques(new Caracteristique("CHA"), new Caracteristique("CON"), new Caracteristique("DEX"), new Caracteristique("FOR"), new Caracteristique("INT"), new Caracteristique("SAG"));
-    this.dices = navParams.get("dices");
+    this.dice = navParams.get("val");
   }
 
   next() {
@@ -45,7 +45,7 @@ export class NatifStatCreationPage {
       this.character.Caracteristiques.SAG.Natif = +this.character.Caracteristiques.SAG.Natif;
       console.log(this.character);
       this.error = "";
-      this.navCtrl.push(AttribStatCreationPage, { dices: this.dices, character: this.character });
+      this.navCtrl.push(AttribStatCreationPage, { dice: this.dice, character: this.character });
     } else {
       this.error = errormsg;
     }

@@ -27,7 +27,13 @@ export class EditComponent {
     console.log(this.editvalues);
     let item = {};
     for (let i = 0; i < this.editvalues.length; i++) {
-      item[this.editvalues[i].cle] = this.editvalues[i].val;
+      if (this.editvalues[i].add) {
+        item[this.editvalues[i].cle] = this.editvalues[i].basevalue+parseInt(this.editvalues[i].val);
+      }
+      else
+      {
+        item[this.editvalues[i].cle] = this.editvalues[i].val;
+      }
     }
     console.log(item);
     this.afDatabase.object(this.path).update(<JSON>item);
@@ -63,9 +69,13 @@ export class line {
   nom: string;
   val: any;
   cle: string;
-  constructor(nom: string = "", val: any = "", cle: string = "") {
+  add: boolean;
+  basevalue: number;
+  constructor(nom: string = "", val: any = "", cle: string = "", add: boolean = false,basevalue:number = 0) {
     this.nom = nom;
     this.val = val;
     this.cle = cle;
+    this.add = add;
+    this.basevalue = basevalue;
   }
 }

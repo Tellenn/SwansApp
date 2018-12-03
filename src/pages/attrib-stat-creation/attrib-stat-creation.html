@@ -6,9 +6,9 @@
 
 
 <ion-content padding>
-  Desormais, avec toutes les informations, il va faloir choisir quel jet de dés va avec quel stat !
-  A toi de voir !
-  <div *ngIf="stats">
+  Desormais, avec toutes les informations, il va faloir attribuer tes statistiques !
+  <div *ngFor="let stat of stats">
+    <ion-label>{{stat.Nom}}</ion-label><ion-input></ion-input>(Trait natif : {{stat.Natif}})
     <ion-item *ngFor="let dice of dices; let i = index">
       Dé : {{dice}} Stat : <select [(ngModel)]="chosen[i]"><option *ngFor="let stat of stats" [value]="stat.Nom">{{stat.Nom}} (Trait natif : {{stat.Natif}})</option></select>
     </ion-item>

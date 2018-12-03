@@ -3,20 +3,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Character, Caracteristique } from '../home/home';
 import { NatifCompCreationPage } from '../natif-comp-creation/natif-comp-creation';
 
-/**
- * Generated class for the AttribStatCreationPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-attrib-stat-creation',
   templateUrl: 'attrib-stat-creation.html',
 })
 export class AttribStatCreationPage {
-  dices: number[]
+  dice;: number;
   character: Character;
   error: string;
   stats: Caracteristique[];
@@ -26,7 +19,7 @@ export class AttribStatCreationPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.character = <Character>navParams.get("character");
-    this.dices = navParams.get("dices");
+    this.dice = navParams.get("dicee");
     this.stats = [this.character.Caracteristiques.CHA, this.character.Caracteristiques.CON, this.character.Caracteristiques.DEX, this.character.Caracteristiques.FOR, this.character.Caracteristiques.INT, this.character.Caracteristiques.SAG];
     this.chosen = ["CHA", "CHA", "CHA", "CHA", "CHA", "CHA"];
   }

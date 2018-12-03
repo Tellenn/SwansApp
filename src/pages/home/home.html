@@ -21,11 +21,16 @@
     <h3>Concentration :</h3>
     <bar [overpercent]="OverPercentConcentration" [overcharge]="character.Etat.OverConcentration" [progress]="character.Etat.Concentration" [max]="maxConcentration" [percent]="percentConcentration" [newcolor]="concentrationcolor"></bar>
     <button ion-button round (click)="removeConcentration()">-</button><button ion-button round (click)="addConcentration()">+</button><button ion-button round (click)="set('Concentration',character.Etat.Concentration,maxConcentration)"><ion-icon name="brush"></ion-icon></button><button ion-button round (click)="overcharge(character.Etat.OverConcentration,'OverConcentration')"><ion-icon name="ios-thunderstorm"></ion-icon></button>
+    <h3>Experience :</h3>
+    <bar [progress]="character.Experience" [max]="maxExperience" [percent]="percentExperience" [newcolor]="experiencecolor"></bar>
+    <button ion-button round (click)="addExperience()">+</button>
 
-  <br /><br /><br /><br /><br />
-  <button ion-button round (click)="levelup()">LEVEL UP!!!</button>
-  <button ion-button round (click)="editVanity()">Modifier profil</button>
-</div>
+    <br /><br /><br /><br /><br />
+    <div *ngIf="character.Experience >= maxExperience">
+      <button ion-button round (click)="levelup()">LEVEL UP!!!</button>
+    </div>
+    <button ion-button round (click)="editVanity()">Modifier profil</button>
+  </div>
   <div *ngIf="!character">
     <ion-spinner></ion-spinner>
   </div>

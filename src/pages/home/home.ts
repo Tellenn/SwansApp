@@ -37,12 +37,16 @@ export class HomePage {
   percentConcentration: number;
   OverPercentConcentration: number;
 
+  maxExperience: number;
+  percentExperience: number;
+
   returnToGM: boolean;
 
   lifecolor: string;
   mentalcolor: string;
   fatiguecolor: string;
   concentrationcolor: string;
+  experiencecolor: string;
 
   constructor(menuctrl : MenuController,public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CalculatorProvider, navParam: NavParams, public modalCtrl: ModalController) {
     menuctrl.enable(true);
@@ -51,6 +55,7 @@ export class HomePage {
     this.mentalcolor = "darkgreen";
     this.fatiguecolor = "darkorange";
     this.concentrationcolor = "teal";
+    this.experiencecolor = "darkblue";
     
     let temp = navParam.get("charnb");
     this.returnToGM = navParam.get("return");
@@ -118,6 +123,8 @@ export class HomePage {
       }
       this.percentConcentration = this.character.Etat.Concentration / this.maxConcentration * 100;
       this.OverPercentConcentration = this.character.Etat.OverConcentration / this.maxConcentration * 100;
+      this.maxExperience = 500 + (1000 * (HomePage.level - 1) + (100 * (HomePage.level - 1) * (HomePage.level - 2)));
+      this.percentExperience = this.character.Experience / this.maxExperience *100;
     });
 
   }
@@ -208,6 +215,23 @@ export class HomePage {
     let params: line[] = new Array<line>();
     params.push(new line(stat, val, stat));
     this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb +"/Etat/"}).present();
+  }
+
+  addExperience() {
+    /*let params: line[] = new Array<line>();
+    params.push(new line("Nom", this.character.Nom, "Nom"));
+    params.push(new line("Sexe", this.character.Sexe, "Sexe"));
+    params.push(new line("Dextrie", this.character.Dextrie, "Dextrie"));
+    params.push(new line("Taille", this.character.Taille, "Taille"));
+    params.push(new line("Cheveux", this.character.Cheveux, "Cheveux"));
+    params.push(new line("Yeux", this.character.Yeux, "Yeux"));
+    this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb }).present();
+    <h3>Experience : </h3>
+      < bar[progress]="character.Etat.Concentration"[max] = "maxConcentration"[percent] = "percentConcentration"[newcolor] = "concentrationcolor" > </bar>
+        < button ion - button round(click) = "addExperience()" > +</button>*/
+    let params: line[] = new Array<line>();
+    params.push(new line("Experience", 0, "Experience", true, this.character.Experience));
+    this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb}).present();
   }
 }
 export class Aptitude {
@@ -341,6 +365,7 @@ export class Character {
   Defense: Defense[];
   Dextrie: string;
   Etat: Etat;
+  Experience: number = 0;
   Inventaire: Inventaire[];
   Monnaie: Champ[];
   Joueur: string;
