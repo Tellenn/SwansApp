@@ -5,6 +5,8 @@ https://play.google.com/store/apps/details?id=io.ionic.swanapp
 This app is in a continuous developpement meant for personnal use
 
 ### Things to do :
+- Update rules
+- Add EXP bar
 
 #### V2
 - Custom bar color
