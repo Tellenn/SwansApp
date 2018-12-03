@@ -6,7 +6,6 @@ This app is in a continuous developpement meant for personnal use
 
 ### Things to do :
 - Update rules
-- Add EXP bar
 
 #### V2
 - Custom bar color
@@ -68,6 +67,7 @@ This app is in a continuous developpement meant for personnal use
   - ~~Inventory~~
   - ~~Attack~~
   - ~~Defense~~
+- ~~Add EXP bar~~
  #### V3
  
  
