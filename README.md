@@ -6,6 +6,8 @@ This app is in a continuous developpement meant for personnal use
 
 ### Things to do :
 - Update rules
+- Bug : Reputation overwrite
+- Bug : Attack menu unreachable
 
 #### V2
 - Custom bar color
