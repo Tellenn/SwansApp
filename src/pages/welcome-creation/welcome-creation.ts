@@ -10,9 +10,11 @@ import { NamingCreationPage } from '../naming-creation/naming-creation';
 export class WelcomeCreationPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log("Why is there a delay here ? :(");
   }
 
   next() {
+    console.log("clicked");
     this.navCtrl.push(NamingCreationPage, {});
   }
 

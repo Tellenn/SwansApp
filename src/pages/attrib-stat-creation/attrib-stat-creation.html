@@ -7,12 +7,18 @@
 
 <ion-content padding>
   Desormais, avec toutes les informations, il va faloir attribuer tes statistiques !
-  <div *ngFor="let stat of stats">
-    <ion-label>{{stat.Nom}}</ion-label><ion-input></ion-input>(Trait natif : {{stat.Natif}})
-    <ion-item *ngFor="let dice of dices; let i = index">
-      Dé : {{dice}} Stat : <select [(ngModel)]="chosen[i]"><option *ngFor="let stat of stats" [value]="stat.Nom">{{stat.Nom}} (Trait natif : {{stat.Natif}})</option></select>
+  <div *ngIf="stats">
+    <ion-item *ngFor="let stat of stats ; let i = index">
+      <ion-label>{{stat.Nom}}(Natif:{{stat.Natif}})</ion-label>
+      <ion-input type=number (change)="update()" [value]="chosenValues[i]" [(ngModel)]="chosenValues[i]" name="stat.Nom" [placeholder]="10"></ion-input>
     </ion-item>
+
+    Nombre de points :
+    {{tempTotal}} sur {{dice}}
+    <br />
   </div>
   {{error}}
-  <button ion-button round class="next" (click)="next()"><ion-icon name="arrow-forward"></ion-icon></button>
+  <button ion-button round class="next" (click)="next()">
+    <ion-icon name="arrow-forward"></ion-icon>
+  </button>
 </ion-content>

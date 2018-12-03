@@ -10,7 +10,7 @@ import { NatifStatCreationPage } from '../natif-stat-creation/natif-stat-creatio
 })
 export class DiceCreationPage {
   character: Character;
-  val: number;
+  val: any;
   error: string = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -24,13 +24,11 @@ export class DiceCreationPage {
     if (this.val == null) {
       error = true;
       errormsg = "Tu n'as pas rentré de valeur !";
-    } else {
-      dices.push(+this.val);
     }
     if (!error) {
       this.error = "";
       console.log(this.character);
-      this.navCtrl.push(NatifStatCreationPage, { dice: this.val, character: this.character });
+      this.navCtrl.push(NatifStatCreationPage, { dice: parseInt(this.val)+65, character: this.character });
     } else {
       this.error = errormsg;
     }

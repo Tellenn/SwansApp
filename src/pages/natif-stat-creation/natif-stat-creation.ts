@@ -20,7 +20,7 @@ export class NatifStatCreationPage {
 
     console.log(this.character);
     this.character.Caracteristiques = new Caracteristiques(new Caracteristique("CHA"), new Caracteristique("CON"), new Caracteristique("DEX"), new Caracteristique("FOR"), new Caracteristique("INT"), new Caracteristique("SAG"));
-    this.dice = navParams.get("val");
+    this.dice = navParams.get("dice");
   }
 
   next() {
