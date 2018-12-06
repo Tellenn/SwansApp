@@ -17,6 +17,7 @@ import { SortsPage } from '../pages/sorts/sorts';
 import { LoginPage } from '../pages/login/login';
 import { NotesPage } from '../pages/notes/notes';
 import { SettingsProvider } from '../providers/settings/settings';
+import { RollPage } from '../pages/roll/roll';
 
 @Component({
   templateUrl: 'app.html'
@@ -47,6 +48,7 @@ export class MyApp {
       { title: 'Competences', component: CompetencesPage },
       { title: 'Attaque', component: AttaquePage },
       { title: 'Defense', component: DefensePage },
+      { title: 'Roll', component: RollPage },
       { title: 'Notes', component: NotesPage },
       { title: 'Paramètres', component: ParametresPage }
     ];

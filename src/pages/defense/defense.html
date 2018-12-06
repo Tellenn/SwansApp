@@ -4,16 +4,22 @@
 
 
 <ion-content padding>
-  Les resistances hors-combat du personnage
-  <ion-item>
-    <resistance></resistance>
-  </ion-item>
   Les resistances de combat du personnage
+  <ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="bold">Parade</ion-col>
+        <ion-col class="bold">{{baseparade}}</ion-col>
+      </ion-row><ion-row>
+        <ion-col class="bold">Esquive</ion-col>
+        <ion-col class="bold">{{baseesquive}}</ion-col>
+      </ion-row><ion-row>
+        <ion-col class="bold">Resistance à la magie</ion-col>
+        <ion-col class="bold">{{basedefmag}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
   <ion-grid>
-    <ion-row>
-      <ion-col class="bold">Resistance à la magie</ion-col>
-      <ion-col class="bold">{{basedefmag}}</ion-col>
-    </ion-row>
     <ion-row>
       <ion-col col-4>Nom</ion-col>
       <ion-col>Tempo.</ion-col>

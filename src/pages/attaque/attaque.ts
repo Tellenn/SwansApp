@@ -28,6 +28,7 @@ export class AttaquePage {
   constructor(public afDatabase: AngularFireDatabase, public modalCtrl: ModalController) {
     this.modalCtrl = modalCtrl;
     this.maxindex = -1;
+    this.names = new Array<string>();
     this.sub = afDatabase.list('/Character/'+HomePage.charnb+'/Attaque').snapshotChanges().subscribe( action => {
       this.dico = new Array<number>();
       this.attacks = new Array<Attaque>();
@@ -75,6 +76,10 @@ export class AttaquePage {
     params.push( new line("Critique", "", "Critique"));
     
     this.modalCtrl.create(EditComponent, {delete :false, params:params, path: "/Character/" + HomePage.charnb + "/Attaque/"+this.maxindex}).present();
+  }
+
+  getChosen() {
+    return AttaquePage.chosen;
   }
 
   edit(i: number) {

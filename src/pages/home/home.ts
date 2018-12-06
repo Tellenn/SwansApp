@@ -123,7 +123,11 @@ export class HomePage {
       }
       this.percentConcentration = this.character.Etat.Concentration / this.maxConcentration * 100;
       this.OverPercentConcentration = this.character.Etat.OverConcentration / this.maxConcentration * 100;
-      this.maxExperience = 500 + (1000 * (HomePage.level - 1) + (100 * (HomePage.level - 1) * (HomePage.level - 2)));
+      if (HomePage.level == 1) {
+        this.maxExperience = 500;
+      } else {
+        this.maxExperience = 1000 + 100 * (HomePage.level - 1);
+      }
       this.percentExperience = this.character.Experience / this.maxExperience *100;
     });
 
@@ -311,11 +315,13 @@ export class Defense {
   ModDex: number;
   Nom: string;
   Temporalite: string;
-  constructor(Nom: string = "", Temporalite: string = "", CA: number = 0, ModDex: number = 0) {
+  LimEsquive: number;
+  constructor(Nom: string = "", Temporalite: string = "", CA: number = 0, ModDex: number = 0, LimEsquive:number =0) {
     this.Nom = Nom;
     this.Temporalite = Temporalite;
     this.CA = CA;
     this.ModDex = ModDex;
+    this.LimEsquive = LimEsquive;
   }
 }
 

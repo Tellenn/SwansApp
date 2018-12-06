@@ -17,8 +17,9 @@ export class DefensePage {
   dico: number[];
   defenses: Defense[];
   maxindex: number;
-  basedef: number;
   basedefmag: number;
+  baseparade: number = 10;
+  baseesquive: number;
   static chosen: boolean[] = new Array<boolean>();
   names: string[];
 
@@ -26,8 +27,8 @@ export class DefensePage {
     this.sub = new Array<any>();
     this.modalCtrl = modalCtrl;
     this.maxindex = -1;
-    this.sub.push(afDatabase.object('/Character/' + HomePage.charnb + '/Caracteristiques/CON').snapshotChanges().subscribe(action => {
-      this.basedef = 10 + calculator.calcmodif(<Caracteristique>action.payload.val(), HomePage.level - 1);
+    this.sub.push(afDatabase.object('/Character/' + HomePage.charnb + '/Caracteristiques/DEX').snapshotChanges().subscribe(action => {
+      this.baseesquive = 10 + calculator.calcmodif(<Caracteristique>action.payload.val());
     }));
     this.sub.push(afDatabase.object('/Character/' + HomePage.charnb + '/Caracteristiques/SAG').snapshotChanges().subscribe(action => {
       this.basedefmag = 5 + calculator.calcmodif(<Caracteristique>action.payload.val());

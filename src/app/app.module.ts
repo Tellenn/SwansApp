@@ -47,6 +47,7 @@ import { RecapCharComponent } from '../components/recap-char/recap-char';
 import { ModalFilterComponent } from '../components/modal-filter/modal-filter';
 import { NotesPage } from '../pages/notes/notes';
 import { SettingsProvider } from '../providers/settings/settings';
+import { RollPage } from '../pages/roll/roll';
 
 
 // AF2 Settings
@@ -75,6 +76,7 @@ export const firebaseConfig = {
     LevelupPage,
     GmMenuPage,
     NotesPage,
+    RollPage,
 
     WelcomeCreationPage,
     NamingCreationPage,
@@ -119,6 +121,7 @@ export const firebaseConfig = {
     StatsPage,
     GmMenuPage,
     NotesPage,
+    RollPage,
 
     WelcomeCreationPage,
     NamingCreationPage,

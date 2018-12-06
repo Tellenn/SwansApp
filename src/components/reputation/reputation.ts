@@ -5,12 +5,6 @@ import { Observable } from 'rxjs';
 import { EditComponent,line } from '../edit/edit';
 import { ModalController } from 'ionic-angular';
 
-/**
- * Generated class for the ReputationComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'reputation',
   templateUrl: 'reputation.html'
@@ -23,18 +17,22 @@ export class ReputationComponent {
   dico:number[];
 
   constructor(public afDatabase: AngularFireDatabase, public modalCtrl: ModalController) {
+    this.maxindex = 0;
     this.ans = this.afDatabase.list('/Character/' + HomePage.charnb + '/Reputation').snapshotChanges();
     this.ans.subscribe(action => {
       this.dico = new Array<number>();
       this.reputations = new Array<Reputation>();
       for (let i = 0; i < action.length; i++){
         this.reputations.push(action[i].payload.val());
-        if(+action[i].key> this.maxindex){
-          this.maxindex = +action[i].key;
+        if(parseInt(action[i].key)> this.maxindex){
+          this.maxindex = parseInt(action[i].key);
+          console.log(this.maxindex);
         }
-        this.dico[i]= +action[i].key;
+        this.dico[i] = parseInt(action[i].key);
       }
       this.maxindex++;
+      console.log(this.maxindex);
+      console.log(action);
     });
   }
 
@@ -42,7 +40,8 @@ export class ReputationComponent {
     let params: line[] = new Array<line>();
     params.push(new line("Nom", "", "Nom"));
     params.push(new line("Réputation", "", "Valeur"));
-    this.modalCtrl.create(EditComponent, {delete: false,params: params, path: "/Character/" + HomePage.charnb + "/Reputation/" + this.maxindex }).present();
+    this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb + "/Reputation/" + this.maxindex }).present();
+    console.log(this.maxindex);
   }
 
   edit(i: number) {

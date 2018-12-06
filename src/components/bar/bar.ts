@@ -11,9 +11,14 @@ export class BarComponent {
   @Input('newcolor') newcolor;
   @Input('overcharge') overcharge;
   @Input('overpercent') overpercent;
+  @Input('hidden') hidden;
+  notHidden: boolean = true;
 
 
   constructor() {
+    if (this.hidden) {
+      this.notHidden = false;
+    }
   }
 
 }
