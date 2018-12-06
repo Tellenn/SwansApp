@@ -48,6 +48,7 @@ import { ModalFilterComponent } from '../components/modal-filter/modal-filter';
 import { NotesPage } from '../pages/notes/notes';
 import { SettingsProvider } from '../providers/settings/settings';
 import { RollPage } from '../pages/roll/roll';
+import { AdrenalineComponent } from '../components/adrenaline/adrenaline';
 
 
 // AF2 Settings
@@ -96,7 +97,8 @@ export const firebaseConfig = {
     ResistanceComponent,
     ModalcompComponent,
     RecapCharComponent,
-    ModalFilterComponent
+    ModalFilterComponent,
+    AdrenalineComponent
   ],
   imports: [
     BrowserModule,
@@ -138,7 +140,8 @@ export const firebaseConfig = {
     ResistanceComponent,
     ModalcompComponent,
     RecapCharComponent,
-    ModalFilterComponent
+    ModalFilterComponent,
+    AdrenalineComponent
   ],
   providers: [
     StatusBar,

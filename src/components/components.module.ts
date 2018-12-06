@@ -9,6 +9,7 @@ import { ResistanceComponent } from './resistance/resistance';
 import { ModalcompComponent } from './modalcomp/modalcomp';
 import { RecapCharComponent } from './recap-char/recap-char';
 import { ModalFilterComponent } from './modal-filter/modal-filter';
+import { AdrenalineComponent } from './adrenaline/adrenaline';
 @NgModule({
 	declarations: [
     BarComponent,
@@ -20,7 +21,8 @@ import { ModalFilterComponent } from './modal-filter/modal-filter';
     ResistanceComponent,
     ModalcompComponent,
     RecapCharComponent,
-    ModalFilterComponent],
+    ModalFilterComponent,
+    AdrenalineComponent],
 	imports: [],
   exports: [
     BarComponent,
@@ -32,7 +34,8 @@ import { ModalFilterComponent } from './modal-filter/modal-filter';
     ResistanceComponent,
     ModalcompComponent,
     RecapCharComponent,
-    ModalFilterComponent],
+    ModalFilterComponent,
+    AdrenalineComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {}

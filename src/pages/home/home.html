@@ -10,20 +10,23 @@
     Dextrie : {{character.Dextrie}}.
     <br />
     <h3>Vie :</h3>
-    <bar  ishidden="false" [overpercent]="OverPercentVie" [overcharge]="character.Etat.OverVie" [progress]="character.Etat.Vie" [max]="maxLife" [percent]="percentLife" [newcolor]="lifecolor"></bar><br />
+    <bar ishidden="false" [overpercent]="OverPercentVie" [overcharge]="character.Etat.OverVie" [progress]="character.Etat.Vie" [max]="maxLife" [percent]="percentLife" [newcolor]="lifecolor"></bar><br />
     <button ion-button round (click)="removeLife()">-</button><button ion-button round (click)="addLife()">+</button><button ion-button round (click)="set('Vie',character.Etat.Vie,maxLife)"><ion-icon name="brush"></ion-icon></button><button ion-button round (click)="overcharge(character.Etat.OverVie,'OverVie')"><ion-icon name="ios-thunderstorm"></ion-icon></button>
     <h3>Santé Mentale :</h3>
-    <bar  ishidden="false" [overpercent]="OverPercentMental" [overcharge]="character.Etat.OverMental" [progress]="character.Etat.Mental" [max]="maxMental" [percent]="percentMental" [newcolor]="mentalcolor"></bar>
+    <bar ishidden="false" [overpercent]="OverPercentMental" [overcharge]="character.Etat.OverMental" [progress]="character.Etat.Mental" [max]="maxMental" [percent]="percentMental" [newcolor]="mentalcolor"></bar>
     <button ion-button round (click)="removeMental()">-</button><button ion-button round (click)="addMental()">+</button><button ion-button round (click)="set('Mental',character.Etat.Mental,maxMental)"><ion-icon name="brush"></ion-icon></button><button ion-button round (click)="overcharge(character.Etat.OverMental,'OverMental')"><ion-icon name="ios-thunderstorm"></ion-icon></button>
     <h3>Fatigue :</h3>
-    <bar  ishidden="false" [overpercent]="OverPercentFatigue" [overcharge]="character.Etat.OverFatigue" [progress]="character.Etat.Fatigue" [max]="maxFatigue" [percent]="percentFatigue" [newcolor]="fatiguecolor"></bar>
+    <bar ishidden="false" [overpercent]="OverPercentFatigue" [overcharge]="character.Etat.OverFatigue" [progress]="character.Etat.Fatigue" [max]="maxFatigue" [percent]="percentFatigue" [newcolor]="fatiguecolor"></bar>
     <button ion-button round (click)="removeFatigue()">-</button><button ion-button round (click)="addFatigue()">+</button><button ion-button round (click)="set('Fatigue',character.Etat.Fatigue,maxFatigue)"><ion-icon name="brush"></ion-icon></button><button ion-button round (click)="overcharge(character.Etat.OverFatigue,'OverFatigue')"><ion-icon name="ios-thunderstorm"></ion-icon></button>
     <h3>Concentration :</h3>
     <bar ishidden="false" [overpercent]="OverPercentConcentration" [overcharge]="character.Etat.OverConcentration" [progress]="character.Etat.Concentration" [max]="maxConcentration" [percent]="percentConcentration" [newcolor]="concentrationcolor"></bar>
     <button ion-button round (click)="removeConcentration()">-</button><button ion-button round (click)="addConcentration()">+</button><button ion-button round (click)="set('Concentration',character.Etat.Concentration,maxConcentration)"><ion-icon name="brush"></ion-icon></button><button ion-button round (click)="overcharge(character.Etat.OverConcentration,'OverConcentration')"><ion-icon name="ios-thunderstorm"></ion-icon></button>
+    <h3>Adrenaline :</h3>
+    <adrenaline [adrenaline]="character.Adrenaline"></adrenaline>
+    <button ion-button round (click)="removeAdrenaline()">-</button><button ion-button round (click)="addAdrenaline()">+</button>
     <h3>Experience :</h3>
     <bar [ishidden]="expHidden" [progress]="character.Experience" [max]="maxExperience" [percent]="percentExperience" [newcolor]="experiencecolor"></bar>
-    <button ion-button round (click)="addExperience()">+</button>
+    <button ion-button round *ngIf="expHidden == 'false'" (click)="addExperience()">+</button>
 
     <br /><br /><br /><br /><br />
     <div *ngIf="character.Experience >= maxExperience">
