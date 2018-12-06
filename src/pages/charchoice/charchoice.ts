@@ -40,7 +40,7 @@ export class CharchoicePage {
 
   validate() {
     if (this.charnb >= 0) {
-      this.navCtrl.setRoot(HomePage, { charnb: this.dico[this.charnb] });
+      this.navCtrl.setRoot(HomePage, { charnb: this.dico[this.charnb], hideexp: "true"});
     }
   }
   newchar() {

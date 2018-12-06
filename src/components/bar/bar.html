@@ -1,7 +1,7 @@
 <div class="progress-outer">
   <div *ngIf="percent>0" class="progress-inner progress-bar-striped" [style.width]="percent+ '%'" [style.background]="newcolor">
-    <div *ngIf="notHidden">
-      {{progress}}/{{max}} <div *ngIf="overcharge>0" class="valovercharged">+{{overcharge}}</div>
+    <div class="status" *ngIf="ishidden == 'false'">
+      {{progress}}/{{max}} <div *ngIf="overcharge>0" class="valovercharged status">+{{overcharge}}</div>
     </div>
   </div>
   <div *ngIf="overpercent>0" class="progress-inner progress-bar-striped overcharged" [style.width]="overpercent+'%'" style.background="black">

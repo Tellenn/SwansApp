@@ -1,4 +1,7 @@
 bar {
+  .status {
+    display: inline;
+  }
 
   .progress-outer {
     height: 35px;
@@ -16,6 +19,7 @@ bar {
     white-space: nowrap;
     overflow: hidden;
     padding: 5px;
+    height: 27px;
     border-radius: 20px;
   }
 

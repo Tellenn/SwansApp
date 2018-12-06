@@ -59,7 +59,7 @@ export class GmMenuPage {
 
   toChar(char: string) {
     HeaderComponent.toGM = true;
-    this.navCtrl.setRoot(HomePage, { charnb: char });
+    this.navCtrl.setRoot(HomePage, { charnb: char, hideexp: "false"});
   }
 
   ionViewDidLeave() {

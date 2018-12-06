@@ -48,6 +48,8 @@ export class HomePage {
   concentrationcolor: string;
   experiencecolor: string;
 
+  expHidden: boolean;
+
   constructor(menuctrl : MenuController,public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CalculatorProvider, navParam: NavParams, public modalCtrl: ModalController) {
     menuctrl.enable(true);
 
@@ -56,6 +58,8 @@ export class HomePage {
     this.fatiguecolor = "darkorange";
     this.concentrationcolor = "teal";
     this.experiencecolor = "darkblue";
+
+    this.expHidden = navParam.get("hideexp");
     
     let temp = navParam.get("charnb");
     this.returnToGM = navParam.get("return");
