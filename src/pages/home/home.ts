@@ -198,14 +198,12 @@ export class HomePage {
     }
   }
   removeAdrenaline() {
-    console.log("ding");
     let newadrenaline = +this.character.Adrenaline - 1;
     if (newadrenaline >= 0) {
       this.database.object('/Character/' + HomePage.charnb).update({ Adrenaline: newadrenaline });
     }
   }
   addAdrenaline() {
-    console.log("dong");
     let newadrenaline = +this.character.Adrenaline + 1;
     if (newadrenaline < 4) {
       this.database.object('/Character/' + HomePage.charnb).update({ Adrenaline: newadrenaline });
