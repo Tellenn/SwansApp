@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Simulation de jet de dé</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="centered" ></div>
+  <h1>Generation de dé aléatiore</h1>
+  Lancer <input class="input" [(ngModel)]="number"/> dé à <input class="input" [(ngModel)]="face"/> face.<br /><br />
+  <button ion-button round (click)="result()"><ion-icon name="play"></ion-icon></button><br /><br /><br />
+  <div class="result" *ngIf="decomposedResult[2]">[ <div class="result" *ngFor="let dice of decomposedResult; let i = index">{{dice}}<div class="result" *ngIf="i<decomposedResult.length-1"> + </div></div> ] = </div><div class="result" *ngIf="diceResult">{{diceResult}}</div>
+</ion-content>
