@@ -6,6 +6,7 @@ This app is in a continuous developpement meant for personnal use
 
 ### Things to do :
 - Update rules
+- Dice simulation
 - Bug : Reputation overwrite
 - Bug : Attack menu unreachable
 
