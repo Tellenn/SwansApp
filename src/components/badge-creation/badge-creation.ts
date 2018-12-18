@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { NavParams, ViewController, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { SettingsProvider } from '../../providers/settings/settings';
+import { line } from '../edit/edit';
+import { HomePage } from '../../pages/home/home';
 
 @Component({
-  selector: 'edit',
-  templateUrl: 'edit.html'
+  selector: 'badge-creation',
+  templateUrl: 'badge-creation.html'
 })
-export class EditComponent {
+export class BadgeCreationComponent {
   path: string;
   candelete: boolean;
   selectedTheme: String;
@@ -22,17 +24,9 @@ export class EditComponent {
   }
 
   validate() {
-    let item = {};
-    for (let i = 0; i < this.editvalues.length; i++) {
-      if (this.editvalues[i].add) {
-        item[this.editvalues[i].cle] = this.editvalues[i].basevalue+parseInt(this.editvalues[i].val);
-      }
-      else
-      {
-        item[this.editvalues[i].cle] = this.editvalues[i].val;
-      }
-    }
-    this.afDatabase.object(this.path).update(<JSON>item);
+    let newExp = +HomePage.exp + +this.editvalues[1].val;
+    this.afDatabase.object(this.path).update(this.editvalues[0].val);
+    this.afDatabase.object('/Character/' + HomePage.charnb + ' / Etat').update(newExp);
     this.viewCtrl.dismiss();
   }
 
@@ -50,7 +44,6 @@ export class EditComponent {
         {
           text: "Confirmer",
           handler: () => {
-            console.log("Confirmer sélectionné");
             this.afDatabase.object(this.path).remove();
             this.viewCtrl.dismiss();
           }
@@ -58,20 +51,5 @@ export class EditComponent {
       ]
     });
     confirm.present();
-  }
-}
-export class line {
-
-  nom: string;
-  val: any;
-  cle: string;
-  add: boolean;
-  basevalue: number;
-  constructor(nom: string = "", val: any = "", cle: string = "", add: boolean = false,basevalue:number = 0) {
-    this.nom = nom;
-    this.val = val;
-    this.cle = cle;
-    this.add = add;
-    this.basevalue = basevalue;
   }
 }

@@ -10,6 +10,7 @@ import { ModalcompComponent } from './modalcomp/modalcomp';
 import { RecapCharComponent } from './recap-char/recap-char';
 import { ModalFilterComponent } from './modal-filter/modal-filter';
 import { AdrenalineComponent } from './adrenaline/adrenaline';
+import { BadgeCreationComponent } from './badge-creation/badge-creation';
 @NgModule({
 	declarations: [
     BarComponent,
@@ -22,7 +23,8 @@ import { AdrenalineComponent } from './adrenaline/adrenaline';
     ModalcompComponent,
     RecapCharComponent,
     ModalFilterComponent,
-    AdrenalineComponent],
+    AdrenalineComponent,
+    BadgeCreationComponent],
 	imports: [],
   exports: [
     BarComponent,
@@ -35,7 +37,8 @@ import { AdrenalineComponent } from './adrenaline/adrenaline';
     ModalcompComponent,
     RecapCharComponent,
     ModalFilterComponent,
-    AdrenalineComponent],
+    AdrenalineComponent,
+    BadgeCreationComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {}
