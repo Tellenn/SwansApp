@@ -49,6 +49,8 @@ import { NotesPage } from '../pages/notes/notes';
 import { SettingsProvider } from '../providers/settings/settings';
 import { RollPage } from '../pages/roll/roll';
 import { AdrenalineComponent } from '../components/adrenaline/adrenaline';
+import { BadgesPage } from '../pages/badges/badges';
+import { BadgeCreationComponent } from '../components/badge-creation/badge-creation';
 
 
 // AF2 Settings
@@ -78,6 +80,7 @@ export const firebaseConfig = {
     GmMenuPage,
     NotesPage,
     RollPage,
+    BadgesPage,
 
     WelcomeCreationPage,
     NamingCreationPage,
@@ -91,6 +94,7 @@ export const firebaseConfig = {
     BarComponent,
     ItemComponent,
     EditComponent,
+    BadgeCreationComponent,
     ReputationComponent,
     MoneyComponent,
     HeaderComponent,
@@ -124,6 +128,7 @@ export const firebaseConfig = {
     GmMenuPage,
     NotesPage,
     RollPage,
+    BadgesPage,
 
     WelcomeCreationPage,
     NamingCreationPage,
@@ -135,6 +140,7 @@ export const firebaseConfig = {
     ValidationCreationPage,
 
     EditComponent,
+    BadgeCreationComponent,
     MoneyComponent,
     HeaderComponent,
     ResistanceComponent,

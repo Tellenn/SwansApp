@@ -5,7 +5,17 @@
 
 
 <ion-content padding>
-  <ion-item *ngFor="let badge of badges">
-    {{badge}}
-  </ion-item>
+  <div *ngIf="badges">
+    <ion-item *ngFor="let badge of badges">
+      {{badge}}
+    </ion-item>
+  </div>
+
+  <div *ngIf="fromgm">
+    <ion-fab (click)="addBadge()">
+      <button ion-fab>
+        <ion-icon name="ios-add"></ion-icon>
+      </button>
+    </ion-fab>
+  </div>
 </ion-content>

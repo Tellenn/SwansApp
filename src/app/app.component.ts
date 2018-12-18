@@ -18,6 +18,8 @@ import { LoginPage } from '../pages/login/login';
 import { NotesPage } from '../pages/notes/notes';
 import { SettingsProvider } from '../providers/settings/settings';
 import { RollPage } from '../pages/roll/roll';
+import { BadgesPage } from '../pages/badges/badges';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -49,6 +51,7 @@ export class MyApp {
       { title: 'Attaque', component: AttaquePage },
       { title: 'Defense', component: DefensePage },
       { title: 'Roll', component: RollPage },
+      { title: 'Badges', component: BadgesPage },
       { title: 'Notes', component: NotesPage },
       { title: 'Paramètres', component: ParametresPage }
     ];

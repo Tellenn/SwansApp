@@ -14,7 +14,9 @@ import { LevelupPage } from '../levelup/levelup';
 export class HomePage {
   static charnb: number;
   static level: number;
+  static exp: number;
   static mainstat: Caracteristique;
+  static fromGM: boolean;
 
   sub: any;
 
@@ -48,7 +50,7 @@ export class HomePage {
   concentrationcolor: string;
   experiencecolor: string;
 
-  expHidden: boolean;
+  expHidden: string;
 
   constructor(menuctrl : MenuController,public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CalculatorProvider, navParam: NavParams, public modalCtrl: ModalController) {
     menuctrl.enable(true);
@@ -60,6 +62,8 @@ export class HomePage {
     this.experiencecolor = "darkblue";
 
     this.expHidden = navParam.get("hideexp");
+    console.log(this.expHidden);
+    HomePage.fromGM = this.expHidden == 'false';
     
     let temp = navParam.get("charnb");
     this.returnToGM = navParam.get("return");
@@ -71,6 +75,7 @@ export class HomePage {
       this.character = <Character>action.payload.val();
 
       HomePage.level = this.character.Niveau;
+      HomePage.exp = this.character.Experience;
 
       this.maxLife = (calculator.calcmodif(this.character.Caracteristiques.CON, this.character.Niveau - 1) + 8);
       if (this.character.Etat.Vie > this.maxLife) {
@@ -238,17 +243,6 @@ export class HomePage {
   }
 
   addExperience() {
-    /*let params: line[] = new Array<line>();
-    params.push(new line("Nom", this.character.Nom, "Nom"));
-    params.push(new line("Sexe", this.character.Sexe, "Sexe"));
-    params.push(new line("Dextrie", this.character.Dextrie, "Dextrie"));
-    params.push(new line("Taille", this.character.Taille, "Taille"));
-    params.push(new line("Cheveux", this.character.Cheveux, "Cheveux"));
-    params.push(new line("Yeux", this.character.Yeux, "Yeux"));
-    this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb }).present();
-    <h3>Experience : </h3>
-      < bar[progress]="character.Etat.Concentration"[max] = "maxConcentration"[percent] = "percentConcentration"[newcolor] = "concentrationcolor" > </bar>
-        < button ion - button round(click) = "addExperience()" > +</button>*/
     let params: line[] = new Array<line>();
     params.push(new line("Experience", 0, "Experience", true, this.character.Experience));
     this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb}).present();
@@ -382,6 +376,7 @@ export class Character {
   Age: number;
   Aptitudes: Aptitude[];
   Attaque: Attaque[];
+  Badges: string[];
   Caracteristiques: Caracteristiques;
   Cheveux: string;
   Competences: Competence[];
