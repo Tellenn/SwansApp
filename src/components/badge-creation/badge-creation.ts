@@ -11,7 +11,6 @@ import { HomePage } from '../../pages/home/home';
 })
 export class BadgeCreationComponent {
   path: string;
-  candelete: boolean;
   selectedTheme: String;
 
   editvalues: line[];
@@ -19,37 +18,22 @@ export class BadgeCreationComponent {
   constructor(params: NavParams, public viewCtrl: ViewController, public afDatabase: AngularFireDatabase, public alertCtrl: AlertController, private settings: SettingsProvider) {
     this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
     this.path = params.get('path');
-    this.candelete = params.get('delete');
     this.editvalues = params.get('params');
   }
 
   validate() {
     let newExp = +HomePage.exp + +this.editvalues[1].val;
-    this.afDatabase.object(this.path).update(this.editvalues[0].val);
-    this.afDatabase.object('/Character/' + HomePage.charnb + ' / Etat').update(newExp);
+    let pathSplitted = this.path.split("/");
+    let badge = {};
+    badge[pathSplitted[4]] = this.editvalues[0].val;
+    this.afDatabase.object("/"+pathSplitted[1]+"/"+pathSplitted[2]+"/"+pathSplitted[3]).update(<JSON>badge);
+    let exp = {}
+    exp["Experience"] = newExp;
+    this.afDatabase.object('/Character/' + HomePage.charnb).update(<JSON>exp);
     this.viewCtrl.dismiss();
   }
 
   cancel() {
     this.viewCtrl.dismiss();
-  }
-  delete() {
-    let confirm = this.alertCtrl.create({
-      title: "Supprimer ?",
-      message: "Êtes vous sûrs ?",
-      buttons: [
-        {
-          text: 'Annuler'
-        },
-        {
-          text: "Confirmer",
-          handler: () => {
-            this.afDatabase.object(this.path).remove();
-            this.viewCtrl.dismiss();
-          }
-        }
-      ]
-    });
-    confirm.present();
   }
 }

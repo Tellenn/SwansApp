@@ -13,28 +13,31 @@ import { BadgeCreationComponent } from '../../components/badge-creation/badge-cr
 export class BadgesPage {
   fromgm: boolean;
   badges: string[];
+  nextIndex: number;
 
   sub: any;
 
   constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, public navParams: NavParams, public modalCtrl: ModalController) {
     this.fromgm = HomePage.fromGM;
-    this.sub = afDatabase.object('/Character/' + HomePage.charnb).snapshotChanges().subscribe(action => {
-      let char: Character = <Character>action.payload.val();
-      this.badges = char.Badges;
-    })
-    console.log(this.fromgm);
-    
-  }
-
-  redeemExp() {
-
+    this.sub = afDatabase.list('/Character/' + HomePage.charnb+"/Badges").snapshotChanges().subscribe(actions => {
+      let listeBadges : string[] = new Array<string>();
+      let index : number = 0;
+      actions.forEach(function(action){
+        listeBadges.push(action.payload.val());
+        if(index <= +action.key){
+          index = +action.key+1;
+        }
+      });
+      this.badges = listeBadges;
+      this.nextIndex = index;
+    });
   }
 
   addBadge() {
     let params: line[] = new Array<line>();
     params.push(new line("Nom", "", "Nom"));
     params.push(new line("Bonus exp", 0, "Temporalite"));
-    this.modalCtrl.create(BadgeCreationComponent, { delete: true, params: params, path: "/Character/" + HomePage.charnb + "/Badges/" + this.badges.length }).present();
+    this.modalCtrl.create(BadgeCreationComponent, { delete: true, params: params, path: "/Character/" + HomePage.charnb + "/Badges/" + this.nextIndex }).present();
   }
 
   ionViewDidLeave() {

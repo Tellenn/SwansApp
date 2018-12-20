@@ -62,8 +62,11 @@ export class HomePage {
     this.experiencecolor = "darkblue";
 
     this.expHidden = navParam.get("hideexp");
-    console.log(this.expHidden);
-    HomePage.fromGM = this.expHidden == 'false';
+    if(this.expHidden != undefined){
+      HomePage.fromGM = this.expHidden == 'false';
+    }else{
+      this.expHidden = HomePage.fromGM ? "false" : "true";
+    }
     
     let temp = navParam.get("charnb");
     this.returnToGM = navParam.get("return");
