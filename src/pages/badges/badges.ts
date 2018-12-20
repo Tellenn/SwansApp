@@ -23,7 +23,7 @@ export class BadgesPage {
       let listeBadges : string[] = new Array<string>();
       let index : number = 0;
       actions.forEach(function(action){
-        listeBadges.push(action.payload.val());
+        listeBadges.push(<string>action.payload.val());
         if(index <= +action.key){
           index = +action.key+1;
         }

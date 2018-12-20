@@ -22,7 +22,12 @@ export class BadgeCreationComponent {
   }
 
   validate() {
-    let newExp = +HomePage.exp + +this.editvalues[1].val;
+    let newExp : number;
+    if(!+HomePage.exp){
+      newExp = +this.editvalues[1].val;
+    }else{
+      newExp = +HomePage.exp + +this.editvalues[1].val;
+    }
     let pathSplitted = this.path.split("/");
     let badge = {};
     badge[pathSplitted[4]] = this.editvalues[0].val;
