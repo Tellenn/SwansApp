@@ -5,10 +5,6 @@ https://play.google.com/store/apps/details?id=io.ionic.swanapp
 This app is in a continuous developpement meant for personnal use
 
 ### Things to do :
-- Update rules
-- Dice simulation
-- Bug : Reputation overwrite
-- Bug : Attack menu unreachable
 
 #### V2
 - Custom bar color
@@ -71,6 +67,10 @@ This app is in a continuous developpement meant for personnal use
   - ~~Attack~~
   - ~~Defense~~
 - ~~Add EXP bar~~
+- ~~Update rules~~
+- ~~Dice simulation~~
+- ~~Bug : Reputation overwrite~~
+- ~~Bug : Attack menu unreachable~~
  #### V3
  
  
