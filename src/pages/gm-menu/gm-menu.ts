@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, MenuController, NavController, NavParams, Menu, ModalController } from 'ionic-angular';
-import { FirebaseDatabase } from 'angularfire2';
-import { database } from 'firebase';
+import { IonicPage, MenuController, NavController, NavParams, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Character, HomePage } from '../home/home';
 import { HeaderComponent } from '../../components/header/header';

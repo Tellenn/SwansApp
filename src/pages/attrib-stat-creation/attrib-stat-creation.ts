@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { Character, Caracteristique } from '../home/home';
 import { NatifCompCreationPage } from '../natif-comp-creation/natif-comp-creation';
 
@@ -17,7 +17,8 @@ export class AttribStatCreationPage {
   chosenValues: number[] = [0,0,0,0,0,0];
   tempTotal: number = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(menuctrl : MenuController, public navCtrl: NavController, public navParams: NavParams) {
+    menuctrl.enable(false);
     this.chosenValues = new Array<number>();
     for(let i = 0; i<6 ;i++){
       this.chosenValues.push(0);
@@ -30,12 +31,7 @@ export class AttribStatCreationPage {
   update(){
     let newTotal:number = 0;
     this.chosenValues.forEach(function(val){
-      if(typeof val !== "number"){
-        newTotal += parseInt(val);
-      }else{
-        newTotal += val;
-      }
-      
+      newTotal += +val;
     })
     this.tempTotal = newTotal;
   }
@@ -47,12 +43,12 @@ export class AttribStatCreationPage {
       errormsg = "Tu t'es ajouté un peu trop de point non ?";
     }
     if(!error) {
-      this.character.Caracteristiques.CHA.Score = this.chosenValues[0];
-      this.character.Caracteristiques.CON.Score = this.chosenValues[1];
-      this.character.Caracteristiques.DEX.Score = this.chosenValues[2];
-      this.character.Caracteristiques.FOR.Score = this.chosenValues[3];
-      this.character.Caracteristiques.INT.Score = this.chosenValues[4];
-      this.character.Caracteristiques.SAG.Score = this.chosenValues[5];
+      this.character.Caracteristiques.CHA.Score = +this.chosenValues[0];
+      this.character.Caracteristiques.CON.Score = +this.chosenValues[1];
+      this.character.Caracteristiques.DEX.Score = +this.chosenValues[2];
+      this.character.Caracteristiques.FOR.Score = +this.chosenValues[3];
+      this.character.Caracteristiques.INT.Score = +this.chosenValues[4];
+      this.character.Caracteristiques.SAG.Score = +this.chosenValues[5];
       this.navCtrl.push(NatifCompCreationPage, { character: this.character });
     } else {
       this.error = errormsg;

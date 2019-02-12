@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Character } from '../../pages/home/home';
-import { GmMenuPage } from '../../pages/gm-menu/gm-menu';
 import { ViewController, NavParams } from 'ionic-angular';
 import { SettingsProvider } from '../../providers/settings/settings';
 

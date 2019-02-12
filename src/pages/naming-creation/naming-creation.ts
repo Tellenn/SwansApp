@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
 import { DiceCreationPage } from '../dice-creation/dice-creation';
 import { Character } from '../home/home'
 
@@ -18,7 +18,8 @@ export class NamingCreationPage {
   Cheveux: string;
   Taille: string;
   Dextrie: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(menuctrl : MenuController, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+    menuctrl.enable(false);
   }
 
   next() {

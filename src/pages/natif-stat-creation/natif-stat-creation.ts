@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { Character, Caracteristiques, Caracteristique } from '../home/home';
-import { CharchoicePage } from '../charchoice/charchoice';
 import { AttribStatCreationPage } from '../attrib-stat-creation/attrib-stat-creation';
 
 
@@ -15,7 +14,8 @@ export class NatifStatCreationPage {
   character: Character;
   error: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(menuctrl : MenuController, public navCtrl: NavController, public navParams: NavParams) {
+    menuctrl.enable(false);
     this.character = <Character> navParams.get("character");
 
     console.log(this.character);

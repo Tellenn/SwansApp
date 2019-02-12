@@ -11,6 +11,7 @@ import { RecapCharComponent } from './recap-char/recap-char';
 import { ModalFilterComponent } from './modal-filter/modal-filter';
 import { AdrenalineComponent } from './adrenaline/adrenaline';
 import { BadgeCreationComponent } from './badge-creation/badge-creation';
+import { ModalColorPickerComponent } from './modal-color-picker/modal-color-picker';
 @NgModule({
 	declarations: [
     BarComponent,
@@ -24,7 +25,8 @@ import { BadgeCreationComponent } from './badge-creation/badge-creation';
     RecapCharComponent,
     ModalFilterComponent,
     AdrenalineComponent,
-    BadgeCreationComponent],
+    BadgeCreationComponent,
+    ModalColorPickerComponent],
 	imports: [],
   exports: [
     BarComponent,
@@ -38,7 +40,8 @@ import { BadgeCreationComponent } from './badge-creation/badge-creation';
     RecapCharComponent,
     ModalFilterComponent,
     AdrenalineComponent,
-    BadgeCreationComponent],
+    BadgeCreationComponent,
+    ModalColorPickerComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {}

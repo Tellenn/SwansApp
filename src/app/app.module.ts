@@ -51,6 +51,7 @@ import { RollPage } from '../pages/roll/roll';
 import { AdrenalineComponent } from '../components/adrenaline/adrenaline';
 import { BadgesPage } from '../pages/badges/badges';
 import { BadgeCreationComponent } from '../components/badge-creation/badge-creation';
+import { ColorPicker } from '../components/color-picker/color-picker';
 
 
 // AF2 Settings
@@ -102,7 +103,8 @@ export const firebaseConfig = {
     ModalcompComponent,
     RecapCharComponent,
     ModalFilterComponent,
-    AdrenalineComponent
+    AdrenalineComponent,
+    ColorPicker
   ],
   imports: [
     BrowserModule,
@@ -147,7 +149,8 @@ export const firebaseConfig = {
     ModalcompComponent,
     RecapCharComponent,
     ModalFilterComponent,
-    AdrenalineComponent
+    AdrenalineComponent,
+    ColorPicker
   ],
   providers: [
     StatusBar,

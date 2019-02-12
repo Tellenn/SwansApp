@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { HomePage, Character } from '../home/home';
+import { HomePage } from '../home/home';
 import { line } from '../../components/edit/edit';
 import { BadgeCreationComponent } from '../../components/badge-creation/badge-creation';
 

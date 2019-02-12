@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { CharchoicePage } from '../charchoice/charchoice';
 
@@ -14,7 +14,8 @@ export class LoginPage {
   password: string = "iamgroot";
   passwd:string;
   error:string;
-  constructor(public storage: Storage, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(menuctrl : MenuController, public storage: Storage, public navCtrl: NavController, public navParams: NavParams) {
+    menuctrl.enable(false);
     this.error = "";
     this.passwd = "";
   }

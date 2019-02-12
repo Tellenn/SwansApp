@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { Character } from '../home/home';
 import { NatifStatCreationPage } from '../natif-stat-creation/natif-stat-creation';
 
@@ -13,7 +13,8 @@ export class DiceCreationPage {
   val: any;
   error: string = "";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(menuctrl : MenuController, public navCtrl: NavController, public navParams: NavParams) {
+    menuctrl.enable(false);
     this.character = navParams.get("perso");
     this.error = "";
   }

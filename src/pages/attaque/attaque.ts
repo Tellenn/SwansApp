@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, ModalController } from 'ionic-angular';
 import { EditComponent, line } from '../../components/edit/edit';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
 import { HomePage, Attaque } from '../home/home';
@@ -52,7 +52,7 @@ export class AttaquePage {
       this.maxindex++;
     });
   }
-  
+
   remove(i:number){
     this.afDatabase.object('/Character/'+HomePage.charnb+'/Attaque/'+this.dico[i]).remove();
   }
@@ -74,7 +74,7 @@ export class AttaquePage {
     params.push( new line("Attaque", "", "Attaque"));
     params.push( new line("Degats", "", "Degats"));
     params.push( new line("Critique", "", "Critique"));
-    
+
     this.modalCtrl.create(EditComponent, {delete :false, params:params, path: "/Character/" + HomePage.charnb + "/Attaque/"+this.maxindex}).present();
   }
 

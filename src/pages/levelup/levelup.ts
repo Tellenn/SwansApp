@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
-import { HomePage, Caracteristique, Competence, Caracteristiques } from '../home/home';
-import { JsonpCallbackContext } from '../../../node_modules/@angular/common/http/src/jsonp';
+import { HomePage, Caracteristique, Competence, Caracteristiques, Character } from '../home/home';
 
 
 @IonicPage()
@@ -23,6 +22,7 @@ export class LevelupPage {
   stats: Caracteristique[];
   path: string;
   sub: any;
+  exp: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase) {
     this.path = navParams.get("path");
@@ -45,6 +45,11 @@ export class LevelupPage {
       this.stats.push(allstats.INT);
       this.stats.push(allstats.SAG);
     }));
+
+    this.sub.push(afDatabase.object(this.path).snapshotChanges().subscribe(action => {
+      let char = <Character>action.payload.val();
+      this.exp = char.Experience;
+    }));
   }
 
   ionViewDidLeave() {
@@ -53,6 +58,13 @@ export class LevelupPage {
     }
   }
   validate() {
+    let removeExp;
+    if (HomePage.level == 1) {
+      removeExp = 500;
+    } else {
+      removeExp = 1000 + 100 * (HomePage.level - 1);
+    }
+
     this.afDatabase.object(this.path).update({ Niveau: HomePage.level + 1 });
 
     if (this.stat1 == this.stat2) {
@@ -82,8 +94,12 @@ export class LevelupPage {
         this.afDatabase.object(this.path + "/Competences/" + this.dicocomp[i]).update({ Modif: +this.comps[i].Modif + count });
       }
     }
-
+    // REMOVE EXPS
+    this.exp = this.exp - removeExp;
+    console.log(this.exp);
+    this.afDatabase.object(this.path).update({ Experience: this.exp });
     this.navCtrl.pop();
+    this.navCtrl.setRoot(HomePage, { charnb: HomePage.charnb, hideexp: "true"});
   }
   back() {
     this.navCtrl.pop();

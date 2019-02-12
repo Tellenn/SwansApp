@@ -1,0 +1,10 @@
+
+<div [class]="selectedTheme">
+  <div class="modal">
+    <ion-scroll scrollY="true">
+      <color-picker [hexColor]="'#FF0000'" (colorChanged)="setColor($event)"></color-picker><!-- (colorTouchStart)="colorTouchStart()" (colorTouchEnd)="colorTouchEnd()"-->
+    </ion-scroll>
+    <button ion-button (click)="validate()" class="validate">Valider</button>
+    <button ion-button (click)="cancel()" class="cancel">Annuler</button>
+  </div>
+</div>

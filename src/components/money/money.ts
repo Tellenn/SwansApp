@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HomePage } from '../../pages/home/home';
-import { ModalController, AlertController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/internal/Observable';
 import { EditComponent,line } from '../edit/edit';
@@ -41,7 +41,7 @@ export class MoneyComponent {
     params.push(new line("Nom", "", "Nom"));
     params.push(new line("Quantitée", "", "Valeur"));
     this.modalCtrl.create(EditComponent, { delete: false, params:params, path: "/Character/" + HomePage.charnb + "/Monnaie/" + this.maxIndex }).present();
-    
+
   }
 
   setMaxIndex(): void{
@@ -51,7 +51,7 @@ export class MoneyComponent {
     }
   }
 
-  
+
 }
 export interface Champ {
   Nom: string;

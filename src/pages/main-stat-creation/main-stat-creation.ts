@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { Character, Caracteristique } from '../home/home';
 import { ValidationCreationPage } from '../validation-creation/validation-creation';
 
@@ -14,7 +14,8 @@ export class MainStatCreationPage {
   stats: Caracteristique[];
   val: number[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(menuctrl : MenuController, public navCtrl: NavController, public navParams: NavParams) {
+    menuctrl.enable(false);
     this.character = this.navParams.get("character");
     this.stats = new Array<Caracteristique>();
     this.val = new Array<number>();

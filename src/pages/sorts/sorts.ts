@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, Modal } from 'ionic-angular';
+import { IonicPage, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
-import { HomePage, Aptitude, Character } from '../home/home';
+import { HomePage, Aptitude } from '../home/home';
 import { EditComponent,line } from '../../components/edit/edit';
 import { CalculatorProvider } from '../../providers/character/character';
 
@@ -49,7 +49,7 @@ export class SortsPage {
       }
       this.maxindex++;
     }));
-    
+
   }
 
   ionViewDidLeave() {
@@ -57,7 +57,7 @@ export class SortsPage {
       this.sub[i].unsubscribe();
     }
   }
-  
+
 
   create() {
     let params: line[] = new Array<line>();

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { ResistanceComponent } from '../../components/resistance/resistance';
+import { IonicPage, ModalController } from 'ionic-angular';
 import { HomePage, Defense,Caracteristique } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EditComponent,line } from '../../components/edit/edit';

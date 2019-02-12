@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, MenuController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams, ModalController, MenuController, Navbar } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs';
 import { CalculatorProvider } from '../../providers/character/character';
-import { CharchoicePage } from '../charchoice/charchoice';
 import { EditComponent, line } from '../../components/edit/edit';
 import { LevelupPage } from '../levelup/levelup';
+import { CharchoicePage } from '../charchoice/charchoice';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  @ViewChild(Navbar) navBar: Navbar;
   static charnb: number;
   static level: number;
   static exp: number;
@@ -67,7 +67,7 @@ export class HomePage {
     }else{
       this.expHidden = HomePage.fromGM ? "false" : "true";
     }
-    
+
     let temp = navParam.get("charnb");
     this.returnToGM = navParam.get("return");
     if (temp != null) {
@@ -80,7 +80,7 @@ export class HomePage {
       HomePage.level = this.character.Niveau;
       HomePage.exp = this.character.Experience;
 
-      this.maxLife = (calculator.calcmodif(this.character.Caracteristiques.CON, this.character.Niveau - 1) + 8);
+      this.maxLife = this.character.Niveau + 7;
       if (this.character.Etat.Vie > this.maxLife) {
         this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Vie: this.maxLife });
       }
@@ -145,6 +145,12 @@ export class HomePage {
 
   }
 
+  ionViewDidLoad() {
+    this.navBar.backButtonClick = event => {
+      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.popToRoot();
+	}
+}
 
   ionViewDidLeave() {
     this.sub.unsubscribe();

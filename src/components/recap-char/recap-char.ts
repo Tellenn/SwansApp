@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Character, HomePage, Caracteristiques, Caracteristique, Etat } from '../../pages/home/home';
+import { Character } from '../../pages/home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { CalculatorProvider } from '../../providers/character/character';
 
@@ -32,7 +32,7 @@ export class RecapCharComponent {
 
 
   constructor(public calculator: CalculatorProvider, public afDatabase: AngularFireDatabase) {
-    
+
     this.calc = calculator;
 
     this.lifecolor = "darkred";
@@ -47,7 +47,7 @@ export class RecapCharComponent {
 
         this.character.Caracteristiques.CON.Natif += this.character.Niveau - 1;
 
-        this.maxLife = calculator.calcmodif(this.character.Caracteristiques.CON) + 8;
+        this.maxLife = +this.character.Niveau + 7;
         this.percentLife = this.character.Etat.Vie / this.maxLife * 100;
 
         this.maxMental = calculator.calcmodif(this.character.Caracteristiques.CON) * 2 + 20;

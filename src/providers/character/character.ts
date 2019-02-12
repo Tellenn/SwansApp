@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HomePage, Caracteristique } from '../../pages/home/home';
-import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
+import { Caracteristique } from '../../pages/home/home';
 
 @Injectable()
 export class CalculatorProvider {

@@ -15,6 +15,7 @@ export class ParametresPage {
   music: boolean;
   musicguile: boolean;
   night: boolean;
+  color: string;
 
   constructor(public storage: Storage, public navCtrl: NavController, public navParams: NavParams, private nativeAudio: NativeAudio, private settings: SettingsProvider) {
     this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
@@ -52,9 +53,13 @@ export class ParametresPage {
     } else {
       this.settings.setActiveTheme('dark-theme');
     }
-  }
-  
 
+  }
+
+  setColor(thing) {
+    //Open modal
+    console.log(thing);
+  }
 
 
 }

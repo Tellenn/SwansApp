@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { NamingCreationPage } from '../naming-creation/naming-creation';
 
 @IonicPage()
@@ -9,12 +9,11 @@ import { NamingCreationPage } from '../naming-creation/naming-creation';
 })
 export class WelcomeCreationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log("Why is there a delay here ? :(");
+  constructor(menuctrl : MenuController, public navCtrl: NavController, public navParams: NavParams) {
+    menuctrl.enable(false);
   }
 
   next() {
-    console.log("clicked");
     this.navCtrl.push(NamingCreationPage, {});
   }
 

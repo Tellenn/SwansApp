@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Character, Defense, Competence, Aptitude, Attaque, Etat, Inventaire, Champ, HomePage } from '../home/home';
-import { Chain } from '@angular/compiler';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { Character, Defense, Aptitude, Attaque, Etat, Inventaire, Champ, HomePage } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 
@@ -14,7 +13,8 @@ export class ValidationCreationPage {
   sub: any;
   character: Character;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase) {
+  constructor(menuctrl : MenuController, public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase) {
+    menuctrl.enable(false);
     this.character = <Character>navParams.get("character");
     this.character.Aptitudes = new Array<Aptitude>();
     this.character.Defense = new Array<Defense>();
@@ -41,7 +41,7 @@ export class ValidationCreationPage {
       this.afDatabase.object("/Character/" + maxInd).update(this.character);
       this.navCtrl.setRoot(HomePage, { charnb: maxInd });
     });
-    
+
   }
 
   ionViewDidLeave() {

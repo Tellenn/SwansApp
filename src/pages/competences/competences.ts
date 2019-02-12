@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
 import { CalculatorProvider } from '../../providers/character/character';
-import { HomePage, Competence, Caracteristique,Caracteristiques } from '../home/home';
+import { HomePage, Competence, Caracteristiques } from '../home/home';
 import { ModalcompComponent } from '../../components/modalcomp/modalcomp';
 
 

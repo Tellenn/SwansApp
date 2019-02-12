@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Character, Caracteristiques, Competence } from '../home/home';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { Character, Competence } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { MainStatCreationPage } from '../main-stat-creation/main-stat-creation';
 
@@ -21,7 +21,8 @@ export class NatifCompCreationPage {
   stats: Competence[];
   sub: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase) {
+  constructor(menuctrl : MenuController, public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase) {
+    menuctrl.enable(false);
     this.character = navParams.get("character");
     this.sub = afDatabase.list('/Character/0/Competences').snapshotChanges().subscribe(action => {
       this.stats = new Array<Competence>();
