@@ -80,7 +80,7 @@ export class HomePage {
       HomePage.level = this.character.Niveau;
       HomePage.exp = this.character.Experience;
 
-      this.maxLife = this.character.Niveau + 7;
+      this.maxLife = calculator.calcmodif(this.character.Caracteristiques.CON) + 8;
       if (this.character.Etat.Vie > this.maxLife) {
         this.database.object('/Character/' + HomePage.charnb + '/Etat').update({ Vie: this.maxLife });
       }
