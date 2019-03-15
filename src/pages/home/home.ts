@@ -212,12 +212,18 @@ export class HomePage {
     }
   }
   removeAdrenaline() {
+    if (!this.character.Adrenaline) {
+      this.character.Adrenaline = 1;
+    }
     let newadrenaline = +this.character.Adrenaline - 1;
     if (newadrenaline >= 0) {
       this.database.object('/Character/' + HomePage.charnb).update({ Adrenaline: newadrenaline });
     }
   }
   addAdrenaline() {
+    if (!this.character.Adrenaline) {
+      this.character.Adrenaline = 0;
+    }
     let newadrenaline = +this.character.Adrenaline + 1;
     if (newadrenaline < 4) {
       this.database.object('/Character/' + HomePage.charnb).update({ Adrenaline: newadrenaline });

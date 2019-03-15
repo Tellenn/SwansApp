@@ -23,6 +23,7 @@ export class ValidationCreationPage {
     this.character.Inventaire = new Array<Inventaire>();
     this.character.Monnaie = new Array<Champ>();
     this.character.Reputation = new Array<Champ>();
+    this.character.Adrenaline = 0;
     this.character.Niveau = 1;
   }
 
