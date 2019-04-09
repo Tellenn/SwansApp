@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
-import { CalculatorProvider } from '../../providers/character/character';
+import { CharacterProvider } from '../../providers/character/character';
 import { HomePage, Competence, Caracteristiques } from '../home/home';
 import { ModalcompComponent } from '../../components/modalcomp/modalcomp';
 
@@ -15,10 +15,10 @@ export class CompetencesPage {
   sub: any;
   stats: Caracteristiques;
   competences: Competence[];
-  calc: CalculatorProvider;
+  calc: CharacterProvider;
   modal: ModalController;
 
-  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CalculatorProvider, modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CharacterProvider, modalCtrl: ModalController) {
     this.sub = new Array<any>();
     this.calc = calculator;
     this.modal = modalCtrl;

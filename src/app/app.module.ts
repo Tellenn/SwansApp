@@ -15,7 +15,7 @@ import { SortsPage } from '../pages/sorts/sorts';
 import { LoginPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { CalculatorProvider } from '../providers/character/character';
+import { CharacterProvider } from '../providers/character/character';
 
 import { BarComponent } from '../components/bar/bar';
 import { ItemComponent } from '../components/item/item';
@@ -156,7 +156,7 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CalculatorProvider,
+    CharacterProvider,
     NativeAudio,
     SettingsProvider
   ]

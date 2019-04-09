@@ -1,4 +1,4 @@
-<div class="progress-outer">
+<div class="progress-outer" (click)="set('Vie',character.Etat.Vie,maxLife)">
   <div *ngIf="percent>0" class="progress-inner progress-bar-striped" [style.width]="percent+ '%'" [style.background]="newcolor">
     <div class="status" *ngIf="ishidden == 'false'">
       {{progress}}/{{max}} <div *ngIf="overcharge>0" class="valovercharged status">+{{overcharge}}</div>
@@ -8,3 +8,6 @@
   </div>
   <div *ngIf="percent<1" class="progress-inner" [style.color]="'#000'">¯\\_(ツ)_/¯</div>
 </div>
+<button ion-button round (click)="removeLife()">-</button>
+<button ion-button round (click)="addLife()">+</button>
+<button ion-button round (click)="overcharge(character.Etat.OverVie,'OverVie')"><ion-icon name="ios-thunderstorm"></ion-icon></button>

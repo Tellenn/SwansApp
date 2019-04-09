@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { CalculatorProvider } from '../../providers/character/character';
+import { CharacterProvider } from '../../providers/character/character';
 import { HomePage } from '../../pages/home/home';
 
 
@@ -9,12 +9,12 @@ import { HomePage } from '../../pages/home/home';
   templateUrl: 'resistance.html'
 })
 export class ResistanceComponent {
-  calc: CalculatorProvider;
+  calc: CharacterProvider;
   DEX: Caracteristique;
   CON: Caracteristique;
   SAG: Caracteristique;
 
-  constructor(public afDatabase: AngularFireDatabase, calculator: CalculatorProvider) {
+  constructor(public afDatabase: AngularFireDatabase, calculator: CharacterProvider) {
     this.calc = calculator;
     afDatabase.list('/Character/' + HomePage.charnb + '/Caracteristiques').snapshotChanges().subscribe(action => {
       let char: Caracteristique;

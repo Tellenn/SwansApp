@@ -3,7 +3,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { CharchoicePage } from '../charchoice/charchoice';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
 import { HomePage } from '../home/home';
-import { CalculatorProvider } from '../../providers/character/character';
+import { CharacterProvider } from '../../providers/character/character';
 import { Caracteristique } from '../../components/resistance/resistance';
 
 @IonicPage()
@@ -12,10 +12,10 @@ import { Caracteristique } from '../../components/resistance/resistance';
   templateUrl: 'stats.html',
 })
 export class StatsPage {
-  calc: CalculatorProvider;
+  calc: CharacterProvider;
   stats: Caracteristique[];
   niv: number;
-  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase,calculator: CalculatorProvider) {
+  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase,calculator: CharacterProvider) {
     this.calc=calculator;
     this.stats = new Array<Caracteristique>();
     afDatabase.list('/Character/' + HomePage.charnb + '/Caracteristiques').snapshotChanges().subscribe(action => {

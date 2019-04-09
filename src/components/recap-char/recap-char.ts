@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Character } from '../../pages/home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { CalculatorProvider } from '../../providers/character/character';
+import { CharacterProvider } from '../../providers/character/character';
 
 @Component({
   selector: 'recap-char',
@@ -28,10 +28,10 @@ export class RecapCharComponent {
   percentFatigue: number;
   percentConcentration: number;
 
-  calc: CalculatorProvider;
+  calc: CharacterProvider;
 
 
-  constructor(public calculator: CalculatorProvider, public afDatabase: AngularFireDatabase) {
+  constructor(public calculator: CharacterProvider, public afDatabase: AngularFireDatabase) {
 
     this.calc = calculator;
 

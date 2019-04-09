@@ -3,7 +3,7 @@ import { IonicPage, ModalController } from 'ionic-angular';
 import { HomePage, Defense,Caracteristique } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EditComponent,line } from '../../components/edit/edit';
-import { CalculatorProvider } from '../../providers/character/character';
+import { CharacterProvider } from '../../providers/character/character';
 import { ModalFilterComponent } from '../../components/modal-filter/modal-filter';
 
 @IonicPage()
@@ -22,7 +22,7 @@ export class DefensePage {
   static chosen: boolean[] = new Array<boolean>();
   names: string[];
 
-  constructor(public afDatabase: AngularFireDatabase,public modalCtrl: ModalController, calculator: CalculatorProvider) {
+  constructor(public afDatabase: AngularFireDatabase,public modalCtrl: ModalController, calculator: CharacterProvider) {
     this.sub = new Array<any>();
     this.modalCtrl = modalCtrl;
     this.maxindex = -1;

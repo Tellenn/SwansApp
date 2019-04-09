@@ -3,7 +3,7 @@ import { IonicPage, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
 import { HomePage, Aptitude } from '../home/home';
 import { EditComponent,line } from '../../components/edit/edit';
-import { CalculatorProvider } from '../../providers/character/character';
+import { CharacterProvider } from '../../providers/character/character';
 
 
 @IonicPage()
@@ -22,7 +22,7 @@ export class SortsPage {
   sub: any[];
   niveau: number;
 
-  constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController, calculator: CalculatorProvider) {
+  constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController, calculator: CharacterProvider) {
     this.modal = modalCtrl;
     this.maxindex = -1;
     this.pttalent = 0;

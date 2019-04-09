@@ -1,22 +1,24 @@
 import { Component, Input} from '@angular/core';
+import { Events } from 'ionic-angular';
 
 @Component({
   selector: 'bar',
   templateUrl: 'bar.html'
 })
 export class BarComponent {
-  @Input('progress') progress;
-  @Input('max') max;
-  @Input('percent') percent;
+
   @Input('newcolor') newcolor;
-  @Input('overcharge') overcharge;
-  @Input('overpercent') overpercent;
+  @Input('value') value;
+  @Input('buttonHidden') buttonHidden;
   @Input('ishidden') ishidden;
+  @Input('charId') charId;
 
 
-  constructor() {
+  constructor(public events: Events) {
+    events.subscribe(`charUpdate${this.charId}`, (character) => { reload(character); });
   }
 
+  reload() {}
 
   add() {
     let newlife = +this.character.Etat.Vie + 1;

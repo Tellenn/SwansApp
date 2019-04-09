@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, ModalController, MenuController, Navbar } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { CalculatorProvider, Caracteristique, Character } from '../../providers/character/character';
+import { CharacterProvider, Caracteristique, Character } from '../../providers/character/character';
 import { EditComponent, line } from '../../components/edit/edit';
 import { LevelupPage } from '../levelup/levelup';
 import { CharchoicePage } from '../charchoice/charchoice';
@@ -16,8 +16,7 @@ export class HomePage {
   static fromGM: boolean;
 
   sub: any;
-
-  database: AngularFireDatabase;
+  
   character: Character;
   
   returnToGM: boolean;
@@ -29,10 +28,19 @@ export class HomePage {
   concentrationcolor: string;
   experiencecolor: string;
 
+  charTool: CharacterProvider;
 
-  constructor(menuctrl : MenuController,public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CalculatorProvider, navParam: NavParams, public modalCtrl: ModalController) {
+
+  constructor(menuctrl : MenuController,public navCtrl: NavController, public afDatabase: AngularFireDatabase, navParam: NavParams, public modalCtrl: ModalController) {
     menuctrl.enable(true);
 
+    let charId = navParam.get("charnb");
+    if (charId != null) {
+      HomePage.charnb = charId;
+    }
+    this.charTool = new CharacterProvider(HomePage.charnb, this.afDatabase);
+    setTimeout(function () { this.character = this.charTool.getCharacter(); }, 1000);
+    
     this.lifecolor = "darkred";
     this.mentalcolor = "darkgreen";
     this.fatiguecolor = "darkorange";
@@ -46,21 +54,13 @@ export class HomePage {
       this.expHidden = HomePage.fromGM ? "false" : "true";
     }
 
-    let temp = navParam.get("charnb");
     this.returnToGM = navParam.get("return");
-    if (temp != null) {
-      HomePage.charnb = temp;
-    }
-    this.database = afDatabase;
-
+   
   }
 
   ionViewDidLoad() {
-    this.navBar.backButtonClick = event => {
-      this.navCtrl.setRoot(HomePage);
-      this.navCtrl.popToRoot();
-	}
-}
+  }
+
 
   ionViewDidLeave() {
     this.sub.unsubscribe();
@@ -72,16 +72,17 @@ export class HomePage {
     }
     let newadrenaline = +this.character.Adrenaline - 1;
     if (newadrenaline >= 0) {
-      this.database.object('/Character/' + HomePage.charnb).update({ Adrenaline: newadrenaline });
+      this.afDatabase.object('/Character/' + HomePage.charnb).update({ Adrenaline: newadrenaline });
     }
   }
+
   addAdrenaline() {
     if (!this.character.Adrenaline) {
       this.character.Adrenaline = 0;
     }
     let newadrenaline = +this.character.Adrenaline + 1;
     if (newadrenaline < 4) {
-      this.database.object('/Character/' + HomePage.charnb).update({ Adrenaline: newadrenaline });
+      this.afDatabase.object('/Character/' + HomePage.charnb).update({ Adrenaline: newadrenaline });
     }
   }
   

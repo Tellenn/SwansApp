@@ -1,13 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Caracteristique } from '../../pages/home/home';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Events } from 'ionic-angular';
 
 @Injectable()
-export class CalculatorProvider {
+export class CharacterProvider {
 
-  constructor() {
+  char: Character;
+  eventsEmitter: Events;
+
+  constructor(charId: number, private afDatabase: AngularFireDatabase) {
+    this.eventsEmitter = new Events();
+    this.afDatabase.object('/Character/' + charId).snapshotChanges().subscribe(action => {
+      this.char = <Character>action.payload.val();
+      this.eventsEmitter.publish(`charUpdate:${charId}`, this.char);
+    });
   }
+  
 
-  calcmodif(carac: Caracteristique, bonus:number=0) {
+  calcmodif(carac: Caracteristique, bonus: number = 0) {
     let sum = carac.Natif + carac.Modif + carac.Score + bonus;
     let mod;
     if (sum > 10)
@@ -16,55 +26,52 @@ export class CalculatorProvider {
       mod = -Math.ceil((10 - sum) / 2);
     return mod;
   }
-  getLevel() {
 
+  getCharacter(): Character {
+    return this.char;
   }
-  getMaxLife(charId: number) {
-    throw new Error('Function not yet defined');
+  getLevel(): number {
+    return this.char.Niveau;
   }
-  getMaxMentalLife(charId: number) {
-    throw new Error('Function not yet defined');
+  getMaxLife(): number {
+    return this.calcmodif(this.char.Caracteristiques.CON) + 8;
   }
-  getMaxWeariness(charId: number) {
-    throw new Error('Function not yet defined');
+  getMaxMentalLife(): number {
+    return this.calcmodif(this.char.Caracteristiques.CON) * 2 + 8;
   }
-  getMaxFocus(charId: number) {
-    throw new Error('Function not yet defined');
+  getMaxWeariness(): number {
+    return 10;
+  }
+  getMaxFocus() {
+    let mainStat: Caracteristique = this.getMainStat();
+    return (mainStat.Modif + mainStat.Modif + mainStat.Score) * 2;
   }
 
-  getMainStat(charId: number) {
-    switch (this.character.MainStat) {
+  getMainStat(): Caracteristique {
+    switch (this.char.MainStat) {
       case "DEX":
-        return this.character.Caracteristiques.DEX;
+        return this.char.Caracteristiques.DEX;
       case "CON":
-        return this.character.Caracteristiques.CON;
+        return this.char.Caracteristiques.CON;
       case "SAG":
-        return this.character.Caracteristiques.SAG;
+        return this.char.Caracteristiques.SAG;
       case "INT":
-        return this.character.Caracteristiques.INT;
+        return this.char.Caracteristiques.INT;
       case "FOR":
-        return this.character.Caracteristiques.FOR;
+        return this.char.Caracteristiques.FOR;
       case "CHA":
-        return this.character.Caracteristiques.CHA;
+        return this.char.Caracteristiques.CHA;
       default:
         throw new Error('MainStat not found');
     }
   }
 
-  getExpToNextLevel(charId: number) {
-    this.sub = afDatabase.object('/Character/' + HomePage.charnb).snapshotChanges().subscribe(action => {
-      this.character = <Character>action.payload.val();
-
-      HomePage.level = this.character.Niveau;
-      HomePage.exp = this.character.Experience;
-
-      if (HomePage.level == 1) {
-        this.maxExperience = 500;
-      } else {
-        this.maxExperience = 1000 + 100 * (HomePage.level - 1);
-      }
-      this.percentExperience = this.character.Experience / this.maxExperience * 100;
-    });
+  getExpToNextLevel(charId: number): number {
+    if (this.char.Niveau == 1) {
+      return 500;
+    } else {
+      return 1000 + 100 * (this.char.Niveau - 1);
+    }
   }
 }
 
@@ -108,7 +115,6 @@ export class Caracteristique {
     this.Score = Score;
   }
 }
-
 
 export class Caracteristiques {
   CHA: Caracteristique;
@@ -181,7 +187,6 @@ export class Inventaire {
   }
 }
 
-
 export class Champ {
   Nom: string;
   Valeur: number;
@@ -215,4 +220,3 @@ export class Character {
   Yeux: string;
   MainStat: string;
 }
-
