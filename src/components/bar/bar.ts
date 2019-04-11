@@ -49,7 +49,7 @@ export class BarComponent {
         case "concentration":
           this.value = this.character.Etat.Concentration;
           this.max = this.charCalc.getMaxFocus(this.character);
-          this.path = `/Character/${this.charId}/Etat/Concentation`
+          this.path = `/Character/${this.charId}/Etat/Concentration`
           break;
         case "experience":
           this.value = this.character.Experience;
@@ -79,30 +79,31 @@ export class BarComponent {
   }
 
   set(stuff: string, val: number, max: number) {
-    switch (stuff) {
-      case "life":
-        stuff = "Vie";
-        break;
-      case "mentalLife":
-        stuff = "Vie";
-        break;
-      case "weariness":
-        stuff = "Vie";
-        break;
-      case "concentration":
-        stuff = "Vie";
-        break;
-      case "experience":
-        stuff = "Vie";
-        break;
-      default:
-        console.error('Error triggered : Unkown bar type. Check the bar type where it\'s defined');
-        throw new Error("Unkown bar type. Check the bar type where it's defined");
-    };
-    let params: line[] = new Array<line>();
-    params.push(new line(stuff, val, stuff));
-    this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb + "/Etat/" }).present();
-    
+    if (this.buttonHidden != 'true') {
+      switch (stuff) {
+        case "life":
+          stuff = "Vie";
+          break;
+        case "mentalLife":
+          stuff = "Mental";
+          break;
+        case "weariness":
+          stuff = "Fatigue";
+          break;
+        case "concentration":
+          stuff = "Concentration";
+          break;
+        case "experience":
+          stuff = "Experience";
+          break;
+        default:
+          console.error('Error triggered : Unkown bar type. Check the bar type where it\'s defined');
+          throw new Error("Unkown bar type. Check the bar type where it's defined");
+      };
+      let params: line[] = new Array<line>();
+      params.push(new line(stuff, val, stuff));
+      this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb + "/Etat/" }).present();
+    }
   }
 
   overcharge(val: number, stat: string) {

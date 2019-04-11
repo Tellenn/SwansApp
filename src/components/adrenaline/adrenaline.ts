@@ -25,9 +25,6 @@ export class AdrenalineComponent {
   }
 
   remove() {
-    if (!this.character.Adrenaline) {
-      this.character.Adrenaline = 1;
-    }
     if (this.character.Adrenaline > 0) {
       let newadrenaline = +this.character.Adrenaline - 1;
       this.afDatabase.object(`/Character/${this.charId}`).update({ Adrenaline: newadrenaline });
@@ -36,9 +33,6 @@ export class AdrenalineComponent {
  
 
   add() {
-    if (!this.character.Adrenaline) {
-      this.character.Adrenaline = 0;
-    }
   if (this.character.Adrenaline < 3) {
       let newadrenaline = +this.character.Adrenaline + 1;
     this.afDatabase.object(`/Character/${this.charId}`).update({ Adrenaline: newadrenaline });
