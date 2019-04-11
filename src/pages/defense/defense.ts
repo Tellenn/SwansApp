@@ -97,7 +97,7 @@ export class DefensePage {
     params.push(new line("Nom", this.defenses[i].Nom, "Nom"));
     params.push(new line("Temporalite", this.defenses[i].Temporalite, "Temporalite"));
     params.push(new line("CA", this.defenses[i].CA, "CA"));
-    params.push(new line("ModDex", this.defenses[i].CA, "ModDex"));
+    params.push(new line("ModDex", this.defenses[i].ModDex, "ModDex"));
     this.modalCtrl.create(EditComponent, { delete: true, params: params, path: "/Character/" + HomePage.charnb + "/Defense/" + this.dico[i] }).present();
   }
 }

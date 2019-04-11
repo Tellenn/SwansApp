@@ -19,7 +19,7 @@ export class CompetencesPage {
   competences: Competence[];
   modal: ModalController;
 
-  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, public calculator: CharacterCalculatorProvider, modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, public calc: CharacterCalculatorProvider, public modalCtrl: ModalController) {
     this.sub = new Array<any>();
     this.modal = modalCtrl;
     this.competences = new Array<Competence>();
@@ -65,7 +65,7 @@ export class CompetencesPage {
     this.afDatabase.list('/Character/' + HomePage.charnb + '/Competences').update(i + "", { Nom: this.competences[i].Nom, Base: this.competences[i].Base, Modif: this.competences[i].Modif - 1, Natif: this.competences[i].Natif });
   }
   show(i: number) {
-    let val = this.calculator.calcmodif(this.getlinkedcar(this.competences[i].Base));
+    let val = this.calc.calcmodif(this.getlinkedcar(this.competences[i].Base));
     this.modal.create(ModalcompComponent, { "skill": this.competences[i], "value": val }).present();
 
   }

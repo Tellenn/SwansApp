@@ -7,7 +7,7 @@
   Points de talents restants : {{pttalent}}<br/>
   <br/>
   Liste des Skills / Sorts du personnage
-  <ion-grid>
+  <ion-grid *ngIf="skills">
     <ion-row>
       <ion-col col-5>Nom</ion-col><ion-col>Con.</ion-col><ion-col>Life Co.</ion-col><ion-col>Palier</ion-col>
     </ion-row>

@@ -16,7 +16,6 @@ import { CharacterCalculatorProvider } from '../../providers/character-calculato
 
 export class SortsPage {
   dico:number[];
-  modal:ModalController;
   skills:Aptitude[];
   maxindex: number;
   maxtalent: number;
@@ -24,38 +23,40 @@ export class SortsPage {
   sub: any[];
   niveau: number;
   mainstat: Caracteristique;
+  charCalculator: CharacterCalculatorProvider;
 
-  constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController, charCalculator: CharacterCalculatorProvider) {
-    this.modal = modalCtrl;
+  constructor(public afDatabase: AngularFireDatabase, public modal: ModalController, public events: Events) {
+  }
+  ngOnInit() {
+    this.charCalculator = new CharacterCalculatorProvider();
     this.maxindex = -1;
     this.pttalent = 0;
     this.sub = new Array<any>();
-
-    let events: Events = new Events();
-    events.subscribe(`charUpdate:${HomePage.charnb}`, (character: Character) => {
+    
+    this.events.subscribe(`charUpdate:${HomePage.charnb}`, (character: Character) => {
       this.niveau = character.Niveau;
-      this.mainstat = charCalculator.getMainStat(character);
+      this.mainstat = this.charCalculator.getMainStat(character);
     });
 
-    this.sub.push(afDatabase.list('/Character/' + HomePage.charnb + '/Aptitudes').snapshotChanges().subscribe(action => {
+    let charProvider = new CharacterProvider(this.events, HomePage.charnb, this.afDatabase);
+
+    this.sub.push(this.afDatabase.list('/Character/' + HomePage.charnb + '/Aptitudes').snapshotChanges().subscribe(action => {
       this.dico = new Array<number>();
       this.skills = new Array<Aptitude>();
-      if (this.mainstat.Nom == "CON") {
-        this.pttalent = charCalculator.calcmodif(this.mainstat) + this.niveau - 1;
-        for (let i = 0; i < action.length; i++) {
-          let skill = <Aptitude>action[i].payload.val()
-          this.skills.push(skill);
-          let skillCost = Math.max(0, skill.Palier * 2 - 1);
-          if (skillCost > 1) {
-            this.pttalent = this.pttalent - skillCost;
-          }
-          if (+action[i].key > this.maxindex) {
-            this.maxindex = +action[i].key;
-          }
-          this.dico[i] = +action[i].key;
+      this.pttalent = this.charCalculator.calcmodif(this.mainstat) + this.niveau - 1;
+      for (let i = 0; i < action.length; i++) {
+        let skill = <Aptitude>action[i].payload.val()
+        this.skills.push(skill);
+        let skillCost = Math.max(0, skill.Palier * 2 - 1);
+        if (skillCost > 1) {
+          this.pttalent = this.pttalent - skillCost;
         }
-        this.maxindex++;
+        if (+action[i].key > this.maxindex) {
+          this.maxindex = +action[i].key;
+        }
+        this.dico[i] = +action[i].key;
       }
+      this.maxindex++;
     }));
 
   }
