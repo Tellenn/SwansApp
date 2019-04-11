@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { CharacterProvider } from '../../providers/character/character';
+import { CharacterProvider, Caracteristique } from '../../providers/character/character';
 import { HomePage } from '../../pages/home/home';
 
 
@@ -35,9 +35,4 @@ export class ResistanceComponent {
     });
   }
 }
-export interface Caracteristique {
-  Nom: string;
-  Modif: number;
-  Natif: number;
-  Score: number;
-}
+

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
-import { Character } from '../home/home';
 import { NatifStatCreationPage } from '../natif-stat-creation/natif-stat-creation';
+import { Character } from '../../providers/character/character';
 
 @IonicPage()
 @Component({

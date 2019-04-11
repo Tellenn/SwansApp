@@ -10,22 +10,22 @@
     {{character.Age}} ans, {{character.Sexe}}. Cheveux : {{character.Cheveux}}, Yeux : {{character.Yeux}}, Taille : {{character.Taille}}, Dextrie : {{character.Dextrie}}.
     <br />
     <h3>Vie :</h3>
-    <bar ishidden="false" buttonHidden="false" value="life" [newcolor]="lifecolor"></bar><br />
+    <bar ishidden="false" [charId]="charId" buttonHidden="false" type="life" [newcolor]="lifecolor"></bar><br />
 
     <h3>Santé Mentale :</h3>
-    <bar ishidden="false" buttonHidden="false" value="mentalLife" [newcolor]="mentalcolor"></bar>
+    <bar ishidden="false" [charId]="charId" buttonHidden="false" type="mentalLife" [newcolor]="mentalcolor"></bar>
 
     <h3>Fatigue :</h3>
-    <bar ishidden="false" buttonHidden="false" value="weariness"  [newcolor]="fatiguecolor"></bar>
+    <bar ishidden="false" [charId]="charId" buttonHidden="false" type="weariness"  [newcolor]="fatiguecolor"></bar>
 
     <h3>Concentration :</h3>
-    <bar ishidden="false" buttonHidden="false" value="concentration" [newcolor]="concentrationcolor"></bar>
+    <bar ishidden="false" [charId]="charId" buttonHidden="false" type="concentration" [newcolor]="concentrationcolor"></bar>
 
     <h3>Adrenaline :</h3>
-    <adrenaline [adrenaline]="character.Adrenaline"></adrenaline>
+    <adrenaline [charId]="charId"></adrenaline>
 
     <h3>Experience :</h3>
-    <bar [ishidden]="expHidden" buttonHidden="true" value="concentration"[progress]="character.Experience" [max]="maxExperience" [percent]="percentExperience" [newcolor]="experiencecolor"></bar>
+    <bar [ishidden]="expHidden" [charId]="charId" buttonHidden="true" type="experience" [newcolor]="experiencecolor"></bar>
 
     <div *ngIf="character.Experience >= maxExperience">
       <button ion-button round (click)="levelup()">LEVEL UP!!!</button>

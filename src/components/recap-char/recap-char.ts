@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Character } from '../../pages/home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { CharacterProvider } from '../../providers/character/character';
+import { CharacterProvider, Character } from '../../providers/character/character';
+import { CharacterCalculatorProvider } from '../../providers/character-calculator/character-calculator';
+import { Events } from 'ionic-angular';
 
 @Component({
   selector: 'recap-char',
@@ -11,6 +12,7 @@ import { CharacterProvider } from '../../providers/character/character';
 export class RecapCharComponent {
   @Input('character') charno: string;
 
+  charProvider: CharacterProvider;
   character: Character;
 
   lifecolor: string;
@@ -31,56 +33,35 @@ export class RecapCharComponent {
   calc: CharacterProvider;
 
 
-  constructor(public calculator: CharacterProvider, public afDatabase: AngularFireDatabase) {
+  constructor(public events: Events, public charCalculator: CharacterCalculatorProvider, public afDatabase: AngularFireDatabase) {
 
-    this.calc = calculator;
 
     this.lifecolor = "darkred";
     this.mentalcolor = "darkgreen";
     this.fatiguecolor = "darkorange";
     this.concentrationcolor = "teal";
 
-    setTimeout(() => {
-
-      this.afDatabase.object('/Character/' + this.charno).snapshotChanges().subscribe(action => {
-        this.character = <Character>action.payload.val();
-
-        this.character.Caracteristiques.CON.Natif += this.character.Niveau - 1;
-
-        this.maxLife = +this.character.Niveau + 7;
-        this.percentLife = this.character.Etat.Vie / this.maxLife * 100;
-
-        this.maxMental = calculator.calcmodif(this.character.Caracteristiques.CON) * 2 + 20;
-        this.percentMental = this.character.Etat.Mental / this.maxMental * 100;
-
-        this.maxFatigue = 10;
-        this.percentFatigue = this.character.Etat.Fatigue / this.maxFatigue * 100;
-
-        switch (this.character.MainStat) {
-          case "DEX":
-            this.maxConcentration = 2 * (this.character.Caracteristiques.DEX.Score + this.character.Caracteristiques.DEX.Modif + this.character.Caracteristiques.DEX.Natif);
-            break;
-          case "CON":
-            this.maxConcentration = 2 * (this.character.Caracteristiques.CON.Score + this.character.Caracteristiques.CON.Modif + this.character.Caracteristiques.CON.Natif);
-            break;
-          case "SAG":
-            this.maxConcentration = 2 * (this.character.Caracteristiques.SAG.Score + this.character.Caracteristiques.SAG.Modif + this.character.Caracteristiques.SAG.Natif);
-            break;
-          case "INT":
-            this.maxConcentration = 2 * (this.character.Caracteristiques.INT.Score + this.character.Caracteristiques.INT.Modif + this.character.Caracteristiques.INT.Natif);
-            break;
-          case "FOR":
-            this.maxConcentration = 2 * (this.character.Caracteristiques.FOR.Score + this.character.Caracteristiques.FOR.Modif + this.character.Caracteristiques.FOR.Natif);
-            break;
-          case "CHA":
-            this.maxConcentration = 2 * (this.character.Caracteristiques.CHA.Score + this.character.Caracteristiques.CHA.Modif + this.character.Caracteristiques.CHA.Natif);
-            break;
-          default:
-            this.maxConcentration = 0;
-            break;
-        }
-        this.percentConcentration = this.character.Etat.Concentration / this.maxConcentration * 100;
-      });
-    },1500);
   }
+
+  ngOnInit() {
+    this.events.subscribe(`charUpdate:${this.charno}`, (character: Character) => {
+      
+      this.character = character;
+
+      this.maxLife = this.charCalculator.getMaxLife(character);
+      this.percentLife = character.Etat.Vie / this.maxLife * 100;
+
+      this.maxMental = this.charCalculator.getMaxMentalLife(character);
+      this.percentMental = character.Etat.Mental / this.maxMental * 100;
+
+      this.maxFatigue = this.charCalculator.getMaxWeariness(character);
+      this.percentFatigue = character.Etat.Fatigue / this.maxFatigue * 100;
+
+      this.maxConcentration = this.charCalculator.getMaxFocus(character);
+      this.percentConcentration = character.Etat.Concentration / this.maxConcentration * 100;
+    });
+    this.charProvider = new CharacterProvider(this.events, +this.charno, this.afDatabase);
+  }
+    
+  
 }

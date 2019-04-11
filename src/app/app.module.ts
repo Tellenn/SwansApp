@@ -51,7 +51,7 @@ import { RollPage } from '../pages/roll/roll';
 import { AdrenalineComponent } from '../components/adrenaline/adrenaline';
 import { BadgesPage } from '../pages/badges/badges';
 import { BadgeCreationComponent } from '../components/badge-creation/badge-creation';
-import { ColorPicker } from '../components/color-picker/color-picker';
+import { CharacterCalculatorProvider } from '../providers/character-calculator/character-calculator';
 
 
 // AF2 Settings
@@ -103,8 +103,7 @@ export const firebaseConfig = {
     ModalcompComponent,
     RecapCharComponent,
     ModalFilterComponent,
-    AdrenalineComponent,
-    ColorPicker
+    AdrenalineComponent
   ],
   imports: [
     BrowserModule,
@@ -149,8 +148,7 @@ export const firebaseConfig = {
     ModalcompComponent,
     RecapCharComponent,
     ModalFilterComponent,
-    AdrenalineComponent,
-    ColorPicker
+    AdrenalineComponent
   ],
   providers: [
     StatusBar,
@@ -158,7 +156,8 @@ export const firebaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CharacterProvider,
     NativeAudio,
-    SettingsProvider
+    SettingsProvider,
+    CharacterCalculatorProvider
   ]
 })
 export class AppModule {}

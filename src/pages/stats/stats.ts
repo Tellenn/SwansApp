@@ -3,8 +3,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { CharchoicePage } from '../charchoice/charchoice';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
 import { HomePage } from '../home/home';
-import { CharacterProvider } from '../../providers/character/character';
-import { Caracteristique } from '../../components/resistance/resistance';
+import { CharacterProvider, Caracteristique } from '../../providers/character/character';
 
 @IonicPage()
 @Component({
@@ -24,9 +23,6 @@ export class StatsPage {
       }
       for (let i = 0; i < action.length; i++) {
         this.stats.push(<Caracteristique>action[i].payload.val());
-        if (this.stats[i].Nom == "CON") {
-          this.stats[i].Natif = + HomePage.level - 1;
-        }
       }
     });
   }

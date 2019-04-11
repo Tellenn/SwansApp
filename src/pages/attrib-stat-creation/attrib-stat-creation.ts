@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
-import { Character, Caracteristique } from '../home/home';
+import { Character, Caracteristique } from '../../providers/character/character';
 import { NatifCompCreationPage } from '../natif-comp-creation/natif-comp-creation';
 
 @IonicPage()

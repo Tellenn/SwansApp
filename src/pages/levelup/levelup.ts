@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
-import { HomePage, Caracteristique, Competence, Caracteristiques, Character } from '../home/home';
+import { HomePage } from '../home/home';
+import { Caracteristique, Competence, Caracteristiques, Character } from '../../providers/character/character';
 
 
 @IonicPage()
@@ -24,9 +25,13 @@ export class LevelupPage {
   sub: any;
   exp: any;
 
+  charNb: number;
+  level: number;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public afDatabase: AngularFireDatabase) {
     this.path = navParams.get("path");
     this.sub = new Array<any>();
+    this.charNb = +this.path.split("/")[2];
     this.sub.push(afDatabase.list(this.path + "/Competences").snapshotChanges().subscribe(action => {
       this.comps = new Array<Competence>();
       this.dicocomp = new Array<string>();
@@ -45,6 +50,10 @@ export class LevelupPage {
       this.stats.push(allstats.INT);
       this.stats.push(allstats.SAG);
     }));
+    let events: Events = new Events();
+    events.subscribe(`charUpdate:${this.charNb}`, (character) => {
+      this.level = character.Niveau;
+    });
 
     this.sub.push(afDatabase.object(this.path).snapshotChanges().subscribe(action => {
       let char = <Character>action.payload.val();
@@ -59,13 +68,13 @@ export class LevelupPage {
   }
   validate() {
     let removeExp;
-    if (HomePage.level == 1) {
+    if (this.level == 1) {
       removeExp = 500;
     } else {
-      removeExp = 1000 + 100 * (HomePage.level - 1);
+      removeExp = 1000 + 100 * (this.level - 1);
     }
 
-    this.afDatabase.object(this.path).update({ Niveau: HomePage.level + 1 });
+    this.afDatabase.object(this.path).update({ Niveau: this.level + 1 });
 
     if (this.stat1 == this.stat2) {
       this.afDatabase.object(this.path + "/Caracteristiques/" + this.stat1.Nom).update({ Modif: +this.stat1.Modif + 2 });

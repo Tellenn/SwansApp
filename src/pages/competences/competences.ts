@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
-import { CharacterProvider } from '../../providers/character/character';
-import { HomePage, Competence, Caracteristiques } from '../home/home';
+import { Competence, Caracteristiques } from '../../providers/character/character';
+import { HomePage } from '../home/home';
 import { ModalcompComponent } from '../../components/modalcomp/modalcomp';
+import { CharacterCalculatorProvider } from '../../providers/character-calculator/character-calculator';
+
 
 
 @IonicPage()
@@ -15,12 +17,10 @@ export class CompetencesPage {
   sub: any;
   stats: Caracteristiques;
   competences: Competence[];
-  calc: CharacterProvider;
   modal: ModalController;
 
-  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CharacterProvider, modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, public calculator: CharacterCalculatorProvider, modalCtrl: ModalController) {
     this.sub = new Array<any>();
-    this.calc = calculator;
     this.modal = modalCtrl;
     this.competences = new Array<Competence>();
     this.sub.push(afDatabase.object('/Character/' + HomePage.charnb + '/Caracteristiques').snapshotChanges().subscribe(action => {
@@ -65,7 +65,7 @@ export class CompetencesPage {
     this.afDatabase.list('/Character/' + HomePage.charnb + '/Competences').update(i + "", { Nom: this.competences[i].Nom, Base: this.competences[i].Base, Modif: this.competences[i].Modif - 1, Natif: this.competences[i].Natif });
   }
   show(i: number) {
-    let val = this.calc.calcmodif(this.getlinkedcar(this.competences[i].Base));
+    let val = this.calculator.calcmodif(this.getlinkedcar(this.competences[i].Base));
     this.modal.create(ModalcompComponent, { "skill": this.competences[i], "value": val }).present();
 
   }

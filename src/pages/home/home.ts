@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, ModalController, MenuController, Navbar } from 'ionic-angular';
+import { NavController, NavParams, ModalController, MenuController, Navbar, Events } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { CharacterProvider, Caracteristique, Character } from '../../providers/character/character';
 import { EditComponent, line } from '../../components/edit/edit';
@@ -14,8 +14,6 @@ export class HomePage {
   @ViewChild(Navbar) navBar: Navbar;
   static charnb: number;
   static fromGM: boolean;
-
-  sub: any;
   
   character: Character;
   
@@ -29,17 +27,25 @@ export class HomePage {
   experiencecolor: string;
 
   charTool: CharacterProvider;
+  charId: number;
 
 
-  constructor(menuctrl : MenuController,public navCtrl: NavController, public afDatabase: AngularFireDatabase, navParam: NavParams, public modalCtrl: ModalController) {
+  constructor(public events: Events, menuctrl : MenuController,public navCtrl: NavController, public afDatabase: AngularFireDatabase, navParam: NavParams, public modalCtrl: ModalController) {
     menuctrl.enable(true);
 
-    let charId = navParam.get("charnb");
-    if (charId != null) {
-      HomePage.charnb = charId;
+    let receivedCharId = navParam.get("charnb");
+    if (receivedCharId != null) {
+      HomePage.charnb = receivedCharId;
+      this.charId = receivedCharId;
+    } else {
+      this.charId = HomePage.charnb;
     }
-    this.charTool = new CharacterProvider(HomePage.charnb, this.afDatabase);
-    setTimeout(function () { this.character = this.charTool.getCharacter(); }, 1000);
+    
+    this.events.subscribe(`charUpdate:${this.charId}`, (Character) => {
+      this.character = this.charTool.getCharacter();
+    });
+    //this.charTool = new CharacterProvider(this.events, HomePage.charnb, this.afDatabase);
+    
     
     this.lifecolor = "darkred";
     this.mentalcolor = "darkgreen";
@@ -53,37 +59,13 @@ export class HomePage {
     }else{
       this.expHidden = HomePage.fromGM ? "false" : "true";
     }
-
+    
     this.returnToGM = navParam.get("return");
    
   }
 
-  ionViewDidLoad() {
-  }
-
-
-  ionViewDidLeave() {
-    this.sub.unsubscribe();
-  }
-  
-  removeAdrenaline() {
-    if (!this.character.Adrenaline) {
-      this.character.Adrenaline = 1;
-    }
-    let newadrenaline = +this.character.Adrenaline - 1;
-    if (newadrenaline >= 0) {
-      this.afDatabase.object('/Character/' + HomePage.charnb).update({ Adrenaline: newadrenaline });
-    }
-  }
-
-  addAdrenaline() {
-    if (!this.character.Adrenaline) {
-      this.character.Adrenaline = 0;
-    }
-    let newadrenaline = +this.character.Adrenaline + 1;
-    if (newadrenaline < 4) {
-      this.afDatabase.object('/Character/' + HomePage.charnb).update({ Adrenaline: newadrenaline });
-    }
+  ngAfterViewInit() {
+    this.charTool = new CharacterProvider(this.events, this.charId, this.afDatabase);
   }
   
   editVanity() {

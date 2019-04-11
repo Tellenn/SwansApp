@@ -6,72 +6,17 @@ import { Events } from 'ionic-angular';
 export class CharacterProvider {
 
   char: Character;
-  eventsEmitter: Events;
 
-  constructor(charId: number, private afDatabase: AngularFireDatabase) {
-    this.eventsEmitter = new Events();
+  constructor(public eventsEmitter: Events, charId: number, private afDatabase: AngularFireDatabase) {
     this.afDatabase.object('/Character/' + charId).snapshotChanges().subscribe(action => {
+      
       this.char = <Character>action.payload.val();
       this.eventsEmitter.publish(`charUpdate:${charId}`, this.char);
     });
   }
-  
-
-  calcmodif(carac: Caracteristique, bonus: number = 0) {
-    let sum = carac.Natif + carac.Modif + carac.Score + bonus;
-    let mod;
-    if (sum > 10)
-      mod = Math.floor((sum - 10) / 2);
-    else
-      mod = -Math.ceil((10 - sum) / 2);
-    return mod;
-  }
 
   getCharacter(): Character {
     return this.char;
-  }
-  getLevel(): number {
-    return this.char.Niveau;
-  }
-  getMaxLife(): number {
-    return this.calcmodif(this.char.Caracteristiques.CON) + 8;
-  }
-  getMaxMentalLife(): number {
-    return this.calcmodif(this.char.Caracteristiques.CON) * 2 + 8;
-  }
-  getMaxWeariness(): number {
-    return 10;
-  }
-  getMaxFocus() {
-    let mainStat: Caracteristique = this.getMainStat();
-    return (mainStat.Modif + mainStat.Modif + mainStat.Score) * 2;
-  }
-
-  getMainStat(): Caracteristique {
-    switch (this.char.MainStat) {
-      case "DEX":
-        return this.char.Caracteristiques.DEX;
-      case "CON":
-        return this.char.Caracteristiques.CON;
-      case "SAG":
-        return this.char.Caracteristiques.SAG;
-      case "INT":
-        return this.char.Caracteristiques.INT;
-      case "FOR":
-        return this.char.Caracteristiques.FOR;
-      case "CHA":
-        return this.char.Caracteristiques.CHA;
-      default:
-        throw new Error('MainStat not found');
-    }
-  }
-
-  getExpToNextLevel(charId: number): number {
-    if (this.char.Niveau == 1) {
-      return 500;
-    } else {
-      return 1000 + 100 * (this.char.Niveau - 1);
-    }
   }
 }
 
@@ -196,6 +141,12 @@ export class Champ {
   }
 }
 
+export interface Reputation {
+  Nom: string;
+  Valeur: number;
+}
+
+
 export class Character {
   Adrenaline: number;
   Age: number;
@@ -214,7 +165,7 @@ export class Character {
   Joueur: string;
   Niveau: number;
   Nom: string;
-  Reputation: Champ[];
+  Reputation: Reputation[];
   Sexe: string;
   Taille: string;
   Yeux: string;

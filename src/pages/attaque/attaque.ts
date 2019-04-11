@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, ModalController } from 'ionic-angular';
 import { EditComponent, line } from '../../components/edit/edit';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
-import { HomePage, Attaque } from '../home/home';
+import { HomePage } from '../home/home';
 import { ModalFilterComponent } from '../../components/modal-filter/modal-filter';
+import { Attaque } from '../../providers/character/character';
 
 /**
  * Generated class for the AttaquePage page.

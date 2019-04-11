@@ -4,6 +4,7 @@ import { HomePage } from '../../pages/home/home';
 import { Observable } from 'rxjs';
 import { EditComponent,line } from '../edit/edit';
 import { ModalController } from 'ionic-angular';
+import { Reputation } from '../../providers/character/character';
 
 @Component({
   selector: 'reputation',
@@ -52,9 +53,4 @@ export class ReputationComponent {
   }
 
 
-}
-
-export interface Reputation {
-  Nom: string;
-  Valeur: number;
 }

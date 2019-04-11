@@ -1,8 +1,22 @@
 adrenaline {
+  div{
+    justify-content:space-between;
+    width: 100%;
+    display: flex;
+  }
   .img {
-    margin-right: 11%;
-    margin-left: 11%;
-    height: 11%;
-    width: 11%;
+    margin-right: auto;
+    margin-left: auto;
+    height: 10%;
+    width: 10%;
+  }
+
+  .addition {
+    float: right;
+  }
+
+  .substraction {
+    float: left;
+    display: block;
   }
 }
