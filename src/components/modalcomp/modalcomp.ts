@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
-import { CalculatorProvider } from '../../providers/character/character';
+import { CharacterProvider } from '../../providers/character/character';
 import { SettingsProvider } from '../../providers/settings/settings';
 
 @Component({
@@ -11,7 +11,7 @@ export class ModalcompComponent {
 
   text: string;
   skill: Competence;
-  calc: CalculatorProvider;
+  calc: CharacterProvider;
   value: number;
   selectedTheme : String;
 

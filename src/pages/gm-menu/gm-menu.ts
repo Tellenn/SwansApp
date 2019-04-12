@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController, NavParams, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Character, HomePage } from '../home/home';
+import { HomePage } from '../home/home';
 import { HeaderComponent } from '../../components/header/header';
 import { ModalFilterComponent } from '../../components/modal-filter/modal-filter';
+import { Character } from '../../providers/character/character';
 
 
 @IonicPage()
@@ -23,7 +24,6 @@ export class GmMenuPage {
       this.chosen = new Array<boolean>();
       oldFilter = false;
     }
-    console.log(oldFilter);
     menuctrl.enable(false);
     HeaderComponent.toGM = false;
     this.characters = new Array<string>();

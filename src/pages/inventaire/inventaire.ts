@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { HomePage, Inventaire } from '../home/home';
+import { HomePage } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EditComponent, line } from '../../components/edit/edit';
 import { ModalFilterComponent } from '../../components/modal-filter/modal-filter';
 import { Storage } from '@ionic/storage';
+import { Inventaire } from '../../providers/character/character';
 
 
 @IonicPage()

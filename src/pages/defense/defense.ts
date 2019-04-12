@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, ModalController } from 'ionic-angular';
-import { HomePage, Defense,Caracteristique } from '../home/home';
+import { HomePage } from '../home/home';
+import {  } from '../providers/character/character';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EditComponent,line } from '../../components/edit/edit';
-import { CalculatorProvider } from '../../providers/character/character';
+import { Defense, Caracteristique } from '../../providers/character/character';
 import { ModalFilterComponent } from '../../components/modal-filter/modal-filter';
+import { CharacterCalculatorProvider } from '../../providers/character-calculator/character-calculator';
 
 @IonicPage()
 @Component({
@@ -22,7 +24,7 @@ export class DefensePage {
   static chosen: boolean[] = new Array<boolean>();
   names: string[];
 
-  constructor(public afDatabase: AngularFireDatabase,public modalCtrl: ModalController, calculator: CalculatorProvider) {
+  constructor(public afDatabase: AngularFireDatabase,public modalCtrl: ModalController, calculator: CharacterCalculatorProvider) {
     this.sub = new Array<any>();
     this.modalCtrl = modalCtrl;
     this.maxindex = -1;
@@ -95,7 +97,7 @@ export class DefensePage {
     params.push(new line("Nom", this.defenses[i].Nom, "Nom"));
     params.push(new line("Temporalite", this.defenses[i].Temporalite, "Temporalite"));
     params.push(new line("CA", this.defenses[i].CA, "CA"));
-    params.push(new line("ModDex", this.defenses[i].CA, "ModDex"));
+    params.push(new line("ModDex", this.defenses[i].ModDex, "ModDex"));
     this.modalCtrl.create(EditComponent, { delete: true, params: params, path: "/Character/" + HomePage.charnb + "/Defense/" + this.dico[i] }).present();
   }
 }

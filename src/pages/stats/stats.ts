@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, Events } from 'ionic-angular';
 import { CharchoicePage } from '../charchoice/charchoice';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
 import { HomePage } from '../home/home';
-import { CalculatorProvider } from '../../providers/character/character';
-import { Caracteristique } from '../../components/resistance/resistance';
+import { CharacterProvider, Caracteristique, Character } from '../../providers/character/character';
+import { CharacterCalculatorProvider } from '../../providers/character-calculator/character-calculator';
 
 @IonicPage()
 @Component({
@@ -12,23 +12,21 @@ import { Caracteristique } from '../../components/resistance/resistance';
   templateUrl: 'stats.html',
 })
 export class StatsPage {
-  calc: CalculatorProvider;
   stats: Caracteristique[];
   niv: number;
-  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase,calculator: CalculatorProvider) {
-    this.calc=calculator;
-    this.stats = new Array<Caracteristique>();
-    afDatabase.list('/Character/' + HomePage.charnb + '/Caracteristiques').snapshotChanges().subscribe(action => {
-      while(this.stats.length!=0){
-        this.stats.pop();
+  character: Character;
+  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, public events: Events,public calc: CharacterCalculatorProvider) {
+  }
+
+  ngOnInit() {
+    this.events.subscribe(`charUpdate:${HomePage.charnb}`, (character: Character) => {
+      this.character = character;
+      this.stats = [];
+      for (let statName in character.Caracteristiques) {
+        this.stats.push(character.Caracteristiques[statName]);
       }
-      for (let i = 0; i < action.length; i++) {
-        this.stats.push(<Caracteristique>action[i].payload.val());
-        if (this.stats[i].Nom == "CON") {
-          this.stats[i].Natif = + HomePage.level - 1;
-        }
-      }
-    });
+    })
+    let charProvider = new CharacterProvider(this.events, HomePage.charnb, this.afDatabase);
   }
 
   changechar() {

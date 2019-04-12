@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController } from 'ionic-angular';
+import { IonicPage, ModalController, Events } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
-import { HomePage, Aptitude } from '../home/home';
+import { HomePage } from '../home/home';
 import { EditComponent,line } from '../../components/edit/edit';
-import { CalculatorProvider } from '../../providers/character/character';
+import { CharacterProvider, Character, Caracteristique } from '../../providers/character/character';
+import { Aptitude } from '../../providers/character/character';
+import { CharacterCalculatorProvider } from '../../providers/character-calculator/character-calculator';
 
 
 @IonicPage()
@@ -14,38 +16,45 @@ import { CalculatorProvider } from '../../providers/character/character';
 
 export class SortsPage {
   dico:number[];
-  modal:ModalController;
   skills:Aptitude[];
   maxindex: number;
   maxtalent: number;
   pttalent: number;
   sub: any[];
   niveau: number;
+  mainstat: Caracteristique;
+  charCalculator: CharacterCalculatorProvider;
 
-  constructor(public afDatabase: AngularFireDatabase, modalCtrl: ModalController, calculator: CalculatorProvider) {
-    this.modal = modalCtrl;
+  constructor(public afDatabase: AngularFireDatabase, public modal: ModalController, public events: Events) {
+  }
+  ngOnInit() {
+    this.charCalculator = new CharacterCalculatorProvider();
     this.maxindex = -1;
     this.pttalent = 0;
     this.sub = new Array<any>();
+    
+    this.events.subscribe(`charUpdate:${HomePage.charnb}`, (character: Character) => {
+      this.niveau = character.Niveau;
+      this.mainstat = this.charCalculator.getMainStat(character);
+    });
 
-    this.sub.push(afDatabase.list('/Character/'+HomePage.charnb+'/Aptitudes').snapshotChanges().subscribe( action => {
+    let charProvider = new CharacterProvider(this.events, HomePage.charnb, this.afDatabase);
+
+    this.sub.push(this.afDatabase.list('/Character/' + HomePage.charnb + '/Aptitudes').snapshotChanges().subscribe(action => {
       this.dico = new Array<number>();
       this.skills = new Array<Aptitude>();
-      if (HomePage.mainstat.Nom == "CON") {
-        this.pttalent = calculator.calcmodif(HomePage.mainstat, HomePage.level) + HomePage.level - 1;
-      } else {+ HomePage.level - 1
-
-        this.pttalent = calculator.calcmodif(HomePage.mainstat) + HomePage.level - 1;
-      }
-      for (let i = 0; i < action.length; i++){
+      this.pttalent = this.charCalculator.calcmodif(this.mainstat) + this.niveau - 1;
+      for (let i = 0; i < action.length; i++) {
         let skill = <Aptitude>action[i].payload.val()
         this.skills.push(skill);
-        this.pttalent = this.pttalent - Math.max(0, skill.Palier * 2 - 1);
-        console.log(this.pttalent);
-        if(+action[i].key> this.maxindex){
+        let skillCost = Math.max(0, skill.Palier * 2 - 1);
+        if (skillCost > 1) {
+          this.pttalent = this.pttalent - skillCost;
+        }
+        if (+action[i].key > this.maxindex) {
           this.maxindex = +action[i].key;
         }
-        this.dico[i]= +action[i].key;
+        this.dico[i] = +action[i].key;
       }
       this.maxindex++;
     }));

@@ -1,10 +1,10 @@
 <!-- Generated template for the RecapCharComponent component -->
 <div *ngIf="character">
   {{character.Nom}} ({{character.Joueur}})<br />
-  <bar [progress]="character.Etat.Vie" [max]="maxLife" [percent]="percentLife" [newcolor]="lifecolor"></bar>
-  <bar [progress]="character.Etat.Mental" [max]="maxMental" [percent]="percentMental" [newcolor]="mentalcolor"></bar>
-  <bar [progress]="character.Etat.Fatigue" [max]="maxFatigue" [percent]="percentFatigue" [newcolor]="fatiguecolor"></bar>
-  <bar [progress]="character.Etat.Concentration" [max]="maxConcentration" [percent]="percentConcentration" [newcolor]="concentrationcolor"></bar>
+  <bar ishidden="false" [charId]="charno" buttonHidden="false" type="life" [newcolor]="lifecolor"></bar>
+  <bar ishidden="false" [charId]="charno" buttonHidden="false" type="mentalLife"  [newcolor]="mentalcolor"></bar>
+  <bar ishidden="false" [charId]="charno" buttonHidden="false" type="weariness" [newcolor]="fatiguecolor"></bar>
+  <bar ishidden="false" [charId]="charno" buttonHidden="false" type="concentration" [newcolor]="concentrationcolor"></bar>
   <ion-grid>
     <ion-row>
       <ion-col>CHA</ion-col><ion-col>CON</ion-col><ion-col>DEX</ion-col><ion-col>FOR</ion-col><ion-col>INT</ion-col><ion-col>SAG</ion-col>

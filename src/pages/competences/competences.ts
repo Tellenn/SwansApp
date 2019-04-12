@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
-import { CalculatorProvider } from '../../providers/character/character';
-import { HomePage, Competence, Caracteristiques } from '../home/home';
+import { Competence, Caracteristiques } from '../../providers/character/character';
+import { HomePage } from '../home/home';
 import { ModalcompComponent } from '../../components/modalcomp/modalcomp';
+import { CharacterCalculatorProvider } from '../../providers/character-calculator/character-calculator';
+
 
 
 @IonicPage()
@@ -15,12 +17,10 @@ export class CompetencesPage {
   sub: any;
   stats: Caracteristiques;
   competences: Competence[];
-  calc: CalculatorProvider;
   modal: ModalController;
 
-  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, calculator: CalculatorProvider, modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public afDatabase: AngularFireDatabase, public calc: CharacterCalculatorProvider, public modalCtrl: ModalController) {
     this.sub = new Array<any>();
-    this.calc = calculator;
     this.modal = modalCtrl;
     this.competences = new Array<Competence>();
     this.sub.push(afDatabase.object('/Character/' + HomePage.charnb + '/Caracteristiques').snapshotChanges().subscribe(action => {

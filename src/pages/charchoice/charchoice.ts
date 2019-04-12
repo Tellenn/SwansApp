@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, MenuController } from 'ionic-angular';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
-import { HomePage, Character } from '../home/home';
+import { HomePage } from '../home/home';
 import { WelcomeCreationPage } from '../welcome-creation/welcome-creation';
 import { GmMenuPage } from '../gm-menu/gm-menu';
 import { HeaderComponent } from '../../components/header/header';
+import { Character } from '../../providers/character/character';
 
 @IonicPage()
 @Component({

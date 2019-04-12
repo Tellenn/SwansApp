@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
-import { Character, Defense, Aptitude, Attaque, Etat, Inventaire, Champ, HomePage } from '../home/home';
+import { HomePage } from '../home/home';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Character, Defense, Aptitude, Attaque, Etat, Inventaire, Champ } from '../../providers/character/character';
 
 
 @IonicPage()
@@ -23,6 +24,7 @@ export class ValidationCreationPage {
     this.character.Inventaire = new Array<Inventaire>();
     this.character.Monnaie = new Array<Champ>();
     this.character.Reputation = new Array<Champ>();
+    this.character.Adrenaline = 0;
     this.character.Niveau = 1;
   }
 

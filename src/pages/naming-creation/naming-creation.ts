@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, MenuController } from 'ionic-angular';
 import { DiceCreationPage } from '../dice-creation/dice-creation';
-import { Character } from '../home/home'
+import { Character } from '../../providers/character/character'
 
 
 @IonicPage()
