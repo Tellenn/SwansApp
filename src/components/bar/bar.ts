@@ -24,6 +24,7 @@ export class BarComponent {
   max: number;
   percent: number;
   path: string;
+  isExp: boolean;
 
   constructor(public modalCtrl: ModalController,public events: Events, public charCalc: CharacterCalculatorProvider, public afDatabase: AngularFireDatabase) {
   }
@@ -54,7 +55,8 @@ export class BarComponent {
         case "experience":
           this.value = this.character.Experience;
           this.max = this.charCalc.getExpToNextLevel(this.character);
-          this.path = `/Character/${this.charId}/Experience`
+          this.path = `/Character/${this.charId}/Experience`;
+          this.isExp = HomePage.fromGM;
           break;
         default:
           console.error('Error triggered : Unkown bar type. Check the bar type where it\'s defined');
@@ -66,7 +68,7 @@ export class BarComponent {
   }
 
   add() {
-    let newValue = +this.value+1
+    let newValue = +this.value + 1;
     if (newValue <= this.max) {
       this.afDatabase.object(this.path).set(newValue);
     }
@@ -93,9 +95,6 @@ export class BarComponent {
         case "concentration":
           stuff = "Concentration";
           break;
-        case "experience":
-          stuff = "Experience";
-          break;
         default:
           console.error('Error triggered : Unkown bar type. Check the bar type where it\'s defined');
           throw new Error("Unkown bar type. Check the bar type where it's defined");
@@ -104,6 +103,12 @@ export class BarComponent {
       params.push(new line(stuff, val, stuff));
       this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb + "/Etat/" }).present();
     }
+  }
+
+  addExperience() {
+    let params: line[] = new Array<line>();
+    params.push(new line("Experience", 0, "Experience", true, this.character.Experience));
+    this.modalCtrl.create(EditComponent, { delete: false, params: params, path: "/Character/" + HomePage.charnb }).present();
   }
 
   overcharge(val: number, stat: string) {

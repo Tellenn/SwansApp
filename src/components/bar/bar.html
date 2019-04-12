@@ -1,4 +1,4 @@
-<div class="progress-outer" (click)="set(type,value,max)">
+<div class="progress-outer" (click)="set(type,value,max)  ; $event.stopPropagation()">
   <div *ngIf="percent>0" class="progress-inner progress-bar-striped" [style.width]="percent+ '%'" [style.background]="newcolor">
     <div class="status" *ngIf="ishidden == 'false'">
       {{value}}/{{max}} <!--<div *ngIf="overcharge>0" class="valovercharged status">+{{!overcharge}}</div>-->
@@ -8,6 +8,11 @@
   </div>
   <div *ngIf="percent<1" class="progress-inner" [style.color]="'#000'">¯\\_(ツ)_/¯</div>
 </div>
-<button class="addition" *ngIf="buttonHidden == 'false'" ion-button round (click)="add()">+</button>
-<button class="substraction" *ngIf="buttonHidden == 'false'" ion-button round (click)="remove()">-</button>
-<button class="overcharge" *ngIf="buttonHidden == 'false'" ion-button round (click)="overcharge(character.Etat.OverVie,'OverVie')"><ion-icon name="ios-thunderstorm"></ion-icon></button>
+<div *ngIf="!isExp">
+  <button class="addition" *ngIf="buttonHidden == 'false'" ion-button round (click)="add() ; $event.stopPropagation()">+</button>
+  <button class="substraction" *ngIf="buttonHidden == 'false'" ion-button round (click)="remove() ; $event.stopPropagation()">-</button>
+  <button class="overcharge" *ngIf="buttonHidden == 'false'" ion-button round (click)="overcharge(character.Etat.OverVie,'OverVie') ; $event.stopPropagation()"><ion-icon name="ios-thunderstorm"></ion-icon></button>
+</div>
+<div *ngIf="isExp">
+  <button class="addition" ion-button round (click)="addExperience()">+</button>
+</div>
